@@ -987,3 +987,10 @@ OK!
 2014-03-25 17:23:30,648 [main] INFO  (JettyStart.java [run]:272) - ----------------------------------------------------- 
 2014-03-25 17:23:43,617 [eXistThread-25] INFO  (Descriptor.java [<init>]:102) - Reading Descriptor from file D:\work_on_OpenShift\exist2\exist\diy\descriptor.xml 
 2014-03-25 17:23:46,309 [eXistThread-27] INFO  (TemporaryFileManager.java [<init>]:76) - Temporary folder is: D:\work_on_OpenShift\exist2\exist\diy\tools\jetty\tmp\_mmtfm_074cf6ee-94b9-47d6-b9bb-2ad3b0b88d13 
+2014-03-25 17:25:25,320 [DefaultQuartzScheduler_Worker-2] INFO  (NativeBroker.java [sync]:3669) - Memory: 272,960K total; 930,304K max; 228,700K free 
+2014-03-25 17:25:25,320 [DefaultQuartzScheduler_Worker-2] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 6% (4 out of 64) Cache efficiency : 80% 
+2014-03-25 17:25:25,321 [DefaultQuartzScheduler_Worker-2] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 10% (25 out of 256) Cache efficiency : 99% 
+2014-03-25 17:25:25,322 [DefaultQuartzScheduler_Worker-2] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 11% (7 out of 64) Cache efficiency : 98% 
+2014-03-25 17:25:25,322 [DefaultQuartzScheduler_Worker-2] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 20% (13 out of 64) Cache efficiency : 98% 
+2014-03-25 17:25:25,323 [DefaultQuartzScheduler_Worker-2] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-25 17:25:25,323 [DefaultQuartzScheduler_Worker-2] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
