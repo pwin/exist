@@ -157,7 +157,7 @@
         collections, you can also increase the collectionCacheSize value 
     -->
     <db-connection cacheSize="128M" checkMaxCacheSize="true" collectionCache="24M" database="native"
-        files="${OPENSHIFT_DATA_DIR}/existdata" pageSize="4096" nodesBuffer="1000" cacheShrinkThreshold="10000"
+        files="webapp/WEB-INF/data" pageSize="4096" nodesBuffer="1000" cacheShrinkThreshold="10000"
         doc-ids="default" minDiskSpace="128M">
 
         <!--
@@ -295,7 +295,7 @@
                 and if inconsistencies are found in the db, it writes an emergency
                 backup to the same directory.
         -->
-        <recovery enabled="yes"  group-commit="no"   journal-dir="${OPENSHIFT_DATA_DIR}/existdata" 
+        <recovery enabled="yes"  group-commit="no"   journal-dir="webapp/WEB-INF/data" 
                   size="100M" sync-on-commit="no"  force-restart="no"  consistency-check="yes"/>
 
         <!--
