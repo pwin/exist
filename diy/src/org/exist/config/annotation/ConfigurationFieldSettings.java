@@ -1,0 +1,76 @@
+/*
+ *  eXist Open Source Native XML Database
+ *  Copyright (C) 2010-2012 The eXist Project
+ *  http://exist-db.org
+ *  
+ *  This program is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public License
+ *  as published by the Free Software Foundation; either version 2
+ *  of the License, or (at your option) any later version.
+ *  
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Lesser General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU Lesser General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *  
+ *  $Id$
+ */
+package org.exist.config.annotation;
+
+import java.lang.annotation.*;
+
+/**
+ * @author <a href="mailto:shabanovd@gmail.com">Dmitriy Shabanov</a>
+ *
+ */
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD)
+public @interface ConfigurationFieldSettings {
+
+    public final static String OCTAL_STRING_KEY = "octalString";
+    public final static String RADIX_KEY = "radix";
+
+    public final static String KEY_VALUE_SEP = "=";
+
+    String value();
+
+    public enum SettingKey {
+        OCTAL_STRING(OCTAL_STRING_KEY),
+        RADIX(RADIX_KEY);
+
+        private final String key;
+        SettingKey(final String key) {
+            this.key = key;
+        }
+
+        public String getKey() {
+            return key;
+        }
+
+        public String extractValueFromSettings(final String settings) {
+              return settings.substring(getKey().length() + KEY_VALUE_SEP.length());
+        }
+
+        public static SettingKey forSettings(final String settings) {
+            if(settings.contains(KEY_VALUE_SEP)) {
+                return forKey(settings.substring(0, settings.indexOf(KEY_VALUE_SEP)));
+            } else {
+                return forKey(settings);
+            }
+        }
+
+        public static SettingKey forKey(final String key) {
+            for(final SettingKey settingKey : SettingKey.values()) {
+                if(settingKey.getKey().equals(key)) {
+                    return settingKey;
+                }
+            } 
+
+            throw new IllegalArgumentException("No such Setting for key: " + key);
+        }
+    }
+}

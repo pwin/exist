@@ -1,0 +1,162 @@
+#encoding=UTF-8
+# Configuration files must begin with a line specifying the encoding
+#  of the the file.
+
+# $Id$
+
+# Include file problems can be debugged by removing the first '#'
+#  from the following line:
+##include.debug
+
+#********************************************************************
+# Wrapper Properties
+#********************************************************************
+
+# Java Application
+wrapper.java.command=$JAVA_HOME/bin/java
+
+# EXIST_HOME
+set.EXIST_HOME=$INSTALL_PATH
+
+# Java Main class.  This class must implement the WrapperListener interface
+#  or guarantee that the WrapperManager class is initialized.  Helper
+#  classes are provided to do this for you.  See the Integration section
+#  of the documentation for details.
+wrapper.java.mainclass=org.exist.wrapper.Main
+
+# Java Classpath (include wrapper.jar)  Add class path elements as
+#  needed starting from 1
+wrapper.java.classpath.1=../classes
+wrapper.java.classpath.2=../lib/wrapper.jar
+wrapper.java.classpath.3=../../../start.jar
+
+# Java Library Path (location of Wrapper.DLL or libwrapper.so)
+wrapper.java.library.path.1=../lib
+
+# Java Bits.  On applicable platforms, tells the JVM to run in 32 or 64-bit mode.
+wrapper.java.additional.auto_bits=TRUE
+
+# Java Additional Parameters
+wrapper.java.additional.1=-Djava.endorsed.dirs=../../../lib/endorsed
+wrapper.java.additional.2=-Dfile.encoding=UTF-8
+wrapper.java.additional.3=-Dexist.home=../../..
+wrapper.java.additional.4=-Djetty.home=../../../tools/jetty
+
+# log4j configuration is read from the conf directory of the wrapper
+wrapper.java.additional.5=-Dlog4j.configuration=file:../conf/log4j.xml
+
+# force headless mode
+wrapper.java.additional.6=-Djava.awt.headless=true
+
+# JMX 
+#wrapper.java.additional.7=-Dcom.sun.management.jmxremote
+#wrapper.java.additional.8=-Dcom.sun.management.jmxremote.port=1099
+#wrapper.java.additional.9=-Dcom.sun.management.jmxremote.authenticate=false
+#wrapper.java.additional.10=-Dcom.sun.management.jmxremote.ssl=false
+#wrapper.java.additional.11=-Dorg.tanukisoftware.wrapper.WrapperManager.mbean=TRUE
+#wrapper.java.additional.12=-Dorg.tanukisoftware.wrapper.WrapperManager.mbean.testing=false
+
+# HTTP proxy
+#wrapper.java.additional.13=-Dhttp.configfile=../../../build.properties
+
+# Initial Java Heap Size (in MB)
+wrapper.java.initmemory=512
+
+# Maximum Java Heap Size (in MB)
+wrapper.java.maxmemory=1024
+
+# Application parameters.  Add parameters as needed starting from 1
+wrapper.app.parameter.1=jetty
+wrapper.app.parameter.2=../../../tools/jetty/etc/jetty.xml
+
+#********************************************************************
+# Wrapper Logging Properties
+#********************************************************************
+# Format of output for the console.  (See docs for formats)
+wrapper.console.format=PM
+
+# Log Level for console output.  (See docs for log levels)
+wrapper.console.loglevel=INFO
+
+# Log file to use for wrapper output logging.
+wrapper.logfile=../logs/wrapper.log
+
+# Format of output for the log file.  (See docs for formats)
+wrapper.logfile.format=LPTM
+
+# Log Level for log file output.  (See docs for log levels)
+wrapper.logfile.loglevel=INFO
+
+# Maximum size that the log file will be allowed to grow to before
+#  the log is rolled. Size is specified in bytes.  The default value
+#  of 0, disables log rolling.  May abbreviate with the 'k' (kb) or
+#  'm' (mb) suffix.  For example: 10m = 10 megabytes.
+wrapper.logfile.maxsize=2m
+
+# Maximum number of rolled log files which will be allowed before old
+#  files are deleted.  The default value of 0 implies no limit.
+wrapper.logfile.maxfiles=5
+
+# Log Level for sys/event log output.  (See docs for log levels)
+wrapper.syslog.loglevel=NONE
+
+#********************************************************************
+# Wrapper General Properties
+#********************************************************************
+# Allow for the use of non-contiguous numbered properties
+wrapper.ignore_sequence_gaps=TRUE
+
+# Title to use when running as a console
+##wrapper.console.title=eXist-db Native XML Database
+wrapper.console.title=eXist-db Server with Jetty
+
+#********************************************************************
+# Wrapper JVM Checks
+#********************************************************************
+# Out Of Memory detection.
+# (Simple match)
+wrapper.filter.trigger.1000=java.lang.OutOfMemoryError
+# (Only match text in stack traces if -XX:+PrintClassHistogram is being used.)
+#wrapper.filter.trigger.1000=Exception in thread "*" java.lang.OutOfMemoryError
+#wrapper.filter.allow_wildcards.1000=TRUE
+wrapper.filter.action.1000=SHUTDOWN
+wrapper.filter.message.1000=The JVM has run out of memory.
+
+# Do not allow the wrapper to restart the JVM.
+# A restart could cause issues if eXist-db wasn't shut down completely.
+wrapper.disable_restarts.automatic=TRUE
+
+#********************************************************************
+# Wrapper Windows Properties
+#********************************************************************
+
+#********************************************************************
+# Wrapper Windows NT/2000/XP Service Properties
+#********************************************************************
+# WARNING - Do not modify any of these properties when an application
+#  using this configuration file has been installed as a service.
+#  Please uninstall the service before modifying this section.  The
+#  service can then be reinstalled.
+
+# Name of the service
+wrapper.name=eXist-db
+
+# Display name of the service
+wrapper.displayname=eXist-db Native XML Database
+
+# Description of the service
+wrapper.description=eXist-db Database Server
+
+# Service dependencies.  Add dependencies as needed starting from 1
+wrapper.ntservice.dependency.1=
+
+# Mode in which the service is installed.  AUTO_START, DELAY_START or DEMAND_START
+wrapper.ntservice.starttype=AUTO_START
+
+# Allow the service to interact with the desktop.
+wrapper.ntservice.interactive=false
+
+#********************************************************************
+# Timeouts
+#********************************************************************
+wrapper.ping.timeout=120

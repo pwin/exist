@@ -1,0 +1,2 @@
+2014-03-24 21:21:07,344 [eXistThread-31] WARN  (XQueryURLRewrite.java [findSource]:793) - XQueryURLRewrite controller could not be found for path: shared-resources 
+2014-03-24 21:21:16,304 [eXistThread-30] WARN  (XQueryURLRewrite.java [findSource]:793) - XQueryURLRewrite controller could not be found for path:  

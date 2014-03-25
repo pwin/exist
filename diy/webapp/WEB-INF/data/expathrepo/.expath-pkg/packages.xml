@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<packages xmlns="http://expath.org/ns/repo/packages">
+   <package name="http://exist-db.org/apps/dashboard"
+            dir="dashboard-0.3.8"
+            version="0.3.8"/>
+   <package name="http://exist-db.org/apps/eXide"
+            dir="eXide-2.0.7"
+            version="2.0.7"/>
+   <package name="http://exist-db.org/apps/xsltforms"
+            dir="xsltforms-565"
+            version="565"/>
+   <package name="http://exist-db.org/apps/shared"
+            dir="shared-0.3.9"
+            version="0.3.9"/>
+</packages>
