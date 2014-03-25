@@ -165,3 +165,6 @@
 0:0:0:0:0:0:0:1 -  -  [25/Mar/2014:17:24:00 +0000] "GET /favicon.ico HTTP/1.1" 404 1376 
 0:0:0:0:0:0:0:1 -  -  [25/Mar/2014:17:24:01 +0000] "GET /exist/apps/eXide/resources/css/black-tie/images/ui-bg_glass_55_1c1c1c_1x400.png HTTP/1.1" 200 260 
 0:0:0:0:0:0:0:1 -  -  [25/Mar/2014:17:24:01 +0000] "GET /exist/apps/eXide/resources/css/black-tie/images/ui-icons_ffffff_256x240.png HTTP/1.1" 200 6299 
+0:0:0:0:0:0:0:1 -  -  [25/Mar/2014:17:43:05 +0000] "GET /exist/apps/eXide/login HTTP/1.1" 200 35 
+0:0:0:0:0:0:0:1 -  -  [25/Mar/2014:17:43:10 +0000] "POST /exist/apps/dashboard/login HTTP/1.1" 200 37 
+0:0:0:0:0:0:0:1 -  -  [25/Mar/2014:17:43:27 +0000] "POST /exist/apps/dashboard/login HTTP/1.1" 200 37 
