@@ -1,0 +1,524 @@
+2014-03-25 23:48:03,764 [main] INFO  (XmlLibraryChecker.java [check]:149) - Looking for a valid Parser...
+Checking for Xerces, found version Xerces-J 2.11.0
+OK!
+ 
+2014-03-25 23:48:04,145 [main] INFO  (XmlLibraryChecker.java [check]:172) - Looking for a valid Transformer...
+Checking for Saxon, found version 9.4.0.7
+OK!
+ 
+2014-03-25 23:48:04,147 [main] INFO  (XmlLibraryChecker.java [check]:184) - Looking for a valid Resolver...
+Checking for Resolver, found version XmlResolver 1.2
+OK!
+ 
+2014-03-25 23:48:04,203 [main] INFO  (XmlLibraryChecker.java [check]:191) - Using parser org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser 
+2014-03-25 23:48:04,232 [main] INFO  (XmlLibraryChecker.java [check]:192) - Using transformer net.sf.saxon.IdentityTransformer 
+2014-03-25 23:48:04,283 [main] INFO  (JettyStart.java [run]:117) - Configuring eXist from D:\work_on_OpenShift\exist2\exist\conf.xml 
+2014-03-25 23:48:04,284 [main] INFO  (JettyStart.java [run]:119) - Running with Java 1.7.0_13 [Oracle Corporation (Java HotSpot(TM) 64-Bit Server VM) in C:\Program Files\Java\jdk1.7.0_13\jre] 
+2014-03-25 23:48:04,287 [main] INFO  (JettyStart.java [run]:125) - Running as user 'swainston' 
+2014-03-25 23:48:04,368 [main] INFO  (JettyStart.java [run]:128) - [eXist Version : 2.1] 
+2014-03-25 23:48:04,370 [main] INFO  (JettyStart.java [run]:130) - [eXist Build : 20140325] 
+2014-03-25 23:48:04,372 [main] INFO  (JettyStart.java [run]:132) - [eXist Home : unknown] 
+2014-03-25 23:48:04,373 [main] INFO  (JettyStart.java [run]:134) - [SVN Revision : ] 
+2014-03-25 23:48:04,374 [main] INFO  (JettyStart.java [run]:137) - [Operating System : Windows 7 6.1 amd64] 
+2014-03-25 23:48:04,374 [main] INFO  (JettyStart.java [run]:142) - [jetty.home : D:\work_on_OpenShift\exist2\exist\tools\jetty] 
+2014-03-25 23:48:04,375 [main] INFO  (JettyStart.java [run]:144) - [log4j.configuration : file:/D:/work_on_OpenShift/exist2/exist/log4j.xml] 
+2014-03-25 23:48:04,378 [main] INFO  (Configuration.java [<init>]:183) - Reading configuration from file D:\work_on_OpenShift\exist2\exist\conf.xml 
+2014-03-25 23:48:04,491 [main] INFO  (Configuration.java [configureStartup]:1258) - Registered StartupTrigger: org.exist.extensions.exquery.restxq.impl.RestXqStartupTrigger 
+2014-03-25 23:48:04,494 [main] INFO  (Configuration.java [configureStartup]:1258) - Registered StartupTrigger: org.exist.repo.AutoDeploymentTrigger 
+2014-03-25 23:48:05,195 [main] INFO  (eXistURLStreamHandlerFactory.java [init]:53) - Succesfully registered eXistURLStreamHandlerFactory. 
+2014-03-25 23:48:05,210 [main] INFO  (Configuration.java [configureValidation]:1515) - Add catalog uri file:/D:/work_on_OpenShift/exist2/exist/webapp//WEB-INF/catalog.xml 
+2014-03-25 23:48:05,212 [main] INFO  (GrammarPool.java [<init>]:53) - Initializing GrammarPool. 
+2014-03-25 23:48:05,225 [main] INFO  (BrokerPool.java [<init>]:649) - database instance 'exist' will have between 1 and 20 brokers 
+2014-03-25 23:48:05,226 [main] INFO  (BrokerPool.java [<init>]:656) - database instance 'exist' will be synchronized every 120,000 ms 
+2014-03-25 23:48:05,226 [main] INFO  (BrokerPool.java [<init>]:663) - database instance 'exist' will wait  120,000 ms during shutdown 
+2014-03-25 23:48:05,226 [main] INFO  (BrokerPool.java [<init>]:669) - database instance 'exist' is enabled for transactions : true 
+2014-03-25 23:48:05,265 [main] INFO  (QuartzSchedulerImpl.java [getQuartzProperties]:114) - Succesfully loaded quartz.properties 
+2014-03-25 23:48:05,859 [main] INFO  (DefaultCacheManager.java [<init>]:151) - Cache settings: 131,072k; totalPages: 32,768; maxCacheSize: 29,491; cacheShrinkThreshold: 10,000 
+2014-03-25 23:48:06,071 [main] INFO  (XQueryPool.java [<init>]:120) - QueryPool: size = 128; maxStackSize = 5; timeout = 120,000; timeoutCheckInterval = 30,000 
+2014-03-25 23:48:06,412 [main] INFO  (IndexManager.java [initIndex]:99) - Registered index org.exist.indexing.ngram.NGramIndex as ngram-index 
+2014-03-25 23:48:08,164 [main] INFO  (IndexManager.java [initIndex]:99) - Registered index org.exist.indexing.lucene.LuceneIndex as lucene-index 
+2014-03-25 23:48:08,172 [main] INFO  (IndexManager.java [initIndex]:99) - Registered index org.exist.indexing.sort.SortIndex as sort-index 
+2014-03-25 23:48:08,286 [main] INFO  (IndexManager.java [initIndex]:99) - Registered index org.exist.indexing.range.RangeIndex as range-index 
+2014-03-25 23:48:08,295 [main] INFO  (IndexManager.java [initIndex]:99) - Registered index org.exist.storage.structural.NativeStructuralIndex as structural-index 
+2014-03-25 23:48:09,896 [main] INFO  (NativeBroker.java [sync]:3738) - Memory: 118,464K total; 930,304K max; 89,107K free 
+2014-03-25 23:48:09,899 [main] INFO  (BTree.java [printStatistics]:2549) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:09,901 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 0% (1 out of 256) Cache efficiency : 100% 
+2014-03-25 23:48:09,902 [main] INFO  (BTree.java [printStatistics]:2549) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:09,903 [main] INFO  (BFile.java [printStatistics]:435) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:09,903 [main] INFO  (BTree.java [printStatistics]:2549) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:09,904 [main] INFO  (BFile.java [printStatistics]:435) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,290 [main] INFO  (Configurator.java [save]:1247) - Storing configuration /db/system/plugins/config.xml 
+2014-03-25 23:48:10,319 [main] INFO  (NativeBroker.java [sync]:3738) - Memory: 118,464K total; 930,304K max; 86,688K free 
+2014-03-25 23:48:10,321 [main] INFO  (BTree.java [printStatistics]:2549) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,323 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 1% (2 out of 256) Cache efficiency : 100% 
+2014-03-25 23:48:10,323 [main] INFO  (BTree.java [printStatistics]:2549) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,324 [main] INFO  (BFile.java [printStatistics]:435) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,325 [main] INFO  (BTree.java [printStatistics]:2549) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,325 [main] INFO  (BFile.java [printStatistics]:435) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,388 [main] INFO  (Configurator.java [save]:1247) - Storing configuration /db/system/security/config.xml 
+2014-03-25 23:48:10,464 [main] INFO  (NativeBroker.java [sync]:3738) - Memory: 118,464K total; 930,304K max; 85,463K free 
+2014-03-25 23:48:10,464 [main] INFO  (BTree.java [printStatistics]:2549) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,465 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 1% (3 out of 256) Cache efficiency : 100% 
+2014-03-25 23:48:10,466 [main] INFO  (BTree.java [printStatistics]:2549) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,466 [main] INFO  (BFile.java [printStatistics]:435) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,467 [main] INFO  (BTree.java [printStatistics]:2549) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,467 [main] INFO  (BFile.java [printStatistics]:435) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,584 [main] INFO  (Configurator.java [save]:1247) - Storing configuration /db/system/security/exist/accounts/admin.xml 
+2014-03-25 23:48:10,603 [main] INFO  (NativeBroker.java [sync]:3738) - Memory: 118,464K total; 930,304K max; 85,463K free 
+2014-03-25 23:48:10,603 [main] INFO  (BTree.java [printStatistics]:2549) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,604 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 2% (4 out of 256) Cache efficiency : 100% 
+2014-03-25 23:48:10,604 [main] INFO  (BTree.java [printStatistics]:2549) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,606 [main] INFO  (BFile.java [printStatistics]:435) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,607 [main] INFO  (BTree.java [printStatistics]:2549) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,607 [main] INFO  (BFile.java [printStatistics]:435) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,651 [main] INFO  (Configurator.java [save]:1247) - Storing configuration /db/system/security/config.xml 
+2014-03-25 23:48:10,659 [main] INFO  (NativeBroker.java [removeXMLResource]:2744) - Removing document config.xml (3) ... 
+2014-03-25 23:48:10,688 [main] INFO  (NativeBroker.java [sync]:3738) - Memory: 118,464K total; 930,304K max; 84,237K free 
+2014-03-25 23:48:10,688 [main] INFO  (BTree.java [printStatistics]:2549) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,689 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 2% (4 out of 256) Cache efficiency : 100% 
+2014-03-25 23:48:10,689 [main] INFO  (BTree.java [printStatistics]:2549) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,690 [main] INFO  (BFile.java [printStatistics]:435) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,690 [main] INFO  (BTree.java [printStatistics]:2549) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,691 [main] INFO  (BFile.java [printStatistics]:435) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,696 [main] INFO  (Configurator.java [save]:1247) - Storing configuration /db/system/security/exist/accounts/admin.xml 
+2014-03-25 23:48:10,703 [main] INFO  (NativeBroker.java [removeXMLResource]:2744) - Removing document admin.xml (4) ... 
+2014-03-25 23:48:10,723 [main] INFO  (NativeBroker.java [sync]:3738) - Memory: 118,464K total; 930,304K max; 84,237K free 
+2014-03-25 23:48:10,724 [main] INFO  (BTree.java [printStatistics]:2549) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,724 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 2% (4 out of 256) Cache efficiency : 100% 
+2014-03-25 23:48:10,725 [main] INFO  (BTree.java [printStatistics]:2549) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,726 [main] INFO  (BFile.java [printStatistics]:435) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,726 [main] INFO  (BTree.java [printStatistics]:2549) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,727 [main] INFO  (BFile.java [printStatistics]:435) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,736 [main] INFO  (Configurator.java [save]:1247) - Storing configuration /db/system/security/exist/accounts/guest.xml 
+2014-03-25 23:48:10,755 [main] INFO  (NativeBroker.java [sync]:3738) - Memory: 118,464K total; 930,304K max; 84,237K free 
+2014-03-25 23:48:10,756 [main] INFO  (BTree.java [printStatistics]:2549) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,757 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 2% (5 out of 256) Cache efficiency : 100% 
+2014-03-25 23:48:10,757 [main] INFO  (BTree.java [printStatistics]:2549) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,758 [main] INFO  (BFile.java [printStatistics]:435) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,759 [main] INFO  (BTree.java [printStatistics]:2549) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,759 [main] INFO  (BFile.java [printStatistics]:435) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,777 [main] INFO  (Configurator.java [save]:1247) - Storing configuration /db/system/security/config.xml 
+2014-03-25 23:48:10,785 [main] INFO  (NativeBroker.java [removeXMLResource]:2744) - Removing document config.xml (3) ... 
+2014-03-25 23:48:10,803 [main] INFO  (NativeBroker.java [sync]:3738) - Memory: 118,464K total; 930,304K max; 84,237K free 
+2014-03-25 23:48:10,804 [main] INFO  (BTree.java [printStatistics]:2549) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,804 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 2% (5 out of 256) Cache efficiency : 100% 
+2014-03-25 23:48:10,805 [main] INFO  (BTree.java [printStatistics]:2549) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,805 [main] INFO  (BFile.java [printStatistics]:435) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,805 [main] INFO  (BTree.java [printStatistics]:2549) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,806 [main] INFO  (BFile.java [printStatistics]:435) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,812 [main] INFO  (Configurator.java [save]:1247) - Storing configuration /db/system/security/exist/accounts/guest.xml 
+2014-03-25 23:48:10,820 [main] INFO  (NativeBroker.java [removeXMLResource]:2744) - Removing document guest.xml (5) ... 
+2014-03-25 23:48:10,838 [main] INFO  (NativeBroker.java [sync]:3738) - Memory: 118,464K total; 930,304K max; 83,012K free 
+2014-03-25 23:48:10,838 [main] INFO  (BTree.java [printStatistics]:2549) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,839 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 2% (5 out of 256) Cache efficiency : 100% 
+2014-03-25 23:48:10,839 [main] INFO  (BTree.java [printStatistics]:2549) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,840 [main] INFO  (BFile.java [printStatistics]:435) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,840 [main] INFO  (BTree.java [printStatistics]:2549) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,840 [main] INFO  (BFile.java [printStatistics]:435) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,848 [main] INFO  (NativeBroker.java [sync]:3738) - Memory: 118,464K total; 930,304K max; 83,012K free 
+2014-03-25 23:48:10,848 [main] INFO  (BTree.java [printStatistics]:2549) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,849 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 2% (5 out of 256) Cache efficiency : 100% 
+2014-03-25 23:48:10,849 [main] INFO  (BTree.java [printStatistics]:2549) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,849 [main] INFO  (BFile.java [printStatistics]:435) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:10,850 [main] INFO  (BTree.java [printStatistics]:2549) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,850 [main] INFO  (BFile.java [printStatistics]:435) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:10,865 [main] INFO  (ExistRepository.java [getRepository]:186) - Using directory D:\work_on_OpenShift\exist2\exist\webapp\WEB-INF\data\expathrepo for expath package repository 
+2014-03-25 23:48:10,965 [main] INFO  (AutoDeploymentTrigger.java [execute]:51) - Scanning autodeploy directory. Found 3 app packages. 
+2014-03-25 23:48:11,150 [main] INFO  (Deployment.java [installAndDeploy]:191) - Package http://exist-db.org/apps/dashboard depends on http://exist-db.org/apps/shared 
+2014-03-25 23:48:11,151 [main] INFO  (Deployment.java [installAndDeploy]:239) - Installing package D:\work_on_OpenShift\exist2\exist\autodeploy\dashboard-0.3.9.xar 
+2014-03-25 23:48:13,100 [main] INFO  (Deployment.java [installAndDeploy]:251) - Deploying package http://exist-db.org/apps/dashboard 
+2014-03-25 23:48:13,763 [main] INFO  (NativeBroker.java [sync]:3738) - Memory: 119,936K total; 930,304K max; 88,476K free 
+2014-03-25 23:48:13,764 [main] INFO  (BTree.java [printStatistics]:2549) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:13,764 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 2% (6 out of 256) Cache efficiency : 100% 
+2014-03-25 23:48:13,764 [main] INFO  (BTree.java [printStatistics]:2549) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:13,765 [main] INFO  (BFile.java [printStatistics]:435) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:13,765 [main] INFO  (BTree.java [printStatistics]:2549) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:13,765 [main] INFO  (BFile.java [printStatistics]:435) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:15,435 [main] INFO  (Deployment.java [installAndDeploy]:191) - Package http://exist-db.org/apps/eXide depends on http://exist-db.org/apps/shared 
+2014-03-25 23:48:15,435 [main] INFO  (Deployment.java [installAndDeploy]:239) - Installing package D:\work_on_OpenShift\exist2\exist\autodeploy\eXide-2.0.7.xar 
+2014-03-25 23:48:18,815 [main] INFO  (Deployment.java [installAndDeploy]:251) - Deploying package http://exist-db.org/apps/eXide 
+2014-03-25 23:48:18,875 [main] INFO  (NativeBroker.java [sync]:3738) - Memory: 119,232K total; 930,304K max; 89,545K free 
+2014-03-25 23:48:18,876 [main] INFO  (BTree.java [printStatistics]:2549) - dom.dbx INDEX Buffers occupation : 6% (4 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:18,876 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 15% (38 out of 256) Cache efficiency : 100% 
+2014-03-25 23:48:18,877 [main] INFO  (BTree.java [printStatistics]:2549) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:18,877 [main] INFO  (BFile.java [printStatistics]:435) - collections.dbx DATA Buffers occupation : 5% (3 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:18,877 [main] INFO  (BTree.java [printStatistics]:2549) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:18,878 [main] INFO  (BFile.java [printStatistics]:435) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:23,221 [main] INFO  (Deployment.java [installAndDeploy]:239) - Installing package D:\work_on_OpenShift\exist2\exist\autodeploy\shared-resources-0.3.9.xar 
+2014-03-25 23:48:32,677 [main] INFO  (Deployment.java [installAndDeploy]:251) - Deploying package http://exist-db.org/apps/shared 
+2014-03-25 23:48:43,281 [main] INFO  (NativeBroker.java [sync]:3738) - Memory: 109,248K total; 930,304K max; 29,268K free 
+2014-03-25 23:48:43,282 [main] INFO  (BTree.java [printStatistics]:2549) - dom.dbx INDEX Buffers occupation : 16% (10 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:43,282 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 43% (110 out of 256) Cache efficiency : 100% 
+2014-03-25 23:48:43,283 [main] INFO  (BTree.java [printStatistics]:2549) - collections.dbx INDEX Buffers occupation : 11% (7 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:43,284 [main] INFO  (BFile.java [printStatistics]:435) - collections.dbx DATA Buffers occupation : 19% (12 out of 64) Cache efficiency : 100% 
+2014-03-25 23:48:43,284 [main] INFO  (BTree.java [printStatistics]:2549) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:43,285 [main] INFO  (BFile.java [printStatistics]:435) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-25 23:48:44,076 [main] INFO  (JettyStart.java [lifeCycleStarting]:404) - Jetty server starting... 
+2014-03-25 23:48:47,584 [main] INFO  (AbstractExistHttpServlet.java [getOrCreateBrokerPool]:96) - Database already started. Skipping configuration ... 
+2014-03-25 23:48:47,584 [main] INFO  (AbstractExistHttpServlet.java [doGeneralExistServletConfig]:187) - Using default user guest for all unauthorized requests. 
+2014-03-25 23:48:47,615 [main] INFO  (XmlLibraryChecker.java [check]:149) - Looking for a valid Parser...
+Checking for Xerces, found version Xerces-J 2.11.0
+OK!
+ 
+2014-03-25 23:48:47,617 [main] INFO  (XmlLibraryChecker.java [check]:172) - Looking for a valid Transformer...
+Checking for Saxon, found version 9.4.0.7
+OK!
+ 
+2014-03-25 23:48:47,618 [main] INFO  (XmlLibraryChecker.java [check]:184) - Looking for a valid Resolver...
+Checking for Resolver, found version XmlResolver 1.2
+OK!
+ 
+2014-03-25 23:48:47,620 [main] INFO  (XmlLibraryChecker.java [check]:191) - Using parser org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser 
+2014-03-25 23:48:47,621 [main] INFO  (XmlLibraryChecker.java [check]:192) - Using transformer net.sf.saxon.IdentityTransformer 
+2014-03-25 23:48:49,502 [main] INFO  (JettyStart.java [lifeCycleStarted]:410) - Jetty server started. 
+2014-03-25 23:48:49,505 [main] INFO  (JettyStart.java [run]:224) - ----------------------------------------------------- 
+2014-03-25 23:48:49,507 [main] INFO  (JettyStart.java [run]:225) - Server has started on ports 8080 8443. Configured contexts: 
+2014-03-25 23:48:49,516 [main] INFO  (JettyStart.java [run]:234) - '/exist' 
+2014-03-25 23:48:49,518 [main] INFO  (JettyStart.java [run]:272) - ----------------------------------------------------- 
+2014-03-25 23:49:10,641 [eXistThread-24] INFO  (Descriptor.java [<init>]:102) - Reading Descriptor from file D:\work_on_OpenShift\exist2\exist\descriptor.xml 
+2014-03-25 23:49:11,624 [eXistThread-25] INFO  (TemporaryFileManager.java [<init>]:76) - Temporary folder is: D:\work_on_OpenShift\exist2\exist\tools\jetty\tmp\_mmtfm_7d1ab105-a748-4b3d-abac-4c32eb8a1736 
+2014-03-25 23:54:59,459 [DefaultQuartzScheduler_Worker-4] INFO  (NativeBroker.java [sync]:3738) - Memory: 235,136K total; 930,304K max; 139,178K free 
+2014-03-25 23:54:59,460 [DefaultQuartzScheduler_Worker-4] INFO  (BTree.java [printStatistics]:2549) - dom.dbx INDEX Buffers occupation : 16% (10 out of 64) Cache efficiency : 100% 
+2014-03-25 23:54:59,460 [DefaultQuartzScheduler_Worker-4] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 43% (110 out of 256) Cache efficiency : 100% 
+2014-03-25 23:54:59,461 [DefaultQuartzScheduler_Worker-4] INFO  (BTree.java [printStatistics]:2549) - collections.dbx INDEX Buffers occupation : 11% (7 out of 64) Cache efficiency : 100% 
+2014-03-25 23:54:59,461 [DefaultQuartzScheduler_Worker-4] INFO  (BFile.java [printStatistics]:435) - collections.dbx DATA Buffers occupation : 19% (12 out of 64) Cache efficiency : 100% 
+2014-03-25 23:54:59,462 [DefaultQuartzScheduler_Worker-4] INFO  (BTree.java [printStatistics]:2549) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-25 23:54:59,462 [DefaultQuartzScheduler_Worker-4] INFO  (BFile.java [printStatistics]:435) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-25 23:55:49,430 [Shutdown] INFO  (BrokerPool.java [shutdown]:1883) - Database is shutting down ... 
+2014-03-25 23:55:49,430 [Thread-4] INFO  (JettyStart.java [lifeCycleStopping]:419) - Jetty server stopping... 
+2014-03-25 23:55:49,488 [Shutdown] INFO  (NativeBroker.java [sync]:3738) - Memory: 233,792K total; 930,304K max; 58,563K free 
+2014-03-25 23:55:49,488 [Shutdown] INFO  (BTree.java [printStatistics]:2549) - dom.dbx INDEX Buffers occupation : 16% (10 out of 64) Cache efficiency : 100% 
+2014-03-25 23:55:49,489 [Shutdown] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 43% (110 out of 256) Cache efficiency : 100% 
+2014-03-25 23:55:49,489 [Shutdown] INFO  (BTree.java [printStatistics]:2549) - collections.dbx INDEX Buffers occupation : 11% (7 out of 64) Cache efficiency : 100% 
+2014-03-25 23:55:49,489 [Shutdown] INFO  (BFile.java [printStatistics]:435) - collections.dbx DATA Buffers occupation : 19% (12 out of 64) Cache efficiency : 100% 
+2014-03-25 23:55:49,489 [Shutdown] INFO  (BTree.java [printStatistics]:2549) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-25 23:55:49,490 [Shutdown] INFO  (BFile.java [printStatistics]:435) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-25 23:55:49,498 [Shutdown] INFO  (Journal.java [shutdown]:484) - Transaction journal cleanly shutting down with checkpoint... 
+2014-03-25 23:55:49,501 [Shutdown] INFO  (FileLock.java [release]:189) - Deleting lock file: D:\work_on_OpenShift\exist2\exist\webapp\WEB-INF\data\journal.lck 
+2014-03-25 23:55:49,559 [Shutdown] INFO  (FileLock.java [release]:189) - Deleting lock file: D:\work_on_OpenShift\exist2\exist\webapp\WEB-INF\data\dbx_dir.lck 
+2014-03-25 23:55:49,559 [Shutdown] INFO  (BrokerPool.java [shutdown]:2015) - shutdown complete ! 
+2014-03-25 23:55:49,560 [Shutdown] INFO  (JettyStart.java [shutdown]:367) - Database shutdown: stopping server in 1sec ... 
+2014-03-25 23:55:50,625 [Thread-4] INFO  (JettyStart.java [lifeCycleStopped]:425) - Jetty server stopped 
+2014-03-26 09:17:07,622 [main] INFO  (XmlLibraryChecker.java [check]:149) - Looking for a valid Parser...
+Checking for Xerces, found version Xerces-J 2.11.0
+OK!
+ 
+2014-03-26 09:17:08,188 [main] INFO  (XmlLibraryChecker.java [check]:172) - Looking for a valid Transformer...
+Checking for Saxon, found version 9.4.0.7
+OK!
+ 
+2014-03-26 09:17:08,191 [main] INFO  (XmlLibraryChecker.java [check]:184) - Looking for a valid Resolver...
+Checking for Resolver, found version XmlResolver 1.2
+OK!
+ 
+2014-03-26 09:17:08,272 [main] INFO  (XmlLibraryChecker.java [check]:191) - Using parser org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser 
+2014-03-26 09:17:08,312 [main] INFO  (XmlLibraryChecker.java [check]:192) - Using transformer net.sf.saxon.IdentityTransformer 
+2014-03-26 09:17:08,393 [main] INFO  (JettyStart.java [run]:117) - Configuring eXist from D:\work_on_OpenShift\exist3\exist\diy\conf.xml 
+2014-03-26 09:17:08,397 [main] INFO  (JettyStart.java [run]:119) - Running with Java 1.7.0_13 [Oracle Corporation (Java HotSpot(TM) 64-Bit Server VM) in C:\Program Files\Java\jdk1.7.0_13\jre] 
+2014-03-26 09:17:08,398 [main] INFO  (JettyStart.java [run]:125) - Running as user 'swainston' 
+2014-03-26 09:17:08,534 [main] INFO  (JettyStart.java [run]:128) - [eXist Version : 2.1] 
+2014-03-26 09:17:08,536 [main] INFO  (JettyStart.java [run]:130) - [eXist Build : 20140326] 
+2014-03-26 09:17:08,537 [main] INFO  (JettyStart.java [run]:132) - [eXist Home : unknown] 
+2014-03-26 09:17:08,538 [main] INFO  (JettyStart.java [run]:134) - [SVN Revision : 0000] 
+2014-03-26 09:17:08,539 [main] INFO  (JettyStart.java [run]:137) - [Operating System : Windows 7 6.1 amd64] 
+2014-03-26 09:17:08,541 [main] INFO  (JettyStart.java [run]:142) - [jetty.home : D:\work_on_OpenShift\exist3\exist\diy\tools\jetty] 
+2014-03-26 09:17:08,543 [main] INFO  (JettyStart.java [run]:144) - [log4j.configuration : file:/D:/work_on_OpenShift/exist3/exist/diy/log4j.xml] 
+2014-03-26 09:17:08,550 [main] INFO  (Configuration.java [<init>]:183) - Reading configuration from file D:\work_on_OpenShift\exist3\exist\diy\conf.xml 
+2014-03-26 09:17:09,518 [main] INFO  (eXistURLStreamHandlerFactory.java [init]:53) - Succesfully registered eXistURLStreamHandlerFactory. 
+2014-03-26 09:17:09,528 [main] INFO  (Configuration.java [configureValidation]:1490) - Add catalog uri file:/D:/work_on_OpenShift/exist3/exist/diy/webapp//WEB-INF/catalog.xml 
+2014-03-26 09:17:09,529 [main] INFO  (GrammarPool.java [<init>]:53) - Initializing GrammarPool. 
+2014-03-26 09:17:09,546 [main] INFO  (BrokerPool.java [<init>]:652) - database instance 'exist' will have between 1 and 20 brokers 
+2014-03-26 09:17:09,546 [main] INFO  (BrokerPool.java [<init>]:659) - database instance 'exist' will be synchronized every 120,000 ms 
+2014-03-26 09:17:09,547 [main] INFO  (BrokerPool.java [<init>]:666) - database instance 'exist' will wait  120,000 ms during shutdown 
+2014-03-26 09:17:09,547 [main] INFO  (BrokerPool.java [<init>]:672) - database instance 'exist' is enabled for transactions : true 
+2014-03-26 09:17:09,582 [main] INFO  (QuartzSchedulerImpl.java [getQuartzProperties]:114) - Succesfully loaded quartz.properties 
+2014-03-26 09:17:09,924 [main] INFO  (DefaultCacheManager.java [<init>]:151) - Cache settings: 131,072k; totalPages: 32,768; maxCacheSize: 29,491; cacheShrinkThreshold: 10,000 
+2014-03-26 09:17:10,028 [main] INFO  (XQueryPool.java [<init>]:120) - QueryPool: size = 128; maxStackSize = 5; timeout = 120,000; timeoutCheckInterval = 30,000 
+2014-03-26 09:17:10,224 [main] INFO  (IndexManager.java [initIndex]:99) - Registered index org.exist.indexing.ngram.NGramIndex as ngram-index 
+2014-03-26 09:17:11,324 [main] INFO  (Journal.java [shutdown]:484) - Transaction journal cleanly shutting down with checkpoint... 
+2014-03-26 09:17:11,344 [main] INFO  (FileLock.java [release]:189) - Deleting lock file: D:\work_on_OpenShift\exist3\exist\diy\webapp\WEB-INF\data\journal.lck 
+2014-03-26 09:17:11,351 [main] INFO  (FileLock.java [release]:189) - Deleting lock file: D:\work_on_OpenShift\exist3\exist\diy\webapp\WEB-INF\data\dbx_dir.lck 
+2014-03-26 09:17:11,355 [main] ERROR (BrokerPool.java [configure]:267) - Unable to initialize database instance 'exist': Exception while reading lucene index directory: Format version is not supported (resource: ChecksumIndexInput(MMapIndexInput(path="D:\work_on_OpenShift\exist3\exist\diy\webapp\WEB-INF\data\lucene\segments_1"))): 1071082519 (needs to be between -1 and -11). This version of Lucene only supports indexes created with release 1.9 and later. 
+org.exist.util.DatabaseConfigurationException: Exception while reading lucene index directory: Format version is not supported (resource: ChecksumIndexInput(MMapIndexInput(path="D:\work_on_OpenShift\exist3\exist\diy\webapp\WEB-INF\data\lucene\segments_1"))): 1071082519 (needs to be between -1 and -11). This version of Lucene only supports indexes created with release 1.9 and later.
+	at org.exist.indexing.lucene.LuceneIndex.open(LuceneIndex.java:107)
+	at org.exist.indexing.IndexManager.initIndex(IndexManager.java:96)
+	at org.exist.indexing.IndexManager.<init>(IndexManager.java:76)
+	at org.exist.storage.BrokerPool.initialize(BrokerPool.java:869)
+	at org.exist.storage.BrokerPool.<init>(BrokerPool.java:725)
+	at org.exist.storage.BrokerPool.configure(BrokerPool.java:248)
+	at org.exist.storage.BrokerPool.configure(BrokerPool.java:224)
+	at org.exist.jetty.JettyStart.run(JettyStart.java:163)
+	at org.exist.jetty.JettyStart.main(JettyStart.java:71)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.exist.start.Main.invokeMain(Main.java:126)
+	at org.exist.start.Main.run(Main.java:448)
+	at org.exist.start.Main.main(Main.java:50)
+Caused by: org.apache.lucene.index.IndexFormatTooOldException: Format version is not supported (resource: ChecksumIndexInput(MMapIndexInput(path="D:\work_on_OpenShift\exist3\exist\diy\webapp\WEB-INF\data\lucene\segments_1"))): 1071082519 (needs to be between -1 and -11). This version of Lucene only supports indexes created with release 1.9 and later.
+	at org.apache.lucene.index.SegmentInfos.read(SegmentInfos.java:275)
+	at org.apache.lucene.index.IndexFileDeleter.<init>(IndexFileDeleter.java:182)
+	at org.apache.lucene.index.IndexWriter.<init>(IndexWriter.java:1168)
+	at org.exist.indexing.lucene.LuceneIndex.getWriter(LuceneIndex.java:196)
+	at org.exist.indexing.lucene.LuceneIndex.getWriter(LuceneIndex.java:165)
+	at org.exist.indexing.lucene.LuceneIndex.open(LuceneIndex.java:105)
+	... 15 more
+2014-03-26 09:18:42,685 [main] INFO  (XmlLibraryChecker.java [check]:149) - Looking for a valid Parser...
+Checking for Xerces, found version Xerces-J 2.11.0
+OK!
+ 
+2014-03-26 09:18:43,006 [main] INFO  (XmlLibraryChecker.java [check]:172) - Looking for a valid Transformer...
+Checking for Saxon, found version 9.4.0.7
+OK!
+ 
+2014-03-26 09:18:43,008 [main] INFO  (XmlLibraryChecker.java [check]:184) - Looking for a valid Resolver...
+Checking for Resolver, found version XmlResolver 1.2
+OK!
+ 
+2014-03-26 09:18:43,032 [main] INFO  (XmlLibraryChecker.java [check]:191) - Using parser org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser 
+2014-03-26 09:18:43,062 [main] INFO  (XmlLibraryChecker.java [check]:192) - Using transformer net.sf.saxon.IdentityTransformer 
+2014-03-26 09:18:43,119 [main] INFO  (JettyStart.java [run]:117) - Configuring eXist from D:\work_on_OpenShift\exist3\exist\diy\conf.xml 
+2014-03-26 09:18:43,121 [main] INFO  (JettyStart.java [run]:119) - Running with Java 1.7.0_13 [Oracle Corporation (Java HotSpot(TM) 64-Bit Server VM) in C:\Program Files\Java\jdk1.7.0_13\jre] 
+2014-03-26 09:18:43,123 [main] INFO  (JettyStart.java [run]:125) - Running as user 'swainston' 
+2014-03-26 09:18:43,216 [main] INFO  (JettyStart.java [run]:128) - [eXist Version : 2.1] 
+2014-03-26 09:18:43,218 [main] INFO  (JettyStart.java [run]:130) - [eXist Build : 20140326] 
+2014-03-26 09:18:43,221 [main] INFO  (JettyStart.java [run]:132) - [eXist Home : unknown] 
+2014-03-26 09:18:43,223 [main] INFO  (JettyStart.java [run]:134) - [SVN Revision : 0000] 
+2014-03-26 09:18:43,225 [main] INFO  (JettyStart.java [run]:137) - [Operating System : Windows 7 6.1 amd64] 
+2014-03-26 09:18:43,227 [main] INFO  (JettyStart.java [run]:142) - [jetty.home : D:\work_on_OpenShift\exist3\exist\diy\tools\jetty] 
+2014-03-26 09:18:43,229 [main] INFO  (JettyStart.java [run]:144) - [log4j.configuration : file:/D:/work_on_OpenShift/exist3/exist/diy/log4j.xml] 
+2014-03-26 09:18:43,234 [main] INFO  (Configuration.java [<init>]:183) - Reading configuration from file D:\work_on_OpenShift\exist3\exist\diy\conf.xml 
+2014-03-26 09:18:43,932 [main] INFO  (eXistURLStreamHandlerFactory.java [init]:53) - Succesfully registered eXistURLStreamHandlerFactory. 
+2014-03-26 09:18:43,943 [main] INFO  (Configuration.java [configureValidation]:1490) - Add catalog uri file:/D:/work_on_OpenShift/exist3/exist/diy/webapp//WEB-INF/catalog.xml 
+2014-03-26 09:18:43,945 [main] INFO  (GrammarPool.java [<init>]:53) - Initializing GrammarPool. 
+2014-03-26 09:18:43,961 [main] INFO  (BrokerPool.java [<init>]:652) - database instance 'exist' will have between 1 and 20 brokers 
+2014-03-26 09:18:43,961 [main] INFO  (BrokerPool.java [<init>]:659) - database instance 'exist' will be synchronized every 120,000 ms 
+2014-03-26 09:18:43,961 [main] INFO  (BrokerPool.java [<init>]:666) - database instance 'exist' will wait  120,000 ms during shutdown 
+2014-03-26 09:18:43,961 [main] INFO  (BrokerPool.java [<init>]:672) - database instance 'exist' is enabled for transactions : true 
+2014-03-26 09:18:43,998 [main] INFO  (QuartzSchedulerImpl.java [getQuartzProperties]:114) - Succesfully loaded quartz.properties 
+2014-03-26 09:18:44,310 [main] INFO  (DefaultCacheManager.java [<init>]:151) - Cache settings: 131,072k; totalPages: 32,768; maxCacheSize: 29,491; cacheShrinkThreshold: 10,000 
+2014-03-26 09:18:44,368 [main] INFO  (XQueryPool.java [<init>]:120) - QueryPool: size = 128; maxStackSize = 5; timeout = 120,000; timeoutCheckInterval = 30,000 
+2014-03-26 09:18:44,535 [main] INFO  (IndexManager.java [initIndex]:99) - Registered index org.exist.indexing.ngram.NGramIndex as ngram-index 
+2014-03-26 09:18:44,842 [main] INFO  (IndexManager.java [initIndex]:99) - Registered index org.exist.indexing.lucene.LuceneIndex as lucene-index 
+2014-03-26 09:18:44,846 [main] INFO  (IndexManager.java [initIndex]:99) - Registered index org.exist.indexing.sort.SortIndex as sort-index 
+2014-03-26 09:18:44,850 [main] INFO  (IndexManager.java [initIndex]:99) - Registered index org.exist.fulltext.FTIndex as ft-legacy-index 
+2014-03-26 09:18:44,854 [main] INFO  (IndexManager.java [initIndex]:99) - Registered index org.exist.storage.structural.NativeStructuralIndex as structural-index 
+2014-03-26 09:18:45,969 [main] INFO  (NativeBroker.java [sync]:3669) - Memory: 79,104K total; 930,304K max; 46,742K free 
+2014-03-26 09:18:45,971 [main] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:45,972 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 0% (1 out of 256) Cache efficiency : 100% 
+2014-03-26 09:18:45,972 [main] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:45,974 [main] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:45,974 [main] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:45,975 [main] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,238 [main] INFO  (Configurator.java [save]:1187) - Storing configuration /db/system/plugins/config.xml 
+2014-03-26 09:18:46,283 [main] INFO  (NativeBroker.java [sync]:3669) - Memory: 79,104K total; 930,304K max; 44,340K free 
+2014-03-26 09:18:46,284 [main] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,285 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 1% (2 out of 256) Cache efficiency : 100% 
+2014-03-26 09:18:46,285 [main] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,286 [main] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,286 [main] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,287 [main] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,365 [main] INFO  (Configurator.java [save]:1187) - Storing configuration /db/system/security/config.xml 
+2014-03-26 09:18:46,402 [main] INFO  (NativeBroker.java [sync]:3669) - Memory: 79,104K total; 930,304K max; 43,119K free 
+2014-03-26 09:18:46,402 [main] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,403 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 1% (3 out of 256) Cache efficiency : 100% 
+2014-03-26 09:18:46,403 [main] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,403 [main] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,403 [main] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,404 [main] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,475 [main] INFO  (Configurator.java [save]:1187) - Storing configuration /db/system/security/exist/accounts/admin.xml 
+2014-03-26 09:18:46,487 [main] INFO  (NativeBroker.java [sync]:3669) - Memory: 79,104K total; 930,304K max; 42,518K free 
+2014-03-26 09:18:46,487 [main] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,488 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 2% (4 out of 256) Cache efficiency : 100% 
+2014-03-26 09:18:46,488 [main] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,488 [main] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,489 [main] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,489 [main] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,502 [main] INFO  (Configurator.java [save]:1187) - Storing configuration /db/system/security/config.xml 
+2014-03-26 09:18:46,508 [main] INFO  (NativeBroker.java [removeXMLResource]:2705) - Removing document config.xml (3) ... 
+2014-03-26 09:18:46,554 [main] INFO  (NativeBroker.java [sync]:3669) - Memory: 79,104K total; 930,304K max; 41,918K free 
+2014-03-26 09:18:46,555 [main] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,555 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 2% (4 out of 256) Cache efficiency : 100% 
+2014-03-26 09:18:46,555 [main] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,556 [main] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,556 [main] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,556 [main] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,562 [main] INFO  (Configurator.java [save]:1187) - Storing configuration /db/system/security/exist/accounts/admin.xml 
+2014-03-26 09:18:46,567 [main] INFO  (NativeBroker.java [removeXMLResource]:2705) - Removing document admin.xml (4) ... 
+2014-03-26 09:18:46,586 [main] INFO  (NativeBroker.java [sync]:3669) - Memory: 79,104K total; 930,304K max; 41,313K free 
+2014-03-26 09:18:46,586 [main] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,587 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 2% (4 out of 256) Cache efficiency : 100% 
+2014-03-26 09:18:46,587 [main] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,587 [main] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,587 [main] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,588 [main] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,598 [main] INFO  (Configurator.java [save]:1187) - Storing configuration /db/system/security/exist/accounts/guest.xml 
+2014-03-26 09:18:46,610 [main] INFO  (NativeBroker.java [sync]:3669) - Memory: 79,104K total; 930,304K max; 41,313K free 
+2014-03-26 09:18:46,611 [main] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,611 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 2% (5 out of 256) Cache efficiency : 100% 
+2014-03-26 09:18:46,612 [main] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,612 [main] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,613 [main] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,613 [main] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,619 [main] INFO  (Configurator.java [save]:1187) - Storing configuration /db/system/security/config.xml 
+2014-03-26 09:18:46,623 [main] INFO  (NativeBroker.java [removeXMLResource]:2705) - Removing document config.xml (3) ... 
+2014-03-26 09:18:46,632 [main] INFO  (NativeBroker.java [sync]:3669) - Memory: 79,104K total; 930,304K max; 41,313K free 
+2014-03-26 09:18:46,632 [main] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,632 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 2% (5 out of 256) Cache efficiency : 100% 
+2014-03-26 09:18:46,633 [main] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,633 [main] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,633 [main] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,633 [main] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,638 [main] INFO  (Configurator.java [save]:1187) - Storing configuration /db/system/security/exist/accounts/guest.xml 
+2014-03-26 09:18:46,643 [main] INFO  (NativeBroker.java [removeXMLResource]:2705) - Removing document guest.xml (5) ... 
+2014-03-26 09:18:46,655 [main] INFO  (NativeBroker.java [sync]:3669) - Memory: 79,104K total; 930,304K max; 40,713K free 
+2014-03-26 09:18:46,655 [main] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,656 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 2% (5 out of 256) Cache efficiency : 100% 
+2014-03-26 09:18:46,656 [main] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,656 [main] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,657 [main] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,657 [main] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,660 [main] INFO  (NativeBroker.java [sync]:3669) - Memory: 79,104K total; 930,304K max; 40,713K free 
+2014-03-26 09:18:46,661 [main] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,661 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 2% (5 out of 256) Cache efficiency : 100% 
+2014-03-26 09:18:46,661 [main] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,662 [main] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:46,662 [main] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,662 [main] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:46,673 [main] INFO  (ExistRepository.java [getRepository]:186) - Using directory D:\work_on_OpenShift\exist3\exist\diy\webapp\WEB-INF\data\expathrepo for expath package repository 
+2014-03-26 09:18:46,776 [main] INFO  (AutoDeploymentTrigger.java [execute]:51) - Scanning autodeploy directory. Found 3 app packages. 
+2014-03-26 09:18:46,907 [main] INFO  (Deployment.java [installAndDeploy]:191) - Package http://exist-db.org/apps/dashboard depends on http://exist-db.org/apps/shared 
+2014-03-26 09:18:46,907 [main] INFO  (Deployment.java [installAndDeploy]:239) - Installing package D:\work_on_OpenShift\exist3\exist\diy\autodeploy\dashboard-0.3.9.xar 
+2014-03-26 09:18:48,581 [main] INFO  (Deployment.java [installAndDeploy]:251) - Deploying package http://exist-db.org/apps/dashboard 
+2014-03-26 09:18:49,259 [main] INFO  (NativeBroker.java [sync]:3669) - Memory: 120,960K total; 930,304K max; 97,485K free 
+2014-03-26 09:18:49,260 [main] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:49,260 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 2% (6 out of 256) Cache efficiency : 100% 
+2014-03-26 09:18:49,261 [main] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:49,261 [main] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:49,261 [main] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:49,262 [main] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:50,836 [main] INFO  (Deployment.java [installAndDeploy]:191) - Package http://exist-db.org/apps/eXide depends on http://exist-db.org/apps/shared 
+2014-03-26 09:18:50,836 [main] INFO  (Deployment.java [installAndDeploy]:239) - Installing package D:\work_on_OpenShift\exist3\exist\diy\autodeploy\eXide-2.0.7.xar 
+2014-03-26 09:18:53,609 [main] INFO  (Deployment.java [installAndDeploy]:251) - Deploying package http://exist-db.org/apps/eXide 
+2014-03-26 09:18:53,662 [main] INFO  (NativeBroker.java [sync]:3669) - Memory: 109,248K total; 930,304K max; 77,925K free 
+2014-03-26 09:18:53,662 [main] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 6% (4 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:53,663 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 15% (38 out of 256) Cache efficiency : 100% 
+2014-03-26 09:18:53,663 [main] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:53,663 [main] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 5% (3 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:53,664 [main] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:53,664 [main] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:57,699 [main] WARN  (BrokerPool.java [callStartupTriggers]:1111) - StarupTrigger through RuntimException: null. IGNORING! 
+java.lang.NullPointerException
+	at org.exist.memtree.MemTreeBuilder.namespaceNode(MemTreeBuilder.java:450)
+	at org.exist.memtree.DocumentBuilderReceiver.addNamespaceNode(DocumentBuilderReceiver.java:184)
+	at org.exist.memtree.DocumentImpl.copyStartNode(DocumentImpl.java:1083)
+	at org.exist.memtree.DocumentImpl.copyTo(DocumentImpl.java:1037)
+	at org.exist.memtree.DocumentImpl.copyTo(DocumentImpl.java:1030)
+	at org.exist.memtree.NodeImpl.copyTo(NodeImpl.java:701)
+	at org.exist.repo.Deployment.storeRepoXML(Deployment.java:489)
+	at org.exist.repo.Deployment.deploy(Deployment.java:365)
+	at org.exist.repo.Deployment.installAndDeploy(Deployment.java:252)
+	at org.exist.repo.AutoDeploymentTrigger.execute(AutoDeploymentTrigger.java:85)
+	at org.exist.storage.BrokerPool.callStartupTriggers(BrokerPool.java:1103)
+	at org.exist.storage.BrokerPool.initialize(BrokerPool.java:1007)
+	at org.exist.storage.BrokerPool.<init>(BrokerPool.java:725)
+	at org.exist.storage.BrokerPool.configure(BrokerPool.java:248)
+	at org.exist.storage.BrokerPool.configure(BrokerPool.java:224)
+	at org.exist.jetty.JettyStart.run(JettyStart.java:163)
+	at org.exist.jetty.JettyStart.main(JettyStart.java:71)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.exist.start.Main.invokeMain(Main.java:126)
+	at org.exist.start.Main.run(Main.java:448)
+	at org.exist.start.Main.main(Main.java:50)
+2014-03-26 09:18:57,748 [main] INFO  (NativeBroker.java [sync]:3669) - Memory: 109,248K total; 930,304K max; 57,324K free 
+2014-03-26 09:18:57,749 [main] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 11% (7 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:57,749 [main] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 30% (76 out of 256) Cache efficiency : 100% 
+2014-03-26 09:18:57,749 [main] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 6% (4 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:57,750 [main] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 9% (6 out of 64) Cache efficiency : 100% 
+2014-03-26 09:18:57,750 [main] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:57,751 [main] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:18:58,092 [main] INFO  (JettyStart.java [lifeCycleStarting]:404) - Jetty server starting... 
+2014-03-26 09:19:01,327 [main] INFO  (AbstractExistHttpServlet.java [getOrCreateBrokerPool]:95) - Database already started. Skipping configuration ... 
+2014-03-26 09:19:01,327 [main] INFO  (AbstractExistHttpServlet.java [doGeneralExistServletConfig]:186) - Using default user guest for all unauthorized requests. 
+2014-03-26 09:19:01,355 [main] INFO  (XmlLibraryChecker.java [check]:149) - Looking for a valid Parser...
+Checking for Xerces, found version Xerces-J 2.11.0
+OK!
+ 
+2014-03-26 09:19:01,357 [main] INFO  (XmlLibraryChecker.java [check]:172) - Looking for a valid Transformer...
+Checking for Saxon, found version 9.4.0.7
+OK!
+ 
+2014-03-26 09:19:01,358 [main] INFO  (XmlLibraryChecker.java [check]:184) - Looking for a valid Resolver...
+Checking for Resolver, found version XmlResolver 1.2
+OK!
+ 
+2014-03-26 09:19:01,360 [main] INFO  (XmlLibraryChecker.java [check]:191) - Using parser org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser 
+2014-03-26 09:19:01,361 [main] INFO  (XmlLibraryChecker.java [check]:192) - Using transformer net.sf.saxon.IdentityTransformer 
+2014-03-26 09:19:02,612 [main] INFO  (JettyStart.java [lifeCycleStarted]:410) - Jetty server started. 
+2014-03-26 09:19:02,614 [main] INFO  (JettyStart.java [run]:224) - ----------------------------------------------------- 
+2014-03-26 09:19:02,615 [main] INFO  (JettyStart.java [run]:225) - Server has started on port 8080. Configured contexts: 
+2014-03-26 09:19:02,616 [main] INFO  (JettyStart.java [run]:234) - '/exist' 
+2014-03-26 09:19:02,617 [main] INFO  (JettyStart.java [run]:272) - ----------------------------------------------------- 
+2014-03-26 09:19:26,537 [eXistThread-31] INFO  (Descriptor.java [<init>]:102) - Reading Descriptor from file D:\work_on_OpenShift\exist3\exist\diy\descriptor.xml 
+2014-03-26 09:19:28,325 [eXistThread-33] INFO  (TemporaryFileManager.java [<init>]:76) - Temporary folder is: D:\work_on_OpenShift\exist3\exist\diy\tools\jetty\tmp\_mmtfm_ca1335b2-4b00-4d06-941f-82359828d6aa 
+2014-03-26 09:20:57,788 [DefaultQuartzScheduler_Worker-3] INFO  (NativeBroker.java [sync]:3669) - Memory: 191,360K total; 930,304K max; 45,033K free 
+2014-03-26 09:20:57,788 [DefaultQuartzScheduler_Worker-3] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 11% (7 out of 64) Cache efficiency : 100% 
+2014-03-26 09:20:57,789 [DefaultQuartzScheduler_Worker-3] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 30% (76 out of 256) Cache efficiency : 100% 
+2014-03-26 09:20:57,790 [DefaultQuartzScheduler_Worker-3] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 6% (4 out of 64) Cache efficiency : 100% 
+2014-03-26 09:20:57,790 [DefaultQuartzScheduler_Worker-3] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 9% (6 out of 64) Cache efficiency : 100% 
+2014-03-26 09:20:57,791 [DefaultQuartzScheduler_Worker-3] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:20:57,792 [DefaultQuartzScheduler_Worker-3] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:23:00,287 [DefaultQuartzScheduler_Worker-3] INFO  (NativeBroker.java [sync]:3669) - Memory: 191,360K total; 930,304K max; 41,492K free 
+2014-03-26 09:23:00,288 [DefaultQuartzScheduler_Worker-3] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 11% (7 out of 64) Cache efficiency : 100% 
+2014-03-26 09:23:00,288 [DefaultQuartzScheduler_Worker-3] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 30% (76 out of 256) Cache efficiency : 100% 
+2014-03-26 09:23:00,289 [DefaultQuartzScheduler_Worker-3] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 6% (4 out of 64) Cache efficiency : 100% 
+2014-03-26 09:23:00,290 [DefaultQuartzScheduler_Worker-3] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 9% (6 out of 64) Cache efficiency : 100% 
+2014-03-26 09:23:00,290 [DefaultQuartzScheduler_Worker-3] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:23:00,291 [DefaultQuartzScheduler_Worker-3] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:25:02,786 [DefaultQuartzScheduler_Worker-2] INFO  (NativeBroker.java [sync]:3669) - Memory: 191,360K total; 930,304K max; 39,933K free 
+2014-03-26 09:25:02,787 [DefaultQuartzScheduler_Worker-2] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 11% (7 out of 64) Cache efficiency : 100% 
+2014-03-26 09:25:02,788 [DefaultQuartzScheduler_Worker-2] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 30% (76 out of 256) Cache efficiency : 100% 
+2014-03-26 09:25:02,788 [DefaultQuartzScheduler_Worker-2] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 6% (4 out of 64) Cache efficiency : 100% 
+2014-03-26 09:25:02,789 [DefaultQuartzScheduler_Worker-2] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 9% (6 out of 64) Cache efficiency : 100% 
+2014-03-26 09:25:02,790 [DefaultQuartzScheduler_Worker-2] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:25:02,791 [DefaultQuartzScheduler_Worker-2] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:27:05,286 [DefaultQuartzScheduler_Worker-3] INFO  (NativeBroker.java [sync]:3669) - Memory: 191,360K total; 930,304K max; 38,247K free 
+2014-03-26 09:27:05,287 [DefaultQuartzScheduler_Worker-3] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 11% (7 out of 64) Cache efficiency : 100% 
+2014-03-26 09:27:05,288 [DefaultQuartzScheduler_Worker-3] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 30% (76 out of 256) Cache efficiency : 100% 
+2014-03-26 09:27:05,288 [DefaultQuartzScheduler_Worker-3] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 6% (4 out of 64) Cache efficiency : 100% 
+2014-03-26 09:27:05,289 [DefaultQuartzScheduler_Worker-3] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 9% (6 out of 64) Cache efficiency : 100% 
+2014-03-26 09:27:05,289 [DefaultQuartzScheduler_Worker-3] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:27:05,290 [DefaultQuartzScheduler_Worker-3] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:29:07,787 [DefaultQuartzScheduler_Worker-1] INFO  (NativeBroker.java [sync]:3669) - Memory: 191,360K total; 930,304K max; 35,984K free 
+2014-03-26 09:29:07,787 [DefaultQuartzScheduler_Worker-1] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 11% (7 out of 64) Cache efficiency : 100% 
+2014-03-26 09:29:07,788 [DefaultQuartzScheduler_Worker-1] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 30% (76 out of 256) Cache efficiency : 100% 
+2014-03-26 09:29:07,789 [DefaultQuartzScheduler_Worker-1] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 6% (4 out of 64) Cache efficiency : 100% 
+2014-03-26 09:29:07,789 [DefaultQuartzScheduler_Worker-1] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 9% (6 out of 64) Cache efficiency : 100% 
+2014-03-26 09:29:07,790 [DefaultQuartzScheduler_Worker-1] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:29:07,791 [DefaultQuartzScheduler_Worker-1] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:31:10,290 [DefaultQuartzScheduler_Worker-4] INFO  (NativeBroker.java [sync]:3669) - Memory: 191,360K total; 930,304K max; 33,575K free 
+2014-03-26 09:31:10,291 [DefaultQuartzScheduler_Worker-4] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 11% (7 out of 64) Cache efficiency : 100% 
+2014-03-26 09:31:10,292 [DefaultQuartzScheduler_Worker-4] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 30% (76 out of 256) Cache efficiency : 100% 
+2014-03-26 09:31:10,293 [DefaultQuartzScheduler_Worker-4] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 6% (4 out of 64) Cache efficiency : 100% 
+2014-03-26 09:31:10,293 [DefaultQuartzScheduler_Worker-4] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 9% (6 out of 64) Cache efficiency : 100% 
+2014-03-26 09:31:10,294 [DefaultQuartzScheduler_Worker-4] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:31:10,295 [DefaultQuartzScheduler_Worker-4] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:32:18,223 [Shutdown] INFO  (BrokerPool.java [shutdown]:1874) - Database is shutting down ... 
+2014-03-26 09:32:18,223 [Thread-4] INFO  (JettyStart.java [lifeCycleStopping]:419) - Jetty server stopping... 
+2014-03-26 09:32:18,295 [Shutdown] INFO  (NativeBroker.java [sync]:3669) - Memory: 191,360K total; 930,304K max; 29,157K free 
+2014-03-26 09:32:18,296 [Shutdown] INFO  (BTree.java [printStatistics]:2387) - dom.dbx INDEX Buffers occupation : 11% (7 out of 64) Cache efficiency : 100% 
+2014-03-26 09:32:18,297 [Shutdown] INFO  (DOMFile.java [printStatistics]:1369) - dom.dbx DATA Buffers occupation : 30% (76 out of 256) Cache efficiency : 100% 
+2014-03-26 09:32:18,297 [Shutdown] INFO  (BTree.java [printStatistics]:2387) - collections.dbx INDEX Buffers occupation : 6% (4 out of 64) Cache efficiency : 100% 
+2014-03-26 09:32:18,298 [Shutdown] INFO  (BFile.java [printStatistics]:434) - collections.dbx DATA Buffers occupation : 9% (6 out of 64) Cache efficiency : 100% 
+2014-03-26 09:32:18,298 [Shutdown] INFO  (BTree.java [printStatistics]:2387) - values.dbx INDEX Buffers occupation : 2% (1 out of 64) Cache efficiency : N/A 
+2014-03-26 09:32:18,299 [Shutdown] INFO  (BFile.java [printStatistics]:434) - values.dbx DATA Buffers occupation : 0% (0 out of 64) Cache efficiency : N/A 
+2014-03-26 09:32:18,302 [Shutdown] INFO  (Journal.java [shutdown]:484) - Transaction journal cleanly shutting down with checkpoint... 
+2014-03-26 09:32:18,303 [Shutdown] INFO  (FileLock.java [release]:189) - Deleting lock file: D:\work_on_OpenShift\exist3\exist\diy\webapp\WEB-INF\data\journal.lck 
+2014-03-26 09:32:18,355 [Shutdown] INFO  (FileLock.java [release]:189) - Deleting lock file: D:\work_on_OpenShift\exist3\exist\diy\webapp\WEB-INF\data\dbx_dir.lck 
+2014-03-26 09:32:18,356 [Shutdown] INFO  (BrokerPool.java [shutdown]:2002) - shutdown complete ! 
+2014-03-26 09:32:18,356 [Shutdown] INFO  (JettyStart.java [shutdown]:367) - Database shutdown: stopping server in 1sec ... 
+2014-03-26 09:32:19,420 [Thread-4] INFO  (JettyStart.java [lifeCycleStopped]:425) - Jetty server stopped 

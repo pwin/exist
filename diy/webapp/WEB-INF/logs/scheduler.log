@@ -1,0 +1,789 @@
+2014-03-25 23:48:05,368 [main] INFO  (StdSchedulerFactory.java [instantiate]:1157) - Using default implementation for ThreadExecutor 
+2014-03-25 23:48:05,376 [main] INFO  (SimpleThreadPool.java [initialize]:271) - Job execution threads will use class loader of thread: main 
+2014-03-25 23:48:05,429 [main] INFO  (SchedulerSignalerImpl.java [<init>]:61) - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl 
+2014-03-25 23:48:05,429 [main] INFO  (QuartzScheduler.java [<init>]:243) - Quartz Scheduler v.2.1.6 created. 
+2014-03-25 23:48:05,432 [main] INFO  (RAMJobStore.java [initialize]:154) - RAMJobStore initialized. 
+2014-03-25 23:48:05,434 [main] INFO  (QuartzScheduler.java [initialize]:268) - Scheduler meta-data: Quartz Scheduler (v2.1.6) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 4 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+ 
+2014-03-25 23:48:05,435 [main] INFO  (StdSchedulerFactory.java [instantiate]:1306) - Quartz scheduler 'DefaultQuartzScheduler' initialized from an externally provided properties instance. 
+2014-03-25 23:48:05,435 [main] INFO  (StdSchedulerFactory.java [instantiate]:1310) - Quartz scheduler version: 2.1.6 
+2014-03-25 23:48:43,324 [main] INFO  (QuartzScheduler.java [start]:534) - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started. 
+2014-03-25 23:48:43,330 [main] INFO  (SyncTask.java [configure]:65) - Using DATA_DIR: D:\work_on_OpenShift\exist2\exist\webapp\WEB-INF\data. Minimal disk space required for database to continue operations: 128mb 
+2014-03-25 23:48:43,332 [main] INFO  (SyncTask.java [configure]:68) - Usable space on partition containing DATA_DIR: D:\work_on_OpenShift\exist2\exist\webapp\WEB-INF\data: 347632mb 
+2014-03-25 23:48:45,841 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:48:45,852 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:48:48,383 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:48:48,423 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:48:50,836 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:48:50,843 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:48:53,335 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:48:53,342 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:48:55,835 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:48:55,845 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:48:58,335 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:48:58,353 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:00,836 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:00,842 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:03,338 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:03,350 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:05,836 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:05,842 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:08,336 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:08,345 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:10,841 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:10,847 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:13,427 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:13,430 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:16,036 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:16,039 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:18,346 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:18,362 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:20,836 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:20,845 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:23,336 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:23,343 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:25,836 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:25,843 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:28,336 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:28,358 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:30,839 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:30,846 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:33,335 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:33,342 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:35,866 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:35,874 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:38,335 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:38,353 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:40,835 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:40,838 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:43,335 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:43,338 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:45,835 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:49:45,838 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:49:48,335 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:54:59,462 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:00,836 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:00,910 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:03,335 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:03,338 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:05,835 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:05,839 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:08,335 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:08,338 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:10,835 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:10,841 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:13,336 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:13,339 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:15,835 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:15,838 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:18,335 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:18,338 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:20,835 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:20,841 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:23,335 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:23,338 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:25,857 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:25,860 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:28,335 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:28,338 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:30,835 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:30,841 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:33,335 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:33,338 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:35,835 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:35,838 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:38,335 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:38,338 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:40,835 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:40,840 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:43,335 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:43,338 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:45,835 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:45,838 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:48,336 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-25 23:55:48,339 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-25 23:55:49,430 [Shutdown] INFO  (QuartzScheduler.java [shutdown]:653) - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED shutting down. 
+2014-03-25 23:55:49,431 [Shutdown] INFO  (QuartzScheduler.java [standby]:572) - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED paused. 
+2014-03-25 23:55:49,432 [Shutdown] INFO  (QuartzScheduler.java [shutdown]:725) - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED shutdown complete. 
+2014-03-26 09:17:09,668 [main] INFO  (StdSchedulerFactory.java [instantiate]:1157) - Using default implementation for ThreadExecutor 
+2014-03-26 09:17:09,686 [main] INFO  (SimpleThreadPool.java [initialize]:271) - Job execution threads will use class loader of thread: main 
+2014-03-26 09:17:09,743 [main] INFO  (SchedulerSignalerImpl.java [<init>]:61) - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl 
+2014-03-26 09:17:09,743 [main] INFO  (QuartzScheduler.java [<init>]:243) - Quartz Scheduler v.2.1.6 created. 
+2014-03-26 09:17:09,746 [main] INFO  (RAMJobStore.java [initialize]:154) - RAMJobStore initialized. 
+2014-03-26 09:17:09,748 [main] INFO  (QuartzScheduler.java [initialize]:268) - Scheduler meta-data: Quartz Scheduler (v2.1.6) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 4 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+ 
+2014-03-26 09:17:09,748 [main] INFO  (StdSchedulerFactory.java [instantiate]:1306) - Quartz scheduler 'DefaultQuartzScheduler' initialized from an externally provided properties instance. 
+2014-03-26 09:17:09,748 [main] INFO  (StdSchedulerFactory.java [instantiate]:1310) - Quartz scheduler version: 2.1.6 
+2014-03-26 09:18:44,084 [main] INFO  (StdSchedulerFactory.java [instantiate]:1157) - Using default implementation for ThreadExecutor 
+2014-03-26 09:18:44,091 [main] INFO  (SimpleThreadPool.java [initialize]:271) - Job execution threads will use class loader of thread: main 
+2014-03-26 09:18:44,140 [main] INFO  (SchedulerSignalerImpl.java [<init>]:61) - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl 
+2014-03-26 09:18:44,141 [main] INFO  (QuartzScheduler.java [<init>]:243) - Quartz Scheduler v.2.1.6 created. 
+2014-03-26 09:18:44,144 [main] INFO  (RAMJobStore.java [initialize]:154) - RAMJobStore initialized. 
+2014-03-26 09:18:44,146 [main] INFO  (QuartzScheduler.java [initialize]:268) - Scheduler meta-data: Quartz Scheduler (v2.1.6) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 4 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+ 
+2014-03-26 09:18:44,147 [main] INFO  (StdSchedulerFactory.java [instantiate]:1306) - Quartz scheduler 'DefaultQuartzScheduler' initialized from an externally provided properties instance. 
+2014-03-26 09:18:44,147 [main] INFO  (StdSchedulerFactory.java [instantiate]:1310) - Quartz scheduler version: 2.1.6 
+2014-03-26 09:18:57,770 [main] INFO  (QuartzScheduler.java [start]:534) - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started. 
+2014-03-26 09:18:57,775 [main] INFO  (SyncTask.java [configure]:65) - Using DATA_DIR: D:\work_on_OpenShift\exist3\exist\diy\webapp\WEB-INF\data. Minimal disk space required for database to continue operations: 128mb 
+2014-03-26 09:18:57,776 [main] INFO  (SyncTask.java [configure]:68) - Usable space on partition containing DATA_DIR: D:\work_on_OpenShift\exist3\exist\diy\webapp\WEB-INF\data: 346997mb 
+2014-03-26 09:19:00,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:00,298 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:02,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:02,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:05,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:05,293 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:07,778 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:07,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:10,287 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:10,295 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:12,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:12,816 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:15,282 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:15,298 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:17,779 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:17,787 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:20,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:20,287 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:22,779 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:22,786 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:25,279 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:25,294 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:28,288 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:28,292 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:30,604 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:30,607 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:32,975 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:32,978 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:35,279 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:35,292 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:37,780 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:37,787 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:40,280 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:40,289 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:42,778 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:42,787 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:45,279 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:45,291 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:47,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:47,786 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:50,279 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:50,286 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:52,782 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:52,790 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:55,279 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:55,291 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:19:57,780 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:19:57,788 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:00,278 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:00,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:02,778 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:02,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:05,279 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:05,292 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:07,778 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:07,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:10,279 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:10,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:12,778 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:12,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:15,279 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:15,293 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:17,778 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:17,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:20,278 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:20,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:22,778 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:22,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:25,279 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:25,293 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:27,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:27,787 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:30,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:30,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:32,778 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:32,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:35,278 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:35,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:37,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:37,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:40,279 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:40,285 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:42,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:42,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:45,282 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:45,289 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:47,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:47,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:50,281 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:50,288 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:52,782 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:52,789 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:55,280 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:55,288 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:20:57,779 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:20:57,794 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:00,279 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:00,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:02,780 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:02,787 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:05,280 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:05,288 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:07,779 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:07,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:10,281 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:10,289 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:12,778 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:12,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:15,279 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:15,287 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:17,778 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:17,786 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:20,279 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:20,286 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:22,778 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:22,786 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:25,279 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:25,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:27,778 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:27,786 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:30,279 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:30,286 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:32,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:32,787 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:35,283 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:35,290 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:37,782 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:37,790 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:40,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:40,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:42,779 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:42,787 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:45,278 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:45,286 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:47,778 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:47,786 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:50,278 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:50,285 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:52,782 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:52,791 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:55,280 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:55,288 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:21:57,780 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:21:57,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:00,278 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:00,286 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:02,782 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:02,789 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:05,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:05,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:07,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:07,787 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:10,279 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:10,287 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:12,783 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:12,794 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:15,280 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:15,287 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:17,778 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:17,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:20,278 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:20,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:22,779 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:22,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:25,279 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:25,285 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:27,778 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:27,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:30,278 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:30,288 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:32,780 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:32,788 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:35,279 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:35,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:37,778 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:37,785 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:40,281 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:40,288 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:42,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:42,786 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:45,281 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:45,289 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:47,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:47,788 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:50,279 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:50,285 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:52,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:52,786 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:55,280 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:55,287 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:22:57,778 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:22:57,801 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:00,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:00,292 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:02,779 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:02,782 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:05,279 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:05,286 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:07,778 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:07,792 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:10,280 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:10,287 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:12,779 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:12,787 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:15,278 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:15,283 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:17,790 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:17,809 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:20,279 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:20,286 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:22,782 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:22,789 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:25,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:25,289 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:27,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:27,792 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:30,296 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:30,305 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:32,778 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:32,787 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:35,279 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:35,289 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:37,778 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:37,796 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:40,279 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:40,287 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:42,778 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:42,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:45,289 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:45,313 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:47,779 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:47,792 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:50,278 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:50,286 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:52,778 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:52,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:55,279 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:55,286 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:23:57,783 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:23:57,801 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:00,278 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:00,283 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:02,785 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:02,792 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:05,279 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:05,286 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:07,779 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:07,792 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:10,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:10,287 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:12,780 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:12,788 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:15,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:15,287 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:17,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:17,791 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:20,279 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:20,287 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:22,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:22,786 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:25,280 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:25,287 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:27,779 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:27,794 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:30,278 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:30,286 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:32,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:32,787 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:35,278 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:35,286 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:37,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:37,792 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:40,279 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:40,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:42,780 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:42,788 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:45,279 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:45,284 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:47,779 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:47,786 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:50,278 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:50,285 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:52,780 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:52,787 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:55,279 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:55,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:24:57,778 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:24:57,785 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:00,279 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:00,286 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:02,778 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:02,792 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:05,279 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:05,287 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:07,788 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:07,799 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:10,282 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:10,289 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:12,781 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:12,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:15,356 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:15,360 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:17,778 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:17,787 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:20,278 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:20,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:22,779 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:22,786 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:25,279 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:25,288 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:27,779 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:27,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:30,278 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:30,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:32,780 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:32,787 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:35,278 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:35,287 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:37,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:37,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:40,280 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:40,287 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:42,782 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:42,790 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:45,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:45,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:47,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:47,795 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:50,331 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:50,338 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:52,782 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:52,789 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:55,283 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:55,290 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:25:57,781 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:25:57,788 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:00,285 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:00,293 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:02,779 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:02,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:05,280 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:05,287 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:07,781 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:07,788 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:10,278 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:10,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:12,778 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:12,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:15,279 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:15,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:17,783 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:17,791 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:20,278 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:20,283 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:22,796 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:22,804 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:25,279 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:25,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:27,781 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:27,789 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:30,278 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:30,283 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:32,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:32,787 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:35,280 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:35,288 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:37,781 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:37,788 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:40,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:40,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:42,779 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:42,786 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:45,278 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:45,286 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:47,778 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:47,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:50,278 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:50,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:52,779 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:52,786 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:55,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:55,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:26:57,778 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:26:57,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:00,282 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:00,290 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:02,778 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:02,785 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:05,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:05,291 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:07,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:07,800 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:10,293 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:10,320 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:12,779 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:12,786 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:15,423 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:15,428 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:17,782 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:17,787 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:20,279 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:20,293 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:22,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:22,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:25,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:25,287 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:27,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:27,787 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:30,278 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:30,291 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:32,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:32,788 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:35,279 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:35,286 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:37,778 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:37,786 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:40,280 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:40,296 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:42,778 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:42,787 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:45,289 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:45,296 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:47,778 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:47,784 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:50,281 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:50,293 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:52,779 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:52,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:55,280 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:55,288 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:27:57,785 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:27:57,803 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:00,280 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:00,305 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:02,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:02,786 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:05,278 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:05,288 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:07,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:07,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:10,278 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:10,287 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:12,780 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:12,787 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:15,281 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:15,289 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:17,779 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:17,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:20,278 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:20,313 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:22,788 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:22,795 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:25,283 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:25,293 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:27,780 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:27,787 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:30,281 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:30,300 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:32,778 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:32,786 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:35,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:35,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:37,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:37,786 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:40,278 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:40,302 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:42,780 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:42,788 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:45,278 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:45,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:47,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:47,785 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:50,278 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:50,292 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:52,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:52,789 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:55,284 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:55,291 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:28:57,779 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:28:57,786 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:00,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:00,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:02,778 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:02,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:05,279 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:05,286 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:07,778 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:07,792 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:10,278 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:10,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:12,778 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:12,785 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:15,279 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:15,287 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:17,778 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:17,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:20,278 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:20,286 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:22,778 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:22,786 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:25,279 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:25,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:27,778 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:27,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:30,278 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:30,292 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:32,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:32,785 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:35,278 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:35,286 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:37,779 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:37,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:40,278 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:40,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:42,778 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:42,788 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:45,284 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:45,309 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:47,779 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:47,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:50,278 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:50,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:52,778 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:52,787 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:55,278 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:55,285 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:29:57,785 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:29:57,792 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:00,327 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:00,332 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:02,778 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:02,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:05,281 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:05,289 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:07,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:07,786 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:10,278 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:10,283 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:12,778 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:12,785 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:15,278 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:15,286 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:17,779 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:17,787 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:20,278 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:20,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:22,779 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:22,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:25,279 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:25,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:27,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:27,786 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:30,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:30,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:32,779 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:32,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:35,278 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:35,286 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:37,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:37,787 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:40,279 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:40,296 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:42,779 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:42,786 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:45,278 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:45,286 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:47,779 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:47,787 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:50,278 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:50,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:52,780 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:52,788 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:55,278 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:55,285 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:30:57,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:30:57,787 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:00,278 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:00,285 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:02,780 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:02,788 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:05,278 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:05,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:07,779 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:07,787 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:10,280 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:10,297 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:12,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:12,786 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:15,281 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:15,290 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:17,780 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:17,787 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:20,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:20,286 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:22,780 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:22,810 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:25,279 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:25,286 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:27,779 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:27,786 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:30,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:30,287 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:32,778 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:32,791 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:35,278 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:35,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:37,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:37,786 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:40,278 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:40,286 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:42,778 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:42,791 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:45,278 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:45,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:47,779 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:47,786 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:50,278 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:50,286 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:52,796 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:52,843 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:55,278 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:55,283 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:31:57,793 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:31:57,806 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:32:00,278 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:32:00,287 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:32:02,778 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:32:02,791 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:32:05,282 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:32:05,289 [DefaultQuartzScheduler_Worker-4] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:32:07,778 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:32:07,786 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:32:10,278 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:32:10,286 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:32:12,779 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:32:12,786 [DefaultQuartzScheduler_Worker-1] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:32:15,279 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:32:15,287 [DefaultQuartzScheduler_Worker-3] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:32:17,778 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:86) - Running system maintenance task: org.exist.storage.sync.SyncTask 
+2014-03-26 09:32:17,786 [DefaultQuartzScheduler_Worker-2] DEBUG (SystemTaskManager.java [runSystemTask]:89) - System task completed. 
+2014-03-26 09:32:18,224 [Shutdown] INFO  (QuartzScheduler.java [shutdown]:653) - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED shutting down. 
+2014-03-26 09:32:18,225 [Shutdown] INFO  (QuartzScheduler.java [standby]:572) - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED paused. 
+2014-03-26 09:32:18,233 [Shutdown] INFO  (QuartzScheduler.java [shutdown]:725) - Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED shutdown complete. 

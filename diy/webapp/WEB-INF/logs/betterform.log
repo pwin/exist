@@ -1,0 +1,5 @@
+2014-03-25 23:48:45,787 [main] WARN  (WebFactory.java [initLogging]:237) - Could not find D:\work_on_OpenShift\exist2\exist\webapp\WEB-INF\log4j.xml 
+2014-03-25 23:55:08,618 [eXistThread-32] WARN  (WebUtil.java [getWebProcessor]:137) - SessionKey is null 
+2014-03-25 23:55:14,819 [eXistThread-42] WARN  (WebUtil.java [getWebProcessor]:137) - SessionKey is null 
+2014-03-25 23:55:33,736 [eXistThread-26] WARN  (WebUtil.java [getWebProcessor]:137) - SessionKey is null 
+2014-03-26 09:21:32,278 [eXistThread-31] WARN  (? [getWebProcessor]:?) - SessionKey is null 
