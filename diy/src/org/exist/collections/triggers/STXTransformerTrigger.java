@@ -1,6 +1,6 @@
 /*
  *  eXist Open Source Native XML Database
- *  Copyright (C) 2001-2014 The eXist Project
+ *  Copyright (C) 2003-2012 The eXist Project
  *  http://exist-db.org
  *
  *  This program is free software; you can redistribute it and/or
@@ -16,6 +16,8 @@
  *  You should have received a copy of the GNU Lesser General Public
  *  License along with this library; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ *  $Id$
  */
 package org.exist.collections.triggers;
 
@@ -50,7 +52,7 @@ import org.xml.sax.SAXException;
  *
  * @author wolf
  */
-public class STXTransformerTrigger extends SAXTrigger implements DocumentTrigger {
+public class STXTransformerTrigger extends FilteringTrigger implements DocumentTrigger {
 
     protected Logger LOG = Logger.getLogger(getClass());
     
@@ -121,14 +123,27 @@ public class STXTransformerTrigger extends SAXTrigger implements DocumentTrigger
         }
     }
 
+
+    /* (non-Javadoc)
+     * @see org.exist.collections.Trigger#prepare(java.lang.String, org.w3c.dom.Document)
+     */
+    @Override
+    public void prepare(int event, DBBroker broker, Txn transaction, XmldbURI documentName, DocumentImpl existingDocument) throws TriggerException {
+		prepare();
+    }
+
+    @Override
+    public void finish(int event, DBBroker broker, Txn transaction, XmldbURI documentPath, DocumentImpl document) {
+            // TODO Auto-generated method stub
+    }
+    
     private void prepare() {
-        //XXX: refactoring required!!!
-//        final SAXResult result = new SAXResult();
-//        result.setHandler(getOutputHandler());
-//        result.setLexicalHandler(getLexicalOutputHandler());
-//        handler.setResult(result);
-//        setOutputHandler(handler);
-//        setLexicalOutputHandler(handler);
+        final SAXResult result = new SAXResult();
+        result.setHandler(getOutputHandler());
+        result.setLexicalHandler(getLexicalOutputHandler());
+        handler.setResult(result);
+        setOutputHandler(handler);
+        setLexicalOutputHandler(handler);
     }
 
 	@Override

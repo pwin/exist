@@ -33,14 +33,11 @@ import java.text.NumberFormat;
 import java.util.Properties;
 import org.apache.log4j.Logger;
 import org.exist.debuggee.Debuggee;
-import org.exist.security.EffectiveSubject;
 import org.exist.security.Permission;
 import org.exist.security.PermissionDeniedException;
-import org.exist.security.Subject;
 import org.exist.security.xacml.AccessContext;
 import org.exist.security.xacml.ExistPDP;
 import org.exist.security.xacml.XACMLSource;
-import org.exist.source.DBSource;
 import org.exist.source.FileSource;
 import org.exist.source.Source;
 import org.exist.source.StringSource;
@@ -65,7 +62,7 @@ public class XQuery {
     private final DBBroker broker;
      
     /**
-     * @param broker DBBroker to use for compilation and execution
+     * 
      */
     public XQuery(final DBBroker broker) {
         this.broker = broker;
@@ -231,6 +228,7 @@ public class XQuery {
         //check execute permissions
         expression.getContext().getSource().validate(broker.getSubject(), Permission.EXECUTE);
         
+        
         final long start = System.currentTimeMillis();
     	
         final XQueryContext context = expression.getContext();
@@ -262,62 +260,28 @@ public class XQuery {
         
         //do any preparation before execution
         context.prepareForExecution();
-        
-        final Subject callingUser = broker.getSubject();
 
-        //if setUid or setGid, become Effective User
-        EffectiveSubject effectiveSubject = null;
-        final Source src = expression.getContext().getSource();
-        if(src instanceof DBSource) {
-            final DBSource dbSrc = (DBSource)src;
-            final Permission perm = dbSrc.getPermissions();
-
-            if(perm.isSetUid()) {
-                if(perm.isSetGid()) {
-                    //setUid and SetGid
-                    effectiveSubject = new EffectiveSubject(perm.getOwner(), perm.getGroup());
-                } else {
-                    //just setUid
-                    effectiveSubject = new EffectiveSubject(perm.getOwner());
-                }
-            } else if(perm.isSetGid()) {
-                //just setGid, so we use the current user as the effective user
-                effectiveSubject = new EffectiveSubject(callingUser, perm.getGroup());
-            }
-        }
-        
+        context.getProfiler().traceQueryStart();
+        broker.getBrokerPool().getProcessMonitor().queryStarted(context.getWatchDog());
         try {
-            if(effectiveSubject != null) {
-                broker.setSubject(effectiveSubject); //switch to effective user (e.g. setuid/setgid)
+            final Sequence result = expression.eval(contextSequence);
+            if(LOG.isDebugEnabled()) {
+                final NumberFormat nf = NumberFormat.getNumberInstance();
+                LOG.debug("Execution took "  +  nf.format(System.currentTimeMillis() - start) + " ms");
             }
-            
-            context.getProfiler().traceQueryStart();
-            broker.getBrokerPool().getProcessMonitor().queryStarted(context.getWatchDog());
-            try {
-                final Sequence result = expression.eval(contextSequence);
-                if(LOG.isDebugEnabled()) {
-                    final NumberFormat nf = NumberFormat.getNumberInstance();
-                    LOG.debug("Execution took "  +  nf.format(System.currentTimeMillis() - start) + " ms");
-                }
 
-                if(outputProperties != null) {
-                    context.checkOptions(outputProperties); //must be done before context.reset!
-                }
-
-                return result;
-            } finally {
-                context.getProfiler().traceQueryEnd(context);
-                expression.reset();
-                if(resetContext) {
-                    context.reset();
-                }
-                broker.getBrokerPool().getProcessMonitor().queryCompleted(context.getWatchDog());
+            if(outputProperties != null) {
+                context.checkOptions(outputProperties); //must be done before context.reset!
             }
-            
+
+            return result;
         } finally {
-            if(effectiveSubject != null) {
-                broker.setSubject(callingUser);
+            context.getProfiler().traceQueryEnd(context);
+            expression.reset();
+            if(resetContext) {
+                context.reset();
             }
+            broker.getBrokerPool().getProcessMonitor().queryCompleted(context.getWatchDog());
         }
     }
 

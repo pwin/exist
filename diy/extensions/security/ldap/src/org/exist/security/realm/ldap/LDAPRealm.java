@@ -435,15 +435,17 @@ public class LDAPRealm extends AbstractRealm {
     }
 
     private LdapContext getContext(final Subject invokingUser) throws NamingException {
+        final Map<String, Object> additionalEnv = new HashMap<String, Object>();
+        additionalEnv.put("java.naming.ldap.attributes.binary", "objectSID");
         final LdapContextFactory ctxFactory = ensureContextFactory();
         final LdapContext ctx;
         if(invokingUser != null && invokingUser instanceof AuthenticatedLdapSubjectAccreditedImpl) {
             //use the provided credentials for the lookup
-            ctx = ctxFactory.getLdapContext(invokingUser.getUsername(), ((AuthenticatedLdapSubjectAccreditedImpl) invokingUser).getAuthenticatedCredentials(), null);
+            ctx = ctxFactory.getLdapContext(invokingUser.getUsername(), ((AuthenticatedLdapSubjectAccreditedImpl) invokingUser).getAuthenticatedCredentials(), additionalEnv);
         } else {
             //use the default credentials for lookup
             LDAPSearchContext searchCtx = ctxFactory.getSearch();
-            ctx = ctxFactory.getLdapContext(searchCtx.getDefaultUsername(), searchCtx.getDefaultPassword(), null);
+            ctx = ctxFactory.getLdapContext(searchCtx.getDefaultUsername(), searchCtx.getDefaultPassword(), additionalEnv);
         }
         return ctx;
     }
@@ -502,10 +504,10 @@ public class LDAPRealm extends AbstractRealm {
                 } else {
                     //found a user from ldap so cache them and return
                     try {
-                        final String primaryGroupSID = getPrimaryGroupSID(ldapUser);
-                        final String primaryGroup = findGroupBySID(ctx, primaryGroupSID);
+                        final String group = getPrimaryGroupSID(ldapUser);
+                        final String primaryGroup = findGroupBySID(ctx, group);
                         if (LOG.isDebugEnabled()) {
-                            LOG.debug("LDAP search for primary group by SID '" + primaryGroupSID + "', found '" + primaryGroup + "'.");
+                            LOG.debug("LDAP search for primary group '"+group+"' return '"+primaryGroup+"'.");
                         }
                         if (primaryGroup == null) {
                             //or exception?
@@ -585,7 +587,11 @@ public class LDAPRealm extends AbstractRealm {
         final Object objSID = ldapUser.getAttributes().get(search.getSearchAccount().getSearchAttribute(LDAPSearchAttributeKey.OBJECT_SID)).get();
         final String strObjectSid;
         if (objSID instanceof String) {
-            strObjectSid = objSID.toString();
+            if (objSID.toString().lastIndexOf('-') == -1) {
+                strObjectSid = decodeSID(((String)objSID).getBytes());
+            } else {
+                strObjectSid = objSID.toString();
+            }
         } else {
             strObjectSid = decodeSID((byte[])objSID);
         }

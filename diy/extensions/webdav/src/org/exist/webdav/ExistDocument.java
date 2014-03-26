@@ -26,7 +26,8 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.net.URISyntaxException;
-
+import java.util.Properties;
+import javax.xml.transform.OutputKeys;
 import org.exist.EXistException;
 import org.exist.collections.Collection;
 import org.exist.collections.triggers.TriggerException;
@@ -39,6 +40,7 @@ import org.exist.security.PermissionDeniedException;
 import org.exist.storage.BrokerPool;
 import org.exist.storage.DBBroker;
 import org.exist.storage.lock.Lock;
+import org.exist.storage.serializers.EXistOutputKeys;
 import org.exist.storage.serializers.Serializer;
 import org.exist.storage.txn.TransactionManager;
 import org.exist.storage.txn.Txn;
@@ -47,7 +49,6 @@ import org.exist.util.VirtualTempFile;
 import org.exist.webdav.exceptions.DocumentAlreadyLockedException;
 import org.exist.webdav.exceptions.DocumentNotLockedException;
 import org.exist.xmldb.XmldbURI;
-
 import org.xml.sax.SAXException;
 
 /**
@@ -57,16 +58,21 @@ import org.xml.sax.SAXException;
  */
 public class ExistDocument extends ExistResource {
 
-    /**
-     *  Constructor.
-     * 
-     * @param uri   URI of document
-     * @param pool  Reference to brokerpool
-     */
+    //	default output properties for the XML serialization
+    public final static Properties WEBDAV_OUTPUT_PROPERTIES = new Properties();
+
+    static {
+        WEBDAV_OUTPUT_PROPERTIES.setProperty(OutputKeys.INDENT, "yes");
+        WEBDAV_OUTPUT_PROPERTIES.setProperty(OutputKeys.ENCODING, "UTF-8");
+        WEBDAV_OUTPUT_PROPERTIES.setProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+        WEBDAV_OUTPUT_PROPERTIES.setProperty(EXistOutputKeys.EXPAND_XINCLUDES, "no");
+        WEBDAV_OUTPUT_PROPERTIES.setProperty(EXistOutputKeys.PROCESS_XSL_PI, "no");
+    }
+
     public ExistDocument(XmldbURI uri, BrokerPool pool) {
 
         if (LOG.isTraceEnabled()) {
-            LOG.trace(String.format("New document object for %s", uri));
+            LOG.trace("New document object for " + uri);
         }
 
         brokerPool = pool;
@@ -182,10 +188,8 @@ public class ExistDocument extends ExistResource {
                 Serializer serializer = broker.getSerializer();
                 serializer.reset();
                 try {
-                    // Set serialization options
-                    serializer.setProperties(configuration);
+                    serializer.setProperties(WEBDAV_OUTPUT_PROPERTIES);
 
-                    // Serialize document
                     Writer w = new OutputStreamWriter(os, "UTF-8");
                     serializer.serialize(document, w);
                     w.flush();
@@ -198,7 +202,7 @@ public class ExistDocument extends ExistResource {
 
                 } catch (SAXException e) {
                     LOG.error(e);
-                    throw new IOException(String.format("Error while serializing XML document: %s", e.getMessage()), e);
+                    throw new IOException("Error while serializing XML document: " + e.getMessage(), e);
                 }
 
             } else {
@@ -224,7 +228,7 @@ public class ExistDocument extends ExistResource {
             brokerPool.release(broker);
 
             if (LOG.isDebugEnabled()) {
-                LOG.debug(String.format("Stream stopped, duration %s msec.", System.currentTimeMillis() - startTime));
+                LOG.debug("Stream stopped, duration " + (System.currentTimeMillis() - startTime) + " msec.");
             }
         }
 
@@ -236,7 +240,7 @@ public class ExistDocument extends ExistResource {
     void delete() {
 
         if (LOG.isDebugEnabled()) {
-            LOG.debug(String.format("Deleting %s", xmldbUri));
+            LOG.debug("Deleting " + xmldbUri);
         }
 
         DBBroker broker = null;
@@ -264,7 +268,7 @@ public class ExistDocument extends ExistResource {
             // Open document if possible, else abort
             resource = collection.getDocument(broker, docName);
             if (resource == null) {
-                LOG.debug(String.format("No resource found for path: %s", xmldbUri));
+                LOG.debug("No resource found for path: " + xmldbUri);
                 txnManager.abort(txn);
                 return;
             }
@@ -411,7 +415,7 @@ public class ExistDocument extends ExistResource {
             if (document == null) {
 
                 if (LOG.isDebugEnabled()) {
-                    LOG.debug(String.format("No resource found for path: %s", xmldbUri));
+                    LOG.debug("No resource found for path: " + xmldbUri);
                 }
                 //return null; // throw exception?
                 throw new EXistException("No resource found.");
@@ -431,7 +435,7 @@ public class ExistDocument extends ExistResource {
                     && !userLock.getName().equals(subject.getName())
                     && !subject.hasDbaRole() ) {
                 if (LOG.isDebugEnabled()) {
-                    LOG.debug(String.format("Resource is locked by user %s.", userLock.getName()));
+                    LOG.debug("Resource is locked by user " + userLock.getName() + ".");
                 }
                 throw new PermissionDeniedException(userLock.getName());
             }
@@ -499,10 +503,7 @@ public class ExistDocument extends ExistResource {
                 document.getUpdateLock().release(Lock.WRITE_LOCK);
             }
 
-            if (txnManager != null) {
-                txnManager.close(txn);
-            }
-            
+            txnManager.close(txn);
             brokerPool.release(broker);
 
             if (LOG.isDebugEnabled()) {
@@ -534,9 +535,8 @@ public class ExistDocument extends ExistResource {
             document = broker.getXMLResource(xmldbUri, Lock.WRITE_LOCK);
 
             if (document == null) {
-                final String msg = String.format("No resource found for path: %s", xmldbUri);
-                LOG.debug(msg);
-                throw new EXistException(msg);
+                LOG.debug("No resource found for path: " + xmldbUri);
+                throw new EXistException("No resource found for path: " + xmldbUri);
             }
 
             // Get current userlock
@@ -544,13 +544,13 @@ public class ExistDocument extends ExistResource {
 
             // Check if Resource is already locked.
             if (lock == null) {
-                LOG.debug(String.format("Resource %s is not locked.", xmldbUri));
+                LOG.debug("Resource " + xmldbUri + " is not locked.");
                 throw new DocumentNotLockedException("" + xmldbUri);
             }
 
             // Check if Resource is from subject
             if (!lock.getName().equals(subject.getName()) && !subject.hasDbaRole() ) {
-                LOG.debug(String.format("Resource lock is from user %s", lock.getName()));
+                LOG.debug("Resource lock is from user " + lock.getName());
                 throw new PermissionDeniedException(lock.getName());
             }
 
@@ -597,7 +597,7 @@ public class ExistDocument extends ExistResource {
     void resourceCopyMove(XmldbURI destCollectionUri, String newName, Mode mode) throws EXistException {
 
         if (LOG.isDebugEnabled()) {
-            LOG.debug(String.format("%s %s to %s named %s", mode, xmldbUri, destCollectionUri, newName));
+            LOG.debug(mode + " " + xmldbUri + " to " + destCollectionUri + " named " + newName);
         }
 
         XmldbURI newNameUri = null;
@@ -635,7 +635,7 @@ public class ExistDocument extends ExistResource {
             // Open document if possible, else abort
             srcDocument = srcCollection.getDocument(broker, srdDocumentUri);
             if (srcDocument == null) {
-                LOG.debug(String.format("No resource found for path: %s", xmldbUri));
+                LOG.debug("No resource found for path: " + xmldbUri);
                 txnManager.abort(txn);
                 return;
             }
@@ -643,7 +643,7 @@ public class ExistDocument extends ExistResource {
             // Open collection if possible, else abort
             destCollection = broker.openCollection(destCollectionUri, Lock.WRITE_LOCK);
             if (destCollection == null) {
-                LOG.debug(String.format("Destination collection %s does not exist.", xmldbUri));
+                LOG.debug("Destination collection " + xmldbUri + " does not exist.");
                 txnManager.abort(txn);
                 return;
             }
@@ -662,7 +662,7 @@ public class ExistDocument extends ExistResource {
             txnManager.commit(txn);
 
             if (LOG.isDebugEnabled()) {
-                LOG.debug(String.format("Document %sd sucessfully", mode));
+                LOG.debug("Document " + mode + "d sucessfully");
             }
 
         } catch (LockException e) {
@@ -713,8 +713,9 @@ public class ExistDocument extends ExistResource {
     public LockToken refreshLock(String token) throws PermissionDeniedException,
             DocumentAlreadyLockedException, EXistException, DocumentNotLockedException {
 
+
         if (LOG.isDebugEnabled()) {
-            LOG.debug(String.format("refresh lock %s  lock=%s", xmldbUri, token));
+            LOG.debug("refresh lock " + xmldbUri + "  lock=" + token);
         }
 
         DBBroker broker = null;
@@ -739,7 +740,7 @@ public class ExistDocument extends ExistResource {
 
             if (document == null) {
                 if (LOG.isDebugEnabled()) {
-                    LOG.debug(String.format("No resource found for path: %s", xmldbUri));
+                    LOG.debug("No resource found for path: " + xmldbUri);
                 }
                 //return null; // throw exception?
                 throw new EXistException("No resource found.");
@@ -750,17 +751,16 @@ public class ExistDocument extends ExistResource {
 
             // Check if Resource is already locked. 
             if (userLock == null) {
-                final String msg = "Resource was not locked.";
                 if (LOG.isDebugEnabled()) {
-                    LOG.debug(msg);
+                    LOG.debug("Resource was not locked.");
                 }
-                throw new DocumentNotLockedException(msg);
+                throw new DocumentNotLockedException("Resource was not locked.");
             }
 
             if (userLock.getName() != null && !userLock.getName().equals(subject.getName()) 
                     && !subject.hasDbaRole()) {
                 if (LOG.isDebugEnabled()) {
-                    LOG.debug(String.format("Resource is locked by %s", userLock.getName()));
+                    LOG.debug("Resource is locked by " + userLock.getName());
                 }
                 throw new PermissionDeniedException(userLock.getName());
             }
@@ -771,7 +771,7 @@ public class ExistDocument extends ExistResource {
                 if (LOG.isDebugEnabled()) {
                     LOG.debug("Token does not match");
                 }
-                throw new PermissionDeniedException(String.format("Token %s does not match %s", token, lockToken.getOpaqueLockToken()));
+                throw new PermissionDeniedException("Token " + token + " does not match " + lockToken.getOpaqueLockToken());
             }
 
             lockToken.setTimeOut(LockToken.LOCK_TIMEOUT_INFINITE);
@@ -810,11 +810,7 @@ public class ExistDocument extends ExistResource {
             if (document != null) {
                 document.getUpdateLock().release(Lock.WRITE_LOCK);
             }
-            
-            if (txnManager != null) {
-                txnManager.close(txn);
-            }
-            
+            txnManager.close(txn);
             if(broker != null) {
                 brokerPool.release(broker);
             }

@@ -41,7 +41,6 @@ import org.exist.storage.btree.DBException;
 import org.exist.storage.txn.Txn;
 import org.exist.util.DatabaseConfigurationException;
 import org.exist.util.Occurrences;
-import org.exist.xquery.QueryRewriter;
 import org.exist.xquery.XQueryContext;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -89,11 +88,6 @@ public class FTIndexWorker implements OrderedValuesIndex, QNamedKeysIndex {
         return engine;
     }
 
-    @Override
-    public QueryRewriter getQueryRewriter(XQueryContext context) {
-        return null;
-    }
-
     public Object configure(IndexController controller, NodeList configNodes, Map<String, String> namespaces) throws DatabaseConfigurationException {
         // Not implemented
         return null;
@@ -126,7 +120,7 @@ public class FTIndexWorker implements OrderedValuesIndex, QNamedKeysIndex {
         return mode;
     }
 
-    public StoredNode getReindexRoot(StoredNode node, NodePath path, boolean insert, boolean includeSelf) {
+    public StoredNode getReindexRoot(StoredNode node, NodePath path, boolean includeSelf) {
         if (node.getNodeType() == Node.ATTRIBUTE_NODE)
             {return null;}
         final IndexSpec indexConf = node.getDocument().getCollection().getIndexConfiguration(broker);
@@ -194,7 +188,7 @@ public class FTIndexWorker implements OrderedValuesIndex, QNamedKeysIndex {
         }
     }
 
-    public void removeCollection(Collection collection, DBBroker broker, boolean reindex) {
+    public void removeCollection(Collection collection, DBBroker broker) {
         engine.dropIndex(collection);
     }
 

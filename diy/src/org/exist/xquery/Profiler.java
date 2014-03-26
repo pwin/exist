@@ -139,14 +139,9 @@ public class Profiler {
     }
 
     public final boolean isLogEnabled() {
-        try {
-            final DBBroker broker = db.getActiveBroker();
-            final Boolean globalProp = (Boolean) broker.getConfiguration().getProperty(CONFIG_PROPERTY_TRACELOG);
-            return logEnabled || (globalProp != null && globalProp.booleanValue());
-        } catch (Throwable t) {
-            log.debug("Ignored exception: " + t.getMessage());
-            return logEnabled;
-        }
+    	final DBBroker broker = db.getActiveBroker();
+        final Boolean globalProp = (Boolean) broker.getConfiguration().getProperty(CONFIG_PROPERTY_TRACELOG);
+        return logEnabled || (globalProp != null && globalProp.booleanValue());
     }
 
     public final void setLogEnabled(boolean enabled) {

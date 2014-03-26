@@ -30,7 +30,7 @@ import org.exist.xquery.Cardinality;
 import org.exist.xquery.FunctionSignature;
 import org.exist.xquery.XPathException;
 import org.exist.xquery.XQueryContext;
-import org.exist.xquery.functions.securitymanager.PermissionsFunction;
+import org.exist.xquery.functions.securitymanager.PermissionsFunctions;
 import org.exist.xquery.value.FunctionReturnSequenceType;
 import org.exist.xquery.value.FunctionParameterSequenceType;
 import org.exist.xquery.value.IntegerValue;
@@ -46,7 +46,6 @@ import org.xmldb.api.base.XMLDBException;
  * @author gvalentino
  *
  */
-@Deprecated
 public class XMLDBPermissions extends XMLDBAbstractCollectionManipulator {
 	protected static final FunctionParameterSequenceType ARG_COLLECTION = new FunctionParameterSequenceType("collection-uri", Type.STRING, Cardinality.EXACTLY_ONE, "The collection-uri");
 	protected static final FunctionParameterSequenceType ARG_RESOURCE = new FunctionParameterSequenceType("resource", Type.STRING, Cardinality.EXACTLY_ONE, "The resource");
@@ -58,7 +57,7 @@ public class XMLDBPermissions extends XMLDBAbstractCollectionManipulator {
             XMLDBModule.COLLECTION_URI,
 			new SequenceType[] { ARG_COLLECTION },
 			new FunctionReturnSequenceType(Type.INT, Cardinality.ZERO_OR_ONE, "the collection permissions"),
-            PermissionsFunction.FNS_GET_PERMISSIONS
+            PermissionsFunctions.FNS_GET_PERMISSIONS
         ),
 		new FunctionSignature(
 			new QName("get-permissions", XMLDBModule.NAMESPACE_URI, XMLDBModule.PREFIX),
@@ -67,7 +66,7 @@ public class XMLDBPermissions extends XMLDBAbstractCollectionManipulator {
             XMLDBModule.COLLECTION_URI,
 			new SequenceType[] { ARG_COLLECTION, ARG_RESOURCE },
 			new FunctionReturnSequenceType(Type.INT, Cardinality.ZERO_OR_ONE, "the resource permissions"),
-            PermissionsFunction.FNS_GET_PERMISSIONS
+            PermissionsFunctions.FNS_GET_PERMISSIONS
 		)
 	};
 	

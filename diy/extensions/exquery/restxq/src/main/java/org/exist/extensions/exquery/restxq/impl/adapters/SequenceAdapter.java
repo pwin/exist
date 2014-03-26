@@ -76,7 +76,24 @@ public class SequenceAdapter implements Sequence<Item> {
 
             @Override
             public TypedValue<Item> next() {
-                return createTypedValue(getIterator().nextItem());
+                return new TypedValue<Item>(){
+
+                    final Item item = getIterator().nextItem();
+                    
+                    @Override
+                    public Type getType() {
+                        return TypeAdapter.toExQueryType(item.getType());
+                    }
+
+                    @Override
+                    public Item getValue() {
+                        if(item instanceof NodeProxy) {
+                            return DomEnhancingNodeProxyAdapter.create((NodeProxy)item); //RESTXQ expects to find DOM Nodes not NodeProxys
+                        } else {
+                            return item;
+                        }
+                    }
+                };
             }
 
             @Override
@@ -85,34 +102,7 @@ public class SequenceAdapter implements Sequence<Item> {
             }
         };
     }
-    
-    private TypedValue<Item> createTypedValue(final Item item) {
-        return new TypedValue<Item>(){
-            @Override
-            public Type getType() {
-                return TypeAdapter.toExQueryType(item.getType());
-            }
 
-            @Override
-            public Item getValue() {
-                if(item instanceof NodeProxy) {
-                    return DomEnhancingNodeProxyAdapter.create((NodeProxy)item); //RESTXQ expects to find DOM Nodes not NodeProxys
-                } else {
-                    return item;
-                }
-            }
-        };
-    }
-
-    @Override
-    public TypedValue<Item> head() {
-        if(sequence.isEmpty()) {
-            return Sequence.EMPTY_SEQUENCE.head();
-        } else {
-            return createTypedValue(sequence.itemAt(0));
-        }
-    }
-    
     @Override
     public Sequence<Item> tail() {
         try {

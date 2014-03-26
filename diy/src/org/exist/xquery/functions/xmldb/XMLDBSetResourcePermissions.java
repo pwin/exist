@@ -47,7 +47,6 @@ import org.xmldb.api.base.XMLDBException;
  * @author Luigi P. Bai, finder@users.sf.net, 2004
  * @author Wolfgang Meier (wolfgang@exist-db.org)
  */
-@Deprecated
 public class XMLDBSetResourcePermissions extends XMLDBAbstractCollectionManipulator {
 	protected static final Logger logger = Logger.getLogger(XMLDBSetResourcePermissions.class);
 	

@@ -4,6 +4,8 @@
 <!-- eXist build file                                                        -->
 <!-- ======================================================================= -->
 
+<!-- $Id$ -->
+
 <project basedir="../.." default="all" name="exist">
 
     <!-- setup properties -->
@@ -38,11 +40,9 @@
     <property name="xmldb.src" value="undefined"/>
     <property name="dist.dir" value="${dist}/${project.name}-${project.version}"/>
 
-    <condition property="git.commit" value="${git.commit}" else="">
-      <isset property="git.commit" />      
-    </condition>
     <!-- import common targets -->
     <!-- <import file="../../build.xml"/> -->
+    <import file="./subversion.xml"/>
     <import file="./junit.xml"/>
     <import file="./antlr3.xml"/>
     
@@ -52,7 +52,7 @@
 
     <!-- additional set of ant tasks -->
     <property name="asocat-exist.jar" location="${tools.ant}/lib/asocat-exist.jar"/>
-    
+
     <!-- setup class path -->
     <path id="classpath.core">
         <fileset dir="${lib.core}">
@@ -104,7 +104,7 @@
         <classpath refid="classpath.core"/>
     </taskdef>
 
-    <taskdef classpath="${tools.aspectj}/lib/aspectjtools-1.7.3.jar" resource="org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties"/>
+    <taskdef classpath="${tools.aspectj}/lib/aspectjtools-1.7.1.jar" resource="org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties"/>
     <path id="classpath.aspectj">
         <fileset dir="${tools.aspectj}/lib">
             <include name="*.jar"/>
@@ -115,7 +115,7 @@
     <!-- =================================================================== -->
     <!-- Prepare the build                                                   -->
     <!-- =================================================================== -->
-    <target name="prepare">
+    <target name="prepare" depends="svn-prepare">
 
         <tstamp/>
         <property file="VERSION.txt"/>
@@ -123,7 +123,7 @@
         <echo message="-------------------------"/>
         <echo message="eXist ${project.version} build"/>
         <echo message="-------------------------"/>
-        <echo message="Git revision ${git.commit}"/>
+        <echo message="SVN revision ${svn.revision}"/>
         <echo message=""/>
         <echo message="${ant.version}"/>
         <echo message="-------------------------"/>
@@ -134,7 +134,7 @@
         <mkdir dir="${jetty.dir}/logs"/>
         <mkdir dir="${jetty.dir}/work"/>
 
-        <filter token="version" value="${project.version}-:${git.commit}-${DSTAMP}"/>
+        <filter token="version" value="${project.version}-rev:${svn.revision}-${DSTAMP}"/>
         <filter token="database" value="native"/>
 
         <copy file="${src.webapp}/xqts/config.xml.tmpl" tofile="${src.webapp}/xqts/config.xml"
@@ -274,10 +274,10 @@
     <!-- Create jar files                    				    -->
     <!-- ================================================================== -->
     <target name="jar" depends="compile,compile-aspectj"
-        description="Create eXist-db unsigned jar files">
+        description="Create eXist unsigned jar files">
         <filter token="version" value="${project.version}"/>
         <filter token="build" value="${DSTAMP}"/>
-        <filter token="revision" value="${git.commit}"/>
+        <filter token="revision" value="${svn.revision}"/>
 
         <!--copy file="${src}/CatalogManager.properties" todir="${build.classes}"/-->
         <copy todir="${build.classes}/org/exist/client">
@@ -351,7 +351,7 @@
                 <attribute name="Project-Version" value="${project.version}"/>
                 <attribute name="Project-Build" value="${DSTAMP}"/>
                 <attribute name="Project-CodeName" value="${project.codename}"/>
-                <attribute name="Git-Revision" value="${git.commit}"/>
+                <attribute name="SVN-Revision" value="${svn.revision}"/>
             </manifest>
             <exclude name="org/exist/*.xsl"/>
             <exclude name="org/exist/ant/**"/>
@@ -377,7 +377,7 @@
                 <attribute name="Project-Version" value="${project.version}"/>
                 <attribute name="Project-Build" value="${DSTAMP}"/>
                 <attribute name="Project-CodeName" value="${project.codename}"/>
-                <attribute name="Git-Revision" value="${git.commit}"/>
+                <attribute name="SVN-Revision" value="${svn.revision}"/>
             </manifest>
             <include name="org/exist/start/**"/>
         </jar>
@@ -388,7 +388,7 @@
                 <attribute name="Project-Version" value="${project.version}"/>
                 <attribute name="Project-Build" value="${DSTAMP}"/>
                 <attribute name="Project-CodeName" value="${project.codename}"/>
-                <attribute name="Git-Revision" value="${git.commit}"/>
+                <attribute name="SVN-Revision" value="${svn.revision}"/>
             </manifest>
             <include name="org/exist/*.xsl"/>
             <include name="org/exist/ant/**"/>
@@ -636,7 +636,6 @@
         <delete dir="${src.webapp}/WEB-INF/data/fs"/>
         <delete dir="${src.webapp}/WEB-INF/data/fs.journal"/>
         <delete dir="${src.webapp}/WEB-INF/data/lucene"/>
-        <delete dir="${src.webapp}/WEB-INF/data/range"/>
         <delete dir="${src.webapp}/WEB-INF/data/sanity"/>
         <delete>
             <fileset dir="${src.webapp}/WEB-INF/data" includes="*.dbx,*.log,*.lck,spatial_index.*,counters,restxq.registry"

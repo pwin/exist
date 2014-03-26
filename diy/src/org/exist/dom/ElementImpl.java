@@ -425,13 +425,8 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
             transact.abort(transaction);
             throw new DOMException(DOMException.INVALID_STATE_ERR, e.getMessage());
         } finally {
-        	if (broker != null) {
-	        	try {
-	        		transact.close(transaction);
-	        	} finally {
-	        		broker.release();
-	        	}
-        	}
+            transact.close(transaction);
+            ownerDocument.getBrokerPool().release(broker);
         }
     }
 
@@ -475,11 +470,12 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
             StreamListener listener = null;
             //May help getReindexRoot() to make some useful things
             broker.getIndexController().setDocument(ownerDocument);
-            StoredNode reindexRoot = broker.getIndexController().getReindexRoot(this, path, true, true);
+            final StoredNode reindexRoot = broker.getIndexController().getReindexRoot(this, path);
             broker.getIndexController().setMode(StreamListener.STORE);
-            // only reindex if reindexRoot is an ancestor of the current node
             if (reindexRoot == null) {
                 listener = broker.getIndexController().getStreamListener();
+            } else {
+                broker.getIndexController().reindex(transaction, reindexRoot, StreamListener.STORE);
             }
             if (children == 0) {
                 // no children: append a new child
@@ -506,8 +502,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
         } catch (final EXistException e) {
             LOG.warn("Exception while appending child node: " + e.getMessage(), e);
         } finally {
-        	if (broker != null)
-        		broker.release();
+            ownerDocument.getBrokerPool().release(broker);
         }
     }
 
@@ -663,8 +658,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
         } catch (final EXistException e) {
             LOG.warn("Exception while appending node: " + e.getMessage(), e);
         } finally {
-        	if (broker != null)
-        		broker.release();
+            ownerDocument.getBrokerPool().release(broker);
         }
         return null;
     }
@@ -743,8 +737,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
             } catch (final EXistException e) {
                 LOG.warn("Exception while retrieving attributes: " + e.getMessage());
             } finally {
-            	if (broker != null)
-            		broker.release();
+                ownerDocument.getBrokerPool().release(broker);
             }
         }
         if (declaresNamespacePrefixes()) {
@@ -772,8 +765,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
         } catch (final EXistException e) {
             LOG.warn("Exception while retrieving attributes: " + e.getMessage());
         } finally {
-        	if (broker != null)
-        		broker.release();
+            ownerDocument.getBrokerPool().release(broker);
         }
         return null;
     }
@@ -801,8 +793,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
         } catch (final EXistException e) {
             LOG.warn("Exception while retrieving attributes: " + e.getMessage());
         } finally {
-        	if (broker != null)
-        		broker.release();
+            ownerDocument.getBrokerPool().release(broker);
         }
         return null;
     }
@@ -875,8 +866,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
         } catch (final EXistException e) {
             LOG.warn("Internal error while reading child nodes: " + e.getMessage(), e);
         } finally {
-        	if (broker != null)
-        		broker.release();
+            ownerDocument.getBrokerPool().release(broker);
         }
         return childList;
     }
@@ -918,8 +908,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
         } catch (final EXistException e) {
             LOG.warn("Exception while retrieving child node: " + e.getMessage(), e);
         } finally {
-        	if (broker != null)
-        		broker.release();
+            ownerDocument.getBrokerPool().release(broker);
         }
         return null;
     }
@@ -992,8 +981,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
         } catch (final EXistException e) {
             LOG.warn("Exception while reading node value: " + e.getMessage(), e);
         } finally {
-        	if (broker != null)
-        		broker.release();
+            ownerDocument.getBrokerPool().release(broker);
         }
         return "";
     }
@@ -1192,13 +1180,8 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
             transact.abort(transaction);
             LOG.warn("Exception while inserting node: " + e.getMessage(), e);
         } finally {
-        	if (broker != null) {
-		    	try {
-		    		transact.close(transaction);
-		    	} finally {
-		    		broker.release();
-		    	}
-        	}
+            transact.close(transaction);
+            ownerDocument.getBrokerPool().release(broker);
         }
         return null;
     }
@@ -1223,10 +1206,12 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
             StreamListener listener = null;
             //May help getReindexRoot() to make some useful things
             broker.getIndexController().setDocument(ownerDocument);
-            final StoredNode reindexRoot = broker.getIndexController().getReindexRoot(this, path, true, true);
+            final StoredNode reindexRoot = broker.getIndexController().getReindexRoot(this, path, true);
             broker.getIndexController().setMode(StreamListener.STORE);
             if (reindexRoot == null) {
                 listener = broker.getIndexController().getStreamListener();
+            } else {
+                broker.getIndexController().reindex(transaction, reindexRoot, StreamListener.STORE);
             }
             final StoredNode following = (StoredNode) refChild;
             final StoredNode previous = (StoredNode) following.getPreviousSibling();
@@ -1248,8 +1233,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
         } catch (final EXistException e) {
             LOG.warn("Exception while inserting node: " + e.getMessage(), e);
         } finally {
-        	if (broker != null)
-        		broker.release();
+            ownerDocument.getBrokerPool().release(broker);
         }
     }
 
@@ -1273,11 +1257,12 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
             StreamListener listener = null;
             //May help getReindexRoot() to make some useful things
             broker.getIndexController().setDocument(ownerDocument);
-            final StoredNode reindexRoot = broker.getIndexController().getReindexRoot(this, path, true, true);
-            System.out.println("Reindex root after insert: " + reindexRoot);
+            final StoredNode reindexRoot = broker.getIndexController().getReindexRoot(this, path, true);
             broker.getIndexController().setMode(StreamListener.STORE);
             if (reindexRoot == null) {
                 listener = broker.getIndexController().getStreamListener();
+            } else {
+                broker.getIndexController().reindex(transaction, reindexRoot, StreamListener.STORE);
             }
             final StoredNode previous = (StoredNode) refChild;
             final StoredNode following = (StoredNode) previous.getNextSibling();
@@ -1291,8 +1276,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
         } catch (final EXistException e) {
             LOG.warn("Exception while inserting node: " + e.getMessage(), e);
         } finally {
-        	if (broker != null)
-        		broker.release();
+            ownerDocument.getBrokerPool().release(broker);
         }
     }
 
@@ -1313,7 +1297,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
         try {
             broker = ownerDocument.getBrokerPool().get(null);
             broker.getIndexController().setDocument(ownerDocument);
-            final StoredNode reindexRoot = broker.getIndexController().getReindexRoot(this, path, true, true);
+            final StoredNode reindexRoot = broker.getIndexController().getReindexRoot(this, path, true);
             broker.getIndexController().setMode(StreamListener.REMOVE_SOME_NODES);
             if (reindexRoot == null) {
                 listener = broker.getIndexController().getStreamListener();
@@ -1352,8 +1336,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
         } catch (final EXistException e) {
             LOG.warn("Exception while inserting node: " + e.getMessage(), e);
         } finally {
-        	if (broker != null)
-        		broker.release();
+            ownerDocument.getBrokerPool().release(broker);
         }
     }
 
@@ -1397,7 +1380,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
             //May help getReindexRoot() to make some useful things
             broker.getIndexController().setDocument(ownerDocument);
             //Check if the change affects any ancestor nodes, which then need to be reindexed later
-            StoredNode reindexRoot = broker.getIndexController().getReindexRoot(oldNode, oldPath, false);
+            StoredNode reindexRoot = broker.getIndexController().getReindexRoot(oldNode, oldPath);
             //Remove indexes
             if (reindexRoot == null)
                 {reindexRoot = oldNode;}
@@ -1423,8 +1406,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
         } catch (final EXistException e) {
             LOG.warn("Exception while inserting node: " + e.getMessage(), e);
         } finally {
-        	if (broker != null)
-        		broker.release();
+            ownerDocument.getBrokerPool().release(broker);
         }
         return newNode;
     }
@@ -1447,7 +1429,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
             //May help getReindexRoot() to make some useful things
             broker = ownerDocument.getBrokerPool().get(null);
             broker.getIndexController().setDocument(ownerDocument);
-            final StoredNode reindexRoot = broker.getIndexController().getReindexRoot(oldNode, oldPath, false);
+            final StoredNode reindexRoot = broker.getIndexController().getReindexRoot(oldNode, oldPath);
             broker.getIndexController().setMode(StreamListener.REMOVE_SOME_NODES);
             if (reindexRoot == null) {
                 listener = broker.getIndexController().getStreamListener();
@@ -1467,8 +1449,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
         } catch (final EXistException e) {
             LOG.warn("Exception while inserting node: " + e.getMessage(), e);
         } finally {
-        	if (broker != null)
-        		broker.release();
+            ownerDocument.getBrokerPool().release(broker);
         }
         return oldNode;
     }
@@ -1523,15 +1504,14 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
                 setDirty(true);
             }
             attributes += appendList.getLength();
-
-            broker.updateNode(transaction, this, true);
-            broker.flush();
-
         } catch (final EXistException e) {
             LOG.warn("Exception while inserting node: " + e.getMessage(), e);
         } finally {
-            if (broker != null)
-        		broker.release();
+            if (broker != null) {
+                broker.updateNode(transaction, this, true);
+                broker.flush();
+                ownerDocument.getBrokerPool().release(broker);
+            }
         }
     }
 
@@ -1582,7 +1562,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
         try {
             broker = ownerDocument.getBrokerPool().get(null);
             broker.getIndexController().setDocument(ownerDocument);
-            final StoredNode reindexRoot = broker.getIndexController().getReindexRoot(oldNode, oldPath, false);
+            final StoredNode reindexRoot = broker.getIndexController().getReindexRoot(oldNode, oldPath);
             broker.getIndexController().setMode(StreamListener.REMOVE_SOME_NODES);
             if (reindexRoot == null) {
                 listener = broker.getIndexController().getStreamListener();
@@ -1606,8 +1586,7 @@ public class ElementImpl extends NamedNode implements Element, ElementAtExist {
         } catch (final EXistException e) {
             LOG.warn("Exception while inserting node: " + e.getMessage(), e);
         } finally {
-        	if (broker != null)
-        		broker.release();
+            ownerDocument.getBrokerPool().release(broker);
         }
         //return oldChild;	// method is spec'd to return the old child, even though that's probably useless in this case
         return newNode; //returning the newNode is more sensible than returning the oldNode

@@ -184,9 +184,9 @@ public class LetExpr extends BindingExpression {
                           resultSequence = new ValueSequence();
                           ((ValueSequence)resultSequence).keepUnOrdered(unordered);
                       }
-                      ((BindingExpression)returnExpr).eval(contextSequence, null, resultSequence,null);
+                      ((BindingExpression)returnExpr).eval(null, null, resultSequence,null);
                     } else {
-                        in = returnExpr.eval(contextSequence);
+                        in = returnExpr.eval(null);
                         if (resultSequence == null)
                             {resultSequence = in;}
                         else
@@ -203,7 +203,7 @@ public class LetExpr extends BindingExpression {
                             resultSequence = new ValueSequence();
                             ((ValueSequence)resultSequence).keepUnOrdered(unordered);
                         }
-                        ((BindingExpression)returnExpr).eval(contextSequence, null, resultSequence, groupedSequence);
+                        ((BindingExpression)returnExpr).eval(null, null, resultSequence, groupedSequence);
                     } else{
                       final Sequence toGroupSequence = context.resolveVariable(groupedSequence.getToGroupVarName()).getValue();
                       groupedSequence.addAll(toGroupSequence);

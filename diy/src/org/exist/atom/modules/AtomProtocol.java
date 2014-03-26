@@ -1087,7 +1087,7 @@ public class AtomProtocol extends AtomFeeds implements Atom {
 					collection.setPermissions(permissions);
 				} catch (final NumberFormatException e) {
 					try {
-						collection.getPermissionsNoLock().setMode(mode);
+						collection.getPermissions().setMode(mode);
 					} catch (final SyntaxException e1) {
 						throw new PermissionDeniedException(
 								"syntax error for mode attribute in exist:permissions element");
@@ -1100,7 +1100,7 @@ public class AtomProtocol extends AtomFeeds implements Atom {
 				{throw new PermissionDeniedException(
 						"Failed to change feed owner: user " + owner
 								+ " does not exist.");}
-			collection.getPermissionsNoLock().setOwner(owner);
+			collection.getPermissions().setOwner(owner);
 			
 			final String group = element.getAttribute("group");
 			if (!securityMan.hasGroup(group))

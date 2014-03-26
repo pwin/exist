@@ -3,11 +3,8 @@ package org.exist.indexing.lucene;
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.facet.taxonomy.TaxonomyReader;
-import org.apache.lucene.facet.taxonomy.TaxonomyWriter;
-import org.apache.lucene.facet.taxonomy.directory.DirectoryTaxonomyReader;
-import org.apache.lucene.facet.taxonomy.directory.DirectoryTaxonomyWriter;
-import org.apache.lucene.index.*;
+import org.apache.lucene.index.IndexWriter;
+import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
@@ -28,11 +25,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import org.apache.lucene.index.CorruptIndexException;
+import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.util.Version;
 
 public class LuceneIndex extends AbstractIndex implements RawBackupSupport {
     
-    public final static Version LUCENE_VERSION_IN_USE = Version.LUCENE_44;
+    public final static Version LUCENE_VERSION_IN_USE = Version.LUCENE_34;
 
     private static final Logger LOG = Logger.getLogger(LuceneIndexWorker.class);
 
@@ -43,7 +42,7 @@ public class LuceneIndex extends AbstractIndex implements RawBackupSupport {
     protected Directory directory;
     protected Analyzer defaultAnalyzer;
 
-    protected double bufferSize = IndexWriterConfig.DEFAULT_RAM_BUFFER_SIZE_MB;
+    protected double bufferSize = IndexWriter.DEFAULT_RAM_BUFFER_SIZE_MB;
 
     protected IndexWriter cachedWriter = null;
     protected int writerUseCount = 0;
@@ -53,24 +52,11 @@ public class LuceneIndex extends AbstractIndex implements RawBackupSupport {
     protected int writingReaderUseCount = 0;
     protected IndexSearcher cachedSearcher = null;
     protected int searcherUseCount = 0;
-    
+
     protected boolean singleWriter = false;
-
-    //Taxonomy staff
-    protected Directory taxonomyDirectory;
-
-    protected TaxonomyWriter cachedTaxonomyWriter = null;
-    protected int taxonomyWriterUseCount = 0;
-
-    protected TaxonomyReader cachedTaxonomyReader = null;
-    protected int taxonomyReaderUseCount = 0;
 
     public LuceneIndex() {
         //Nothing special to do
-    }
-
-    public String getDirName() {
-        return DIR_NAME;
     }
 
     @Override
@@ -104,7 +90,7 @@ public class LuceneIndex extends AbstractIndex implements RawBackupSupport {
 
     @Override
     public void open() throws DatabaseConfigurationException {
-        File dir = new File(getDataDir(), getDirName());
+        File dir = new File(getDataDir(), DIR_NAME);
         if (LOG.isDebugEnabled())
             LOG.debug("Opening Lucene index directory: " + dir.getAbsolutePath());
         if (dir.exists()) {
@@ -116,10 +102,7 @@ public class LuceneIndex extends AbstractIndex implements RawBackupSupport {
         IndexWriter writer = null;
         try {
             directory = FSDirectory.open(dir);
-            taxonomyDirectory = FSDirectory.open(new File(dir, "taxonomy"));
-
             writer = getWriter();
-            
         } catch (IOException e) {
             throw new DatabaseConfigurationException("Exception while reading lucene index directory: " +
                 e.getMessage(), e);
@@ -133,14 +116,9 @@ public class LuceneIndex extends AbstractIndex implements RawBackupSupport {
         try {
             if (cachedWriter != null) {
             	commit();
-            	
-            	cachedTaxonomyWriter.close();
                 cachedWriter.close();
-                
-                cachedTaxonomyWriter = null;
                 cachedWriter = null;
             }
-            taxonomyDirectory.close();
             directory.close();
         } catch (IOException e) {
             throw new DBException("Caught exception while closing lucene indexes: " + e.getMessage());
@@ -183,11 +161,11 @@ public class LuceneIndex extends AbstractIndex implements RawBackupSupport {
     
     protected boolean needsCommit = false;
 
-    public IndexWriter getWriter() throws IOException {
+    protected IndexWriter getWriter() throws IOException {
         return getWriter(false);
     }
 
-    public synchronized IndexWriter getWriter(boolean exclusive) throws IOException {
+    protected synchronized IndexWriter getWriter(boolean exclusive) throws IOException {
         while (writingReaderUseCount > 0) {
             try {
                 wait();
@@ -216,14 +194,13 @@ public class LuceneIndex extends AbstractIndex implements RawBackupSupport {
              now we have to commit ourselves, this is done manually in releaseWriter()
              */
             cachedWriter = new IndexWriter(directory, idxWriterConfig);
-            cachedTaxonomyWriter = new DirectoryTaxonomyWriter(taxonomyDirectory);
             writerUseCount = 1;
         }
         notifyAll();
         return cachedWriter;
     }
 
-    public synchronized void releaseWriter(IndexWriter writer) {
+    protected synchronized void releaseWriter(IndexWriter writer) {
         if (writer == null)
             return;
         if (writer != cachedWriter)
@@ -246,7 +223,6 @@ public class LuceneIndex extends AbstractIndex implements RawBackupSupport {
             }
             
         	if (cachedWriter != null) {
-        	    cachedTaxonomyWriter.commit();
                 cachedWriter.commit();
             }
             needsCommit = false;
@@ -257,19 +233,18 @@ public class LuceneIndex extends AbstractIndex implements RawBackupSupport {
         }
     }
     
-    public synchronized IndexReader getReader() throws IOException {
+    protected synchronized IndexReader getReader() throws IOException {
     	commit();
         if (cachedReader != null) {
             readerUseCount++;
         } else {
-            cachedReader = DirectoryReader.open(directory);
-            cachedTaxonomyReader = new DirectoryTaxonomyReader(taxonomyDirectory);
+            cachedReader = IndexReader.open(directory);
             readerUseCount = 1;
         }
         return cachedReader;
     }
 
-    public synchronized void releaseReader(IndexReader reader) {
+    protected synchronized void releaseReader(IndexReader reader) {
         if (reader == null)
             return;
         if (reader != cachedReader)
@@ -298,7 +273,7 @@ public class LuceneIndex extends AbstractIndex implements RawBackupSupport {
         if (cachedWritingReader != null) {
             writingReaderUseCount++;
         } else {
-            cachedWritingReader = DirectoryReader.open(directory);
+            cachedWritingReader = IndexReader.open(directory, false);
             writingReaderUseCount = 1;
         }
         notifyAll();
@@ -340,22 +315,17 @@ public class LuceneIndex extends AbstractIndex implements RawBackupSupport {
         if (cachedReader == null)
             return;
         try {
-            cachedTaxonomyReader.close();
         	cachedReader.close();
-        	
-        	cachedTaxonomyReader = null;
         	cachedReader = null;
-  
-        	//XXX: understand - is it right to comment close out? ... Closed by "cachedReader.close();"?
-//        	if (cachedSearcher != null)
-//        		cachedSearcher.close();
+        	if (cachedSearcher != null)
+        		cachedSearcher.close();
         	cachedSearcher = null;
         } catch (IOException e) {
             LOG.warn("Exception while refreshing lucene index: " + e.getMessage(), e);
         }
     }
 
-    public synchronized IndexSearcher getSearcher() throws IOException {
+    protected synchronized IndexSearcher getSearcher() throws IOException {
     	commit();
         if (cachedSearcher != null) {
             searcherUseCount++;
@@ -367,7 +337,7 @@ public class LuceneIndex extends AbstractIndex implements RawBackupSupport {
         return cachedSearcher;
     }
 
-    public synchronized void releaseSearcher(IndexSearcher searcher) {
+    protected synchronized void releaseSearcher(IndexSearcher searcher) {
         if (searcher == null)
             return;
         if (searcher != cachedSearcher)
@@ -375,21 +345,11 @@ public class LuceneIndex extends AbstractIndex implements RawBackupSupport {
         searcherUseCount--;
         notifyAll();
     }
-    
-    //DirectoryTaxonomyWriter taxoWriter = new DirectoryTaxonomyWriter(taxoDir);
-    
-    public synchronized TaxonomyWriter getTaxonomyWriter() throws IOException {
-        return cachedTaxonomyWriter;
-    }
-
-    public synchronized TaxonomyReader getTaxonomyReader() throws IOException {
-        return cachedTaxonomyReader;
-    }
 
 	@Override
 	public void backupToArchive(RawDataBackup backup) throws IOException {
 		for (String name : directory.listAll()) {
-			String path = getDirName() + "/" + name;
+			String path = DIR_NAME + "/" + name;
 			OutputStream os = backup.newEntry(path);
 			InputStream is = new FileInputStream(new File(getDataDir(), path));
 	        byte[] buf = new byte[4096];

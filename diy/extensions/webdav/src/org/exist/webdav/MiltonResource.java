@@ -303,7 +303,7 @@ public class MiltonResource implements Resource {
     public Object authenticate(String username, String password) {
 
         if(LOG.isDebugEnabled())
-            LOG.debug(String.format("Authenticating user %s for %s", username, resourceXmldbUri));
+            LOG.debug("Authenticating user " + username + " for " + resourceXmldbUri);
 
         // Check if username is provided.
         if (username == null) {
@@ -330,7 +330,7 @@ public class MiltonResource implements Resource {
         // Guest is not allowed to access.
         Subject guest = brokerPool.getSecurityManager().getGuestSubject();
         if (guest.equals(subject)) {
-            LOG.error(String.format("The user %s is prohibited from logging in through WebDAV.", guest.getName()));
+            LOG.error("The user " + guest.getName() + " is prohibited from logging in through WebDAV.");
             return null;
         }
 
@@ -340,14 +340,14 @@ public class MiltonResource implements Resource {
         existResource.initMetadata();
 
         if(LOG.isDebugEnabled())
-            LOG.debug(String.format("User '%s' has been authenticated.", subject.getName()));
+            LOG.debug("User '" + subject.getName() + "' has been authenticated.");
         return AUTHENTICATED;
     }
 
     @Override
     public boolean authorise(Request request, Method method, Auth auth) {
 
-        LOG.info(String.format("%s %s (write=%s)", method.toString(), resourceXmldbUri, method.isWrite));
+        LOG.info(method.toString() + " " + resourceXmldbUri + " (write="+ method.isWrite+")");
 
         /*
          * First perform checks on Milton authentication
@@ -370,7 +370,7 @@ public class MiltonResource implements Resource {
         // If object does not exist, there was no successfull authentication
         if (tag == null) {
             if(LOG.isDebugEnabled())
-                LOG.debug(String.format("No tag, user %s not authenticated", userName));
+                LOG.debug("No tag, user " + userName + " not authenticated");
             return false;
 
         } else if (tag instanceof String) {
@@ -380,7 +380,8 @@ public class MiltonResource implements Resource {
 
             } else {
                 if(LOG.isDebugEnabled())
-                    LOG.debug(String.format("Authentication tag contains wrong value, user %s is not authenticated", userName));
+                    LOG.debug("Authentication tag contains wrong value, user "
+                                                        + userName + " is not authenticated");
                 return false;
             }
         }
@@ -391,14 +392,14 @@ public class MiltonResource implements Resource {
         if (method.isWrite) {
             if (!existResource.writeAllowed) {
                 if(LOG.isDebugEnabled())
-                    LOG.debug(String.format("User %s is NOT authorized to write resource, abort.", userName));
+                    LOG.debug("User " + userName + " is NOT authorized to write resource, abort.");
                 return false;
             }
 
         } else {
             if (!existResource.readAllowed) {
                 if(LOG.isDebugEnabled())
-                    LOG.debug(String.format("User %s is NOT authorized to read resource, abort.", userName));
+                    LOG.debug("User " + userName + " is NOT authorized to read resource, abort.");
                 return false;
             }
         }
@@ -411,7 +412,8 @@ public class MiltonResource implements Resource {
 
         String action = method.isWrite ? "write" : "read";
         if(LOG.isDebugEnabled())
-            LOG.debug(String.format("User %s is authorized to %s resource %s", userName, action, resourceXmldbUri.toString()));
+            LOG.debug("User " + userName + " is authorized to " + action
+                                                    + " resource " + resourceXmldbUri.toString());
 
         return true;
     }

@@ -18,8 +18,6 @@ xquery version "3.0";
  :)
 module namespace test="http://exist-db.org/xquery/xqsuite";
 
-declare namespace stats="http://exist-db.org/xquery/profiling";
-
 declare variable $test:TEST_NAMESPACE := "http://exist-db.org/xquery/xqsuite";
 
 declare variable $test:UNKNOWN_ASSERTION := QName($test:TEST_NAMESPACE, "no-such-assertion");
@@ -167,17 +165,6 @@ declare %private function test:test($func as function(*), $meta as element(funct
             ()
 };
 
-declare function test:enable-tracing($meta as element(function)) {
-    let $statsAnno := $meta//annotation[contains(@name, ":stats")]
-    return
-        if (exists($statsAnno)) then (
-            system:clear-trace(),
-            system:enable-tracing(true(), false()),
-            true()
-        ) else
-            false()
-};
-
 (:~
  : Get all %assertXXX annotations of the function. If %args is used multiple times,
  : assertions apply to the result of running the function with the parameters given
@@ -316,9 +303,8 @@ declare %private function test:cast($targs as xs:string*, $farg as element(argum
 };
 
 declare function test:apply($func as function(*), $meta as element(function), $args as item()*) {
-    let $trace := test:enable-tracing($meta)
     let $userAnno := $meta/annotation[contains(@name, ":user")]
-    let $result :=
+    return
         if ($userAnno) then
             let $user := $userAnno/value[1]/string()
             let $pass := $userAnno/value[2]/string()
@@ -326,17 +312,6 @@ declare function test:apply($func as function(*), $meta as element(function), $a
                 system:as-user($user, $pass, test:apply($func, $args))
         else
             test:apply($func, $args)
-    return
-        if ($trace) then
-            (: Get trace output and filter out stats :)
-            let $traceOutput :=
-                (system:trace(), system:clear-trace(), system:enable-tracing(false()))
-            return
-                element { node-name($traceOutput) } {
-                    $traceOutput/stats:*[not(starts-with(@source, "org.exist") or contains(@source, "xqsuite.xql"))]
-                }
-        else
-            $result
 };
 
 (:~
@@ -594,31 +569,12 @@ declare %private function test:assertXPath($annotation as element(annotation), $
             util:expand($output)
         else
             $output
-    let $prolog :=
-        if ($result instance of element()*) then
-            let $namespaces := fold-left(function ($namespaces as map(*), $xml as element()) {
-                map:new(($namespaces,
-            	    for $prefix in in-scope-prefixes($xml)
-            	    where $prefix != "" and $prefix != "xml"
-            	    return
-            	        map:entry($prefix, namespace-uri-for-prefix($prefix, $xml))
-                ))
-            }, map:new(), $result/descendant-or-self::*)
-            return
-                string-join(
-                    for $prefix in map:keys($namespaces)
-                    return
-                        "declare namespace " || $prefix || "='" || $namespaces($prefix) || "';",
-                    " "
-                )
-        else
-            ()
     let $xr :=
         test:checkXPathResult(
             if (matches($expr, "^\s*/")) then
-                util:eval($prolog || "$result" || $expr)
+                util:eval(concat("$result", $expr))
             else
-                util:eval($prolog || $expr)
+                util:eval($expr)
         )
     return
         if ($xr) then
@@ -704,14 +660,12 @@ declare function test:to-html($output as element(testsuites)) {
 };
 
 declare %private function test:print-testcase($case as element(testcase)) {
-    <tr class="{if ($case/failure or $case/error) then 'fail' else 'pass'}">
+    <tr class="{if ($case/failure) then 'fail' else 'pass'}">
         <td>{$case/@name/string()}</td>
         <td>
         {
             if ($case/failure) then
                 ($case/failure/@message/string(), " Expected: ", $case/failure/text())
-            else if ($case/error) then
-                ($case/error/@type/string(), " ", $case/error/@message/string())
             else
                 "OK"
         }

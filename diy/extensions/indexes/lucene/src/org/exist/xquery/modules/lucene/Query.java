@@ -9,6 +9,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
 import org.apache.log4j.Logger;
+import org.apache.lucene.queryParser.ParseException;
 import org.exist.dom.DocumentSet;
 import org.exist.dom.NodeSet;
 import org.exist.dom.QName;
@@ -199,7 +200,7 @@ public class Query extends Function implements Optimizable {
                     qnames, key.getStringValue(), NodeSet.DESCENDANT, options);
         } catch (IOException e) {
             throw new XPathException(this, "Error while querying full text index: " + e.getMessage(), e);
-        } catch (org.apache.lucene.queryparser.classic.ParseException e) {
+        } catch (ParseException e) {
             throw new XPathException(this, "Error while querying full text index: " + e.getMessage(), e);
         }
         LOG.trace("Lucene query took " + (System.currentTimeMillis() - start));
@@ -245,7 +246,7 @@ public class Query extends Function implements Optimizable {
                                 key.getStringValue(), NodeSet.ANCESTOR, options);
                 } catch (IOException e) {
                     throw new XPathException(this, e.getMessage());
-                } catch (org.apache.lucene.queryparser.classic.ParseException e) {
+                } catch (ParseException e) {
                     throw new XPathException(this, e.getMessage());
                 }
             }
@@ -303,14 +304,6 @@ public class Query extends Function implements Optimizable {
             throw new XPathException(this, "Error while parsing options to ft:query: " + e.getMessage(), e);
         } catch (IOException e) {
             throw new XPathException(this, "Error while parsing options to ft:query: " + e.getMessage(), e);
-        }
-    }
-
-    @Override
-    public void resetState(boolean postOptimization) {
-        super.resetState(postOptimization);
-        if (!postOptimization) {
-            preselectResult = null;
         }
     }
 }

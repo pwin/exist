@@ -76,9 +76,7 @@ public class SystemModule extends AbstractInternalModule {
             new FunctionDef(FunctionTrace.signatures[3], FunctionTrace.class),
             new FunctionDef(FunctionTrace.signatures[4], FunctionTrace.class),
             new FunctionDef(GetUptime.signature, GetUptime.class),
-            new FunctionDef(FunctionAvailable.signature, FunctionAvailable.class),
-            
-            new FunctionDef(ClearXQueryCache.signature, ClearXQueryCache.class)
+            new FunctionDef(FunctionAvailable.signature, FunctionAvailable.class)
     };
 	
 	public SystemModule(Map<String, List<? extends Object>> parameters) {

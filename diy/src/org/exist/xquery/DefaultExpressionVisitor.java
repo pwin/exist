@@ -111,11 +111,6 @@ public class DefaultExpressionVisitor extends BasicExpressionVisitor {
     
     public void visitElementConstructor(ElementConstructor constructor) {
         constructor.getNameExpr().accept(this);
-        if (constructor.getAttributes() != null) {
-            for (AttributeConstructor attrConstr: constructor.getAttributes()) {
-                attrConstr.accept(this);
-            }
-        }
         if (constructor.getContent() != null)
             {constructor.getContent().accept(this);}
     }
@@ -151,13 +146,5 @@ public class DefaultExpressionVisitor extends BasicExpressionVisitor {
     @Override
     public void visitVariableDeclaration(VariableDeclaration decl) {
     	decl.getExpression().accept(this);
-    }
-
-    @Override
-    public void visitTryCatch(TryCatchExpression tryCatch) {
-        tryCatch.getTryTargetExpr().accept(this);
-        for (TryCatchExpression.CatchClause clause : tryCatch.getCatchClauses()) {
-            clause.getCatchExpr().accept(this);
-        }
     }
 }

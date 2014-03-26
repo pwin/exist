@@ -47,7 +47,6 @@ public class PlainTextHighlighter {
 	
 	public List<Offset> getOffsets(String content, Analyzer analyzer) throws IOException {
 		TokenStream tokenStream = analyzer.tokenStream(null, new StringReader(content));
-        tokenStream.reset();
         MarkableTokenFilter stream = new MarkableTokenFilter(tokenStream);
         //Token token;
         List<Offset> offsets = null;

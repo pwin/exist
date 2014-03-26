@@ -92,7 +92,7 @@ import org.expath.pkg.repo.PackageException;
  */
 //TODO : in the future, separate the design between the Map of DBInstances and their non static implementation
 @ConfigurationClass("pool")
-public class BrokerPool implements Database {
+public class BrokerPool extends Observable implements Database {
 
     private final static Logger LOG = Logger.getLogger(BrokerPool.class);
 
@@ -617,6 +617,9 @@ public class BrokerPool implements Database {
 		Boolean aBoolean;
 		final NumberFormat nf = NumberFormat.getNumberInstance();
 
+        if (statusObserver != null)
+            {addObserver(statusObserver);}
+
         this.classLoader = Thread.currentThread().getContextClassLoader();
 
 		//TODO : ensure that the instance name is unique ?
@@ -810,11 +813,7 @@ public class BrokerPool implements Database {
         synchronized (this) {
         	try {
         		statusReporter = new StatusReporter(SIGNAL_STARTUP);
-                if (statusObserver != null) {
-                    statusReporter.addObserver(statusObserver);
-                }
-                Thread statusThread = new Thread(statusReporter);
-        		statusThread.start();
+        		statusReporter.start();
 
         		// statusReporter may have to be terminated or the thread can/will hang.
         		try {
@@ -955,7 +954,6 @@ public class BrokerPool implements Database {
         					//XXX: don't do if READONLY mode
         					if(recovered) {
         						if(!exportOnly) {
-                                    reportStatus("Reindexing database files...");
         							try {
         								broker.repair();
         							} catch (final PermissionDeniedException e) {
@@ -1171,8 +1169,9 @@ public class BrokerPool implements Database {
             final CollectionConfigurationManager manager = getConfigurationManager();
             final CollectionConfiguration collConf = manager.getOrCreateCollectionConfiguration(broker, collection);
             
-            final DocumentTriggerProxy triggerProxy = new DocumentTriggerProxy(ConfigurationDocumentTrigger.class); //, collection.getURI());
-            collConf.documentTriggers().add(triggerProxy);
+            final Class c = ConfigurationDocumentTrigger.class;
+            final DocumentTriggerProxy triggerProxy = new DocumentTriggerProxy((Class<DocumentTrigger>)c, collection.getURI());
+            collConf.getDocumentTriggerProxies().add(triggerProxy);  
         }
     }
 
@@ -1516,13 +1515,6 @@ public class BrokerPool implements Database {
 		return securityManager.getGuestSubject();
     }
 
-    /**
-     *  Get active broker for current thread
-     * 
-     * @return Database broker
-     * @throws RuntimeException NO broker available for current thread.
-     * 
-     */
 	public DBBroker getActiveBroker() { //throws EXistException {
 		//synchronized(this) {
 			//Try to get an active broker
@@ -1547,7 +1539,6 @@ public class BrokerPool implements Database {
 						}
 					}
 				});
-                LOG.debug(sb.toString());
 				throw new RuntimeException(sb.toString());
 			}
 			return broker;
@@ -1895,11 +1886,7 @@ public class BrokerPool implements Database {
             	// these may be used and set by other threads for the same or some other purpose
             	// (unlikely). Take no chances.
                 statusReporter = new StatusReporter(SIGNAL_SHUTDOWN);
-                if (statusObserver != null) {
-                    statusReporter.addObserver(statusObserver);
-                }
-                Thread statusThread = new Thread(statusReporter);
-                statusThread.start();
+                statusReporter.start();
 
                 // release transaction log to allow remaining brokers to complete
                 // their job
@@ -2097,7 +2084,7 @@ public class BrokerPool implements Database {
     	System.err.println(s);
     }
 
-    private class StatusReporter extends Observable implements Runnable {
+    private class StatusReporter extends Thread {
 
         private String status;
         private volatile boolean terminate = false;
@@ -2108,27 +2095,27 @@ public class BrokerPool implements Database {
 
         public synchronized void setStatus(String status) {
             this.status = status;
-            this.setChanged();
-            this.notifyObservers(status);
+            BrokerPool.this.setChanged();
+            BrokerPool.this.notifyObservers(status);
         }
 
-        public synchronized void terminate() {
+        public void terminate() {
             this.terminate = true;
-            this.notifyAll();
+            interrupt();
         }
 
         public void run() {
             while (!terminate) {
                 synchronized (this) {
                     try {
-                        wait(500);
+                        wait(300);
                     } catch (final InterruptedException e) {
                         // nothing to do
                     }
                 }
-                this.setChanged();
-                this.notifyObservers(status);
             }
+            BrokerPool.this.setChanged();
+            BrokerPool.this.notifyObservers(status);
         }
     }
 
@@ -2137,36 +2124,57 @@ public class BrokerPool implements Database {
 		return new File((String) conf.getProperty(BrokerPool.PROPERTY_DATA_DIR));
 	}
 
-    private final List<TriggerProxy<? extends DocumentTrigger>> documentTriggers = new ArrayList<TriggerProxy<? extends DocumentTrigger>>();
-    private final List<TriggerProxy<? extends CollectionTrigger>> collectionTriggers = new ArrayList<TriggerProxy<? extends CollectionTrigger>>();
+	private final List<DocumentTrigger> documentTriggers = new ArrayList<DocumentTrigger>(); 
+	private final List<CollectionTrigger> collectionTriggers = new ArrayList<CollectionTrigger>(); 
 
-    @Override
-    public List<TriggerProxy<? extends DocumentTrigger>> getDocumentTriggers() {
-        return documentTriggers;
-    }
+	@Override
+	public List<DocumentTrigger> getDocumentTriggers() {
+		return documentTriggers;
+	}
 
-    @Override
-    public List<TriggerProxy<? extends CollectionTrigger>> getCollectionTriggers() {
-        return collectionTriggers;
-    }
-
-    @Override
-    public void registerDocumentTrigger(Class<? extends DocumentTrigger> clazz) {
-        documentTriggers.add(new DocumentTriggerProxy(clazz));
-    }
-
-    @Override
-    public void registerCollectionTrigger(Class<? extends CollectionTrigger> clazz) {
-        collectionTriggers.add(new CollectionTriggerProxy(clazz));
-    }
-	    
-	public PluginsManager getPluginsManager() {
-		return pluginManager;
+	@Override
+	public List<CollectionTrigger> getCollectionTriggers() {
+		return collectionTriggers;
 	}
 	
-	protected MetaStorage metaStorage = null;
+	private DocumentTriggersVisitor docsTriggersVisitor = new DocumentTriggersVisitor(null, new DocumentTriggers());
+	private CollectionTriggersVisitor colsTriggersVisitor = new CollectionTriggersVisitor(null, new CollectionTriggers());
+
+	@Override
+	public DocumentTrigger getDocumentTrigger() {
+		return docsTriggersVisitor;
+	}
+
+	@Override
+	public CollectionTrigger getCollectionTrigger() {
+		return colsTriggersVisitor;
+	}
 	
-	public MetaStorage getMetaStorage() {
-	    return metaStorage;
+	class DocumentTriggers extends DocumentTriggerProxies {
+
+		@Override
+	    public DocumentTriggersVisitor instantiateVisitor(DBBroker broker) {
+	        return new DocumentTriggersVisitor(broker, this);
+	    }
+
+		protected List<DocumentTrigger> instantiateTriggers(DBBroker broker) throws TriggerException {
+	        return getDocumentTriggers();
+	    }
+	}
+
+	class CollectionTriggers extends CollectionTriggerProxies {
+
+		@Override
+	    public CollectionTriggersVisitor instantiateVisitor(DBBroker broker) {
+	        return new CollectionTriggersVisitor(broker, this);
+	    }
+
+		protected List<CollectionTrigger> instantiateTriggers(DBBroker broker) throws TriggerException {
+	        return getCollectionTriggers();
+	    }
+	}
+
+	public PluginsManager getPluginsManager() {
+		return pluginManager;
 	}
 }

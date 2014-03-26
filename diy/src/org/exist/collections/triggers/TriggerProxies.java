@@ -27,9 +27,9 @@ import org.exist.storage.DBBroker;
  *
  * @author aretter
  */
-public interface TriggerProxies<T extends Trigger> {
+public interface TriggerProxies<P extends TriggerProxy> {
     
-    public void add(TriggerProxy<T> proxy);
+    public void add(P proxy);
     
-    public abstract TriggersVisitor<T> instantiateVisitor(DBBroker broker);
+    public abstract TriggersVisitor instantiateVisitor(DBBroker broker);
 }

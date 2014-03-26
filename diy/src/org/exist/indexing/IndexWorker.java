@@ -31,7 +31,6 @@ import org.exist.storage.DBBroker;
 import org.exist.storage.NodePath;
 import org.exist.util.DatabaseConfigurationException;
 import org.exist.util.Occurrences;
-import org.exist.xquery.QueryRewriter;
 import org.exist.xquery.XQueryContext;
 import org.w3c.dom.NodeList;
 
@@ -128,17 +127,16 @@ public interface IndexWorker {
     /**
      * When adding or removing nodes to or from the document tree, it might become
      * necessary to re-index some parts of the tree, in particular if indexes are defined
-     * on mixed content nodes. It will then return the top-most root.
+     * on mixed content nodes. This method will call
+     * {@link IndexWorker#getReindexRoot(org.exist.dom.StoredNode, org.exist.storage.NodePath, boolean)}
+     * on each configured index. It will then return the top-most root.
      *
      * @param node the node to be modified.
      * @param path path the NodePath of the node
-     * @param insert true if a node is being inserted or appended. In this case, the method
-     *               will be called with the parent node as first argument. Usually a reindex is
-     *               not required unless the index is defined on the parent node or an ancestor of it.
      * @param includeSelf if set to true, the current node itself will be included in the check
      * @return the top-most root node to be reindexed
      */
-    StoredNode getReindexRoot(StoredNode node, NodePath path, boolean insert, boolean includeSelf);
+    StoredNode getReindexRoot(StoredNode node, NodePath path, boolean includeSelf);
 
     /**
      * Return a stream listener to index the current document in the current mode.
@@ -177,7 +175,7 @@ public interface IndexWorker {
      * @param collection The collection to remove
      * @param broker The broker that will perform the operation
      */
-    void removeCollection(Collection collection, DBBroker broker, boolean reindex) throws PermissionDeniedException;
+    void removeCollection(Collection collection, DBBroker broker) throws PermissionDeniedException;
 
     /** 
      * Checking index could be delegated to a worker. Use this method to do so.
@@ -204,15 +202,7 @@ public interface IndexWorker {
      * <li>the list of the documents in which the index entry is</li>
      * </ol> 
      */
-    public Occurrences[] scanIndex(XQueryContext context, DocumentSet docs, NodeSet contextSet, Map<?,?> hints);
-
-    /**
-     * Returns a {@link QueryRewriter} to be called by the query optimizer.
-     *
-     * @param context the current XQuery context
-     * @return the query rewriter or null if the index does no rewriting
-     */
-    QueryRewriter getQueryRewriter(XQueryContext context);
+    public Occurrences[] scanIndex(XQueryContext context, DocumentSet docs, NodeSet contextSet, Map hints);
 
     //TODO : a scanIndex() method that would return an unaggregated list of index entries ?
 

@@ -68,7 +68,7 @@ public class SetHeader extends Function
 			"Set's a HTTP Header on the HTTP Response.",
 			new SequenceType[] { NAME_PARAM, VALUE_PARAM },
 			new SequenceType(Type.ITEM, Cardinality.EMPTY),
-			SetHeader.signature);
+			"Moved to response module and renamed to response:set-header.");
 
     public SetHeader( XQueryContext context )
     {

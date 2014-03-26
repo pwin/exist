@@ -197,7 +197,7 @@ public class LocalUserManagementService implements EXistUserManagementService {
                     return modifyCollection(broker, childUri, new DatabaseItemModifier<org.exist.collections.Collection, Void>() {
                         @Override
                         public Void modify(org.exist.collections.Collection collection) throws PermissionDeniedException, LockException {
-                            final Permission permission = collection.getPermissionsNoLock();
+                            final Permission permission = collection.getPermissions();
                             permission.setOwner(owner);
                             permission.setGroup(group);
                             permission.setMode(mode);
@@ -336,52 +336,6 @@ public class LocalUserManagementService implements EXistUserManagementService {
     }
 
     @Override
-    public void chgrp(final String group) throws XMLDBException {
-        final XmldbURI collUri = collection.getPathURI();
-
-        try {
-            executeWithBroker(new BrokerOperation<Void>() {
-                @Override
-                public Void withBroker(final DBBroker broker) throws XMLDBException, LockException, PermissionDeniedException, IOException, EXistException, TriggerException, SyntaxException {
-                    return modifyCollection(broker, collUri, new DatabaseItemModifier<org.exist.collections.Collection, Void>() {
-                        @Override
-                        public Void modify(org.exist.collections.Collection collection) throws PermissionDeniedException, SyntaxException, LockException {
-                            final Permission permission = collection.getPermissionsNoLock();
-                            permission.setGroup(group);
-                            return null;
-                        }
-                    });
-                }
-            });
-        } catch(final Exception e) {
-            throw new XMLDBException(ErrorCodes.VENDOR_ERROR, "Failed to modify permission on Collection '" + collUri.toString() + "'", e);
-        }
-    }
-
-    @Override
-    public void chown(final Account u) throws XMLDBException {
-        final XmldbURI collUri = collection.getPathURI();
-
-        try {
-            executeWithBroker(new BrokerOperation<Void>() {
-                @Override
-                public Void withBroker(final DBBroker broker) throws XMLDBException, LockException, PermissionDeniedException, IOException, EXistException, TriggerException, SyntaxException {
-                    return modifyCollection(broker, collUri, new DatabaseItemModifier<org.exist.collections.Collection, Void>() {
-                        @Override
-                        public Void modify(org.exist.collections.Collection collection) throws PermissionDeniedException, SyntaxException, LockException {
-                            final Permission permission = collection.getPermissionsNoLock();
-                            permission.setOwner(u);
-                            return null;
-                        }
-                    });
-                }
-            });
-        } catch(final Exception e) {
-            throw new XMLDBException(ErrorCodes.VENDOR_ERROR, "Failed to modify permission on Collection '" + collUri.toString() + "'", e);
-        }
-    }
-
-    @Override
     public void chown(final Account u, final String group) throws XMLDBException {
         final XmldbURI collUri = collection.getPathURI();
         
@@ -392,7 +346,7 @@ public class LocalUserManagementService implements EXistUserManagementService {
                     return modifyCollection(broker, collUri, new DatabaseItemModifier<org.exist.collections.Collection, Void>() {
                         @Override
                         public Void modify(org.exist.collections.Collection collection) throws PermissionDeniedException, SyntaxException, LockException {
-                            final Permission permission = collection.getPermissionsNoLock();
+                            final Permission permission = collection.getPermissions();
                             permission.setOwner(u);
                             permission.setGroup(group);
                             return null;
@@ -403,48 +357,6 @@ public class LocalUserManagementService implements EXistUserManagementService {
         } catch(final Exception e) {
             throw new XMLDBException(ErrorCodes.VENDOR_ERROR, "Failed to modify permission on Collection '" + collUri.toString() + "'", e);
         }
-    }
-
-    @Override
-    public void chgrp(final Resource resource, final String group) throws XMLDBException {
-        try {
-            executeWithBroker(new BrokerOperation() {
-                @Override
-                public Void withBroker(final DBBroker broker) throws XMLDBException, LockException, PermissionDeniedException, IOException, EXistException, TriggerException, SyntaxException {
-                    return modifyResource(broker, resource, new DatabaseItemModifier<DocumentImpl, Void>() {
-                        @Override
-                        public Void modify(DocumentImpl document) throws PermissionDeniedException, LockException {
-                            document.getPermissions().setGroup(group);
-                            return null;
-                        }
-                    });
-                }
-            });
-        } catch(final Exception e) {
-            throw new XMLDBException(ErrorCodes.VENDOR_ERROR, "Failed to modify permission on Resource '" + resource.getId() + "'", e);
-        }
-
-    }
-
-    @Override
-    public void chown(final Resource resource, final Account u) throws XMLDBException {
-        try {
-            executeWithBroker(new BrokerOperation() {
-                @Override
-                public Void withBroker(final DBBroker broker) throws XMLDBException, LockException, PermissionDeniedException, IOException, EXistException, TriggerException, SyntaxException {
-                    return modifyResource(broker, resource, new DatabaseItemModifier<DocumentImpl, Void>() {
-                        @Override
-                        public Void modify(DocumentImpl document) throws PermissionDeniedException, LockException {
-                            document.getPermissions().setOwner(u);
-                            return null;
-                        }
-                    });
-                }
-            });
-        } catch(final Exception e) {
-            throw new XMLDBException(ErrorCodes.VENDOR_ERROR, "Failed to modify permission on Resource '" + resource.getId() + "'", e);
-        }
-
     }
 
     @Override
@@ -574,7 +486,7 @@ public class LocalUserManagementService implements EXistUserManagementService {
     @Override
     public Permission getPermissions(Collection coll) throws XMLDBException {
         if(coll instanceof LocalCollection) {
-            return ((LocalCollection) coll).getCollection().getPermissionsNoLock();
+            return ((LocalCollection) coll).getCollection().getPermissions();
         }
         return null;
     }
@@ -664,7 +576,7 @@ public class LocalUserManagementService implements EXistUserManagementService {
                     return readCollection(broker, collectionUri, new DatabaseItemReader<org.exist.collections.Collection, Permission[]>(){
                         @Override
                         public Permission[] read(org.exist.collections.Collection collection) throws PermissionDeniedException {
-                            if(!collection.getPermissionsNoLock().validate(user, Permission.READ)) {
+                            if(!collection.getPermissions().validate(user, Permission.READ)) {
                                     return new Permission[0];
                             }
                             
@@ -697,7 +609,7 @@ public class LocalUserManagementService implements EXistUserManagementService {
                     return readCollection(broker, collectionUri, new DatabaseItemReader<org.exist.collections.Collection, Permission[]>(){
                         @Override
                         public Permission[] read(org.exist.collections.Collection collection) throws XMLDBException, PermissionDeniedException {
-                            if(!collection.getPermissionsNoLock().validate(user, Permission.READ)) {
+                            if(!collection.getPermissions().validate(user, Permission.READ)) {
 				return new Permission[0];
                             }
                             
@@ -709,7 +621,7 @@ public class LocalUserManagementService implements EXistUserManagementService {
                                 Permission childPermission = readCollection(broker, childCollectionUri, new DatabaseItemReader<org.exist.collections.Collection, Permission>(){
                                     @Override
                                     public Permission read(org.exist.collections.Collection childCollection) {
-                                        return childCollection.getPermissionsNoLock();
+                                        return childCollection.getPermissions();
                                     }
                                 });
                                 perms[i++] = childPermission;

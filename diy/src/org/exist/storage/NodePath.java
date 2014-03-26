@@ -49,16 +49,12 @@ public class NodePath implements Comparable<NodePath> {
     public NodePath() {
         //Nothing to do
     }
-
+    
     public NodePath(NodePath other) {
-        this(other, other.includeDescendants);
-    }
-
-    public NodePath(NodePath other, boolean includeDescendants) {
         components = new QName[other.components.length];
         System.arraycopy(other.components, 0, components, 0, other.components.length);
         pos = other.pos;
-        this.includeDescendants = includeDescendants;
+        includeDescendants = other.includeDescendants;
     }
 
     /**
@@ -75,18 +71,6 @@ public class NodePath implements Comparable<NodePath> {
 
     public NodePath(QName qname) {
     	addComponent(qname);
-    }
-
-    public void setIncludeDescendants(boolean includeDescendants) {
-        this.includeDescendants = includeDescendants;
-    }
-
-    public void append(NodePath other) {
-        QName[] newComponents = new QName[length() + other.length()];
-        System.arraycopy(components, 0, newComponents, 0, pos);
-        System.arraycopy(other.components, 0, newComponents, pos, other.length());
-        pos = newComponents.length;
-        components = newComponents;
     }
 
     public void addComponent(QName component) {
@@ -166,7 +150,7 @@ public class NodePath implements Comparable<NodePath> {
                 skip = true;
             }
             if((components[i] == WILDCARD || other.components[j].compareTo(components[i]) == 0) &&
-                    (!skip || j + 1 == other.pos || other.components[j + 1].compareTo(components[i]) != 0)) {
+                    (j + 1 == other.pos || other.components[j + 1].compareTo(components[i]) != 0)) {
                 ++i;
                 skip = false;
             } else if(skip) {

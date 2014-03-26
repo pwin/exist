@@ -105,22 +105,27 @@ public class AccountManagementFunction extends BasicFunction {
         final DBBroker broker = getContext().getBroker();
         final Subject currentUser = broker.getSubject();
         final SecurityManager securityManager = broker.getBrokerPool().getSecurityManager();
+        
+        if(!currentUser.hasDbaRole()) {
+            throw new XPathException("You must be a DBA to create a User Account.");
+        }
 
         final String username = args[0].getStringValue();
 
         try {
             if(isCalledAs(qnRemoveAccount.getLocalName())) {
                 /* remove account */
-                if(!currentUser.hasDbaRole()) {
-                    throw new XPathException("Only a DBA user may remove accounts.");
-                }
-                
+
                 if(!securityManager.hasAccount(username)) {
                     throw new XPathException("The user account with username " + username + " does not exist.");
                 }
 
                 if(currentUser.getName().equals(username)) {
                     throw new XPathException("You cannot remove yourself i.e. the currently logged in user.");
+                }
+
+                if(!currentUser.hasDbaRole()) {
+                    throw new XPathException("Only a DBA user may remove accounts.");
                 }
 
                 securityManager.deleteAccount(username);
@@ -142,10 +147,7 @@ public class AccountManagementFunction extends BasicFunction {
 
                 } else if(isCalledAs(qnCreateAccount.getLocalName())) {
                     /* create account */
-                    if(!currentUser.hasDbaRole()) {
-                        throw new XPathException("You must be a DBA to create a User Account.");
-                    }
-                    
+
                     if(securityManager.hasAccount(username)) {
                         throw new XPathException("The user account with username " + username + " already exists.");
                     }

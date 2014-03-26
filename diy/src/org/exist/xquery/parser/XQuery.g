@@ -217,13 +217,11 @@ mainModule throws XPathException:
 libraryModule throws XPathException: 
     moduleDecl prolog;
 
-moduleDecl throws XPathException
-{ String prefix = null; }
-: 
-	"module"! "namespace"! prefix=ncnameOrKeyword EQ! uri:STRING_LITERAL SEMICOLON!
+moduleDecl throws XPathException: 
+	"module"! "namespace"! prefix:NCNAME EQ! uri:STRING_LITERAL SEMICOLON!
 	{
 		#moduleDecl = 
-			#(#[MODULE_DECL, prefix, org.exist.xquery.parser.XQueryFunctionAST.class.getName()], uri);
+			#(#[MODULE_DECL, prefix.getText(), org.exist.xquery.parser.XQueryFunctionAST.class.getName()], uri);
 		#moduleDecl.setDoc(getXQDoc());
 	}
 	;
@@ -1012,7 +1010,7 @@ stepExpr throws XPathException
 	( ( "text" | "node" | "element" | "attribute" | "comment" | "processing-instruction" | "document-node" ) LPAREN )
 	=> axisStep
 	|
-	( ( "element" | "attribute" | "text" | "document" | "processing-instruction" | "namespace" |
+	( ( "element" | "attribute" | "text" | "document" | "processing-instruction" | 
 	"comment" | "ordered" | "unordered" | "map" ) LCURLY ) => 
 	postfixExpr
 	|
@@ -1130,7 +1128,7 @@ primaryExpr throws XPathException
 { String varName= null; }
 :
 	( ( "element" | "attribute" | "text" | "document" | "processing-instruction" | 
-	"comment" | "namespace" ) LCURLY ) => 
+	"comment" ) LCURLY ) => 
 	computedConstructor
 	|
 	( ( "element" | "attribute" | "processing-instruction" | "namespace" ) qName LCURLY ) => computedConstructor
@@ -1349,8 +1347,6 @@ computedConstructor throws XPathException
 	|
 	compTextConstructor
 	|
-	compNamespaceConstructor
-	|
 	compDocumentConstructor
 	|
 	compXmlPI
@@ -1364,13 +1360,27 @@ compElemConstructor throws XPathException
 }
 :
 	( "element" LCURLY ) =>
-	"element"! LCURLY! expr RCURLY! LCURLY! (expr)? RCURLY!
+	"element"! LCURLY! expr RCURLY! LCURLY! (compElemBody)? RCURLY!
 	{ #compElemConstructor = #(#[COMP_ELEM_CONSTRUCTOR], #compElemConstructor); }
 	|
-	"element"! qn=qName LCURLY! (e3:expr)? RCURLY!
+	"element"! qn=qName LCURLY! (e3:compElemBody)? RCURLY!
 	{ #compElemConstructor = #(#[COMP_ELEM_CONSTRUCTOR, qn], #[STRING_LITERAL, qn], #e3); }
 	;
 
+compElemBody throws XPathException
+:
+	( 
+		( "namespace" ncnameOrKeyword LCURLY ) => localNamespaceDecl 
+		| 
+		exprSingle 
+	)
+	( COMMA! (
+		( "namespace" ncnameOrKeyword LCURLY ) => localNamespaceDecl 
+		| 
+		exprSingle ) 
+	)*
+	;
+	
 compAttrConstructor throws XPathException
 {
 	String qn;
@@ -1383,7 +1393,6 @@ compAttrConstructor throws XPathException
 	"attribute"! qn=qName e3:compConstructorValue
     { #compAttrConstructor = #(#[COMP_ATTR_CONSTRUCTOR, qn], #[STRING_LITERAL, qn], #e3); }
 	;
-
 compConstructorValue throws XPathException
     :
         LCURLY^ ( e2:expr )?  RCURLY!
@@ -1420,17 +1429,13 @@ compXmlComment throws XPathException
 	{ #compXmlComment = #(#[COMP_COMMENT_CONSTRUCTOR, "comment"], #e); }
 	;
 
-compNamespaceConstructor throws XPathException
+localNamespaceDecl
 {
-	String qn;
+	String nc = null;
 }
 :
-	( "namespace" LCURLY ) =>
-	"namespace"! LCURLY! expr RCURLY! LCURLY! (expr)? RCURLY!
-	{ #compNamespaceConstructor = #(#[COMP_NS_CONSTRUCTOR], #compNamespaceConstructor); }
-	|
-	"namespace"! qn=qName LCURLY! (e3:expr)? RCURLY!
-	{ #compNamespaceConstructor = #(#[COMP_NS_CONSTRUCTOR, qn], #[STRING_LITERAL, qn], #e3); }
+	"namespace"! nc=ncnameOrKeyword LCURLY! l:STRING_LITERAL RCURLY!
+	{ #localNamespaceDecl = #(#[COMP_NS_CONSTRUCTOR, nc], #l); }
 	;
 
 elementConstructor throws XPathException

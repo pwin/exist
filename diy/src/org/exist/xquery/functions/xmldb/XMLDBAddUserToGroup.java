@@ -32,7 +32,7 @@ import org.exist.xquery.Cardinality;
 import org.exist.xquery.FunctionSignature;
 import org.exist.xquery.XPathException;
 import org.exist.xquery.XQueryContext;
-import org.exist.xquery.functions.securitymanager.GroupMembershipFunction;
+import org.exist.xquery.functions.securitymanager.GroupMembershipFunctions;
 import org.exist.xquery.value.BooleanValue;
 import org.exist.xquery.value.FunctionParameterSequenceType;
 import org.exist.xquery.value.FunctionReturnSequenceType;
@@ -46,7 +46,6 @@ import org.exist.security.Subject;
  * @author Adam Retter <adam@existsolutions.com>
  * @author <a href="mailto:shabanovd@gmail.com">Dmitriy Shabanov</a>
  */
-@Deprecated
 public class XMLDBAddUserToGroup extends BasicFunction {
 
     protected static final Logger logger = Logger.getLogger(XMLDBAddUserToGroup.class);
@@ -59,7 +58,7 @@ public class XMLDBAddUserToGroup extends BasicFunction {
                 new FunctionParameterSequenceType("group", Type.STRING, Cardinality.EXACTLY_ONE, "The group name")
             },
             new FunctionReturnSequenceType(Type.BOOLEAN, Cardinality.EXACTLY_ONE, "true() or false() indicating the outcome of the operation"),
-            GroupMembershipFunction.FNS_ADD_GROUP_MEMBER
+            GroupMembershipFunctions.FNS_ADD_GROUP_MEMBER
     );
 
     /**

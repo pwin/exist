@@ -1,6 +1,6 @@
 /*
  * eXist Open Source Native XML Database
- * Copyright (C) 2014 The eXist Project
+ * Copyright (C) 2010 The eXist Project
  * http://exist-db.org
  *
  * This program is free software; you can redistribute it and/or
@@ -29,7 +29,6 @@ import org.exist.xquery.Cardinality;
 import org.exist.xquery.FunctionSignature;
 import org.exist.xquery.XPathException;
 import org.exist.xquery.XQueryContext;
-import org.exist.xquery.functions.securitymanager.IsAuthenticatedFunction;
 import org.exist.xquery.value.BooleanValue;
 import org.exist.xquery.value.FunctionReturnSequenceType;
 import org.exist.xquery.value.Sequence;
@@ -39,25 +38,25 @@ import org.exist.xquery.value.Type;
  * @author <a href="mailto:shabanovd@gmail.com">Dmitriy Shabanov</a>
  *
  */
-@Deprecated
-public class XMLDBIsAuthenticated extends BasicFunction {
-    protected static final Logger logger = Logger.getLogger(XMLDBIsAuthenticated.class);
+@Deprecated //remove after 1.6
+public class XMLDBIsAuthenticated extends BasicFunction
+{
+	protected static final Logger logger = Logger.getLogger(XMLDBIsAuthenticated.class);
 	
-    public final static FunctionSignature signature =
-        new FunctionSignature(
-            new QName("is-authenticated", XMLDBModule.NAMESPACE_URI, XMLDBModule.PREFIX),
-            "Returns the true() if current user from the xquery context is authenticated, false() otherwise.",
-            null,
-            new FunctionReturnSequenceType(Type.BOOLEAN, Cardinality.EXACTLY_ONE, "true() if user from the xquery context is authenticated, false() otherwise"),
-            IsAuthenticatedFunction.FNS_IS_AUTHENTICATED
-        );
+	public final static FunctionSignature signature =
+		new FunctionSignature(
+			new QName("is-authenticated", XMLDBModule.NAMESPACE_URI, XMLDBModule.PREFIX),
+			"Returns the true() if current user from the xquery context is authenticated, false() otherwise.",
+			null,
+			new FunctionReturnSequenceType(Type.BOOLEAN, Cardinality.EXACTLY_ONE, "true() if user from the xquery context is authenticated, false() otherwise"),
+			"Use sm:is-externally-authenticated() function."
+		);
 	
-    public XMLDBIsAuthenticated(final XQueryContext context, final FunctionSignature signature) {
-            super(context, signature);
-    }
-
-    @Override
-    public Sequence eval(final Sequence args[], final Sequence contextSequence) throws XPathException {
-        return new BooleanValue(context.getEffectiveUser().isExternallyAuthenticated());
-    }
+	public XMLDBIsAuthenticated(XQueryContext context, FunctionSignature signature) {
+		super(context, signature);
+	}
+	
+	public Sequence eval(Sequence args[], Sequence contextSequence) throws XPathException {
+		return new BooleanValue(context.getSubject().isExternallyAuthenticated());
+	}
 }

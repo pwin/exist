@@ -39,8 +39,8 @@ public class TriggerStatePerThread {
 	public static final int TRIGGER_RUNNING_PREPARE = (1);
 	public static final int TRIGGER_RUNNING_FINISH = (2);
 	
-	private static ThreadLocal<TriggerState> triggerRunningState = new ThreadLocal<TriggerState>() {
-	    protected synchronized TriggerState initialValue() {
+	private static ThreadLocal triggerRunningState = new ThreadLocal() {
+	    protected synchronized Object initialValue() {
 	        return new TriggerState(NO_TRIGGER_RUNNING);
 	    }
 	};
@@ -132,26 +132,28 @@ public class TriggerStatePerThread {
 	}
 	
 	public static int getTriggerRunningState() {
-		return triggerRunningState.get().getState();
+		return ((TriggerState)triggerRunningState.get()).getState();
 	}
 
 	public static DocumentTrigger getRunningTrigger() {
-		return triggerRunningState.get().getTrigger();
+		return ((TriggerState)triggerRunningState.get()).getTrigger();
 	}
 	
-	public static void setTriggerRunningState( int state, DocumentTrigger trigger, XmldbURI modifiedDocument ) {
-		triggerRunningState.get().setState(state, trigger, modifiedDocument);
+	public static void setTriggerRunningState( int state, 
+			DocumentTrigger trigger,
+			XmldbURI modifiedDocument ) {
+		((TriggerState)triggerRunningState.get()).setState(state, trigger, modifiedDocument);
 	}
 
 	public static Txn getTransaction() {
-		return triggerRunningState.get().getTransaction();
+		return ((TriggerState)triggerRunningState.get()).getTransaction();
 	}
-
-	public static void setTransaction(Txn txn) {
-        triggerRunningState.get().setTransaction(txn);
+	public static void setTransaction(Txn transaction) {
+        ((TriggerState)triggerRunningState.get()).setTransaction(transaction);
 	}
 	
 	public static XmldbURI getModifiedDocument() {
-		return triggerRunningState.get().getModifiedDocument();		
+		return ((TriggerState)triggerRunningState.get()).getModifiedDocument();		
 	}
+
 }

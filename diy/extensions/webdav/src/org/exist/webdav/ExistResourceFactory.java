@@ -26,12 +26,8 @@ import org.apache.log4j.Logger;
 
 import com.bradmcevoy.http.Resource;
 import com.bradmcevoy.http.ResourceFactory;
-import java.io.File;
-import java.io.FileInputStream;
 
 import java.net.URISyntaxException;
-import java.util.Properties;
-import javax.xml.transform.OutputKeys;
 
 import org.exist.EXistException;
 import org.exist.collections.Collection;
@@ -39,7 +35,6 @@ import org.exist.dom.DocumentImpl;
 import org.exist.storage.BrokerPool;
 import org.exist.storage.DBBroker;
 import org.exist.storage.lock.Lock;
-import org.exist.storage.serializers.EXistOutputKeys;
 import org.exist.xmldb.XmldbURI;
 
 /**
@@ -51,30 +46,13 @@ public class ExistResourceFactory implements ResourceFactory {
 
     private final static Logger LOG = Logger.getLogger(ExistResourceFactory.class);
     private BrokerPool brokerPool = null;
-    
-    //	default output properties for the XML serialization
-    public final static Properties DEFAULT_WEBDAV_OPTIONS = new Properties();
-    
-    /** XML serialization options */
-    private Properties webDavOptions = new Properties(); 
-
-    /**
-     * Default serialization options
-     */
-    static {
-        DEFAULT_WEBDAV_OPTIONS.setProperty(OutputKeys.INDENT, "yes");
-        DEFAULT_WEBDAV_OPTIONS.setProperty(OutputKeys.ENCODING, "UTF-8");
-        DEFAULT_WEBDAV_OPTIONS.setProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
-        DEFAULT_WEBDAV_OPTIONS.setProperty(EXistOutputKeys.EXPAND_XINCLUDES, "no");
-        DEFAULT_WEBDAV_OPTIONS.setProperty(EXistOutputKeys.PROCESS_XSL_PI, "no");
-    }
 
     private enum ResourceType {
         DOCUMENT, COLLECTION, IGNORABLE, NOT_EXISTING
     };
 
     /**
-     * Default constructor. Get access to instance of exist-db broker pool.
+     * Default constructor. Get access to instance of exist-db brokerpool.
      */
     public ExistResourceFactory() {
 
@@ -84,31 +62,7 @@ public class ExistResourceFactory implements ResourceFactory {
         } catch (EXistException e) {
             LOG.error("Unable to initialize WebDAV interface.", e);
         }
-        
-        // Set default values
-        webDavOptions.putAll(DEFAULT_WEBDAV_OPTIONS);
-        
-        // load specific options
-        try {
-            // Find right file
-            File eXistHome = brokerPool.getConfiguration().getExistHome();
-            File config = new File(eXistHome, "webdav.properties");
-            
-            // Read from file if existent
-            if(config.canRead()){
-                LOG.info(String.format("Read WebDAV configuration from %s", config.getCanonicalPath()));
-                FileInputStream fis = new FileInputStream(config);
-                webDavOptions.load(fis);
-                fis.close();
-                
-            } else {
-                LOG.info("Using WebDAV default serialization options.");
-            }
-            
-        } catch (Throwable ex) {
-            LOG.error(ex.getMessage());
-        }
-        
+
     }
 
     /*
@@ -136,23 +90,27 @@ public class ExistResourceFactory implements ResourceFactory {
             }
 
             if(LOG.isDebugEnabled()) {
-                LOG.debug(String.format("host='%s' path='%s'", host, path));
+                LOG.debug("host='" + host + "' path='" + path + "'");
             }
 
             // Create uri inside database
             xmldbUri = XmldbURI.xmldbUriFor(path);
 
+            // MacOsX finder specific files
+            String documentSeqment = xmldbUri.lastSegment().toString();
+            if(documentSeqment.startsWith("._") || documentSeqment.equals(".DS_Store")){
+                LOG.debug("skipping MacOsX file '"+xmldbUri.lastSegment().toString()+"'");
+            }
+
         } catch (URISyntaxException e) {
-            LOG.error(String.format("Unable to convert path '%s'into a XmldbURI representation.", path));
+            LOG.error("Unable to convert path '" + path + "'into a XmldbURI representation.");
             return null;
         }
 
         // Return appropriate resource
         switch (getResourceType(brokerPool, xmldbUri)) {
             case DOCUMENT:
-                MiltonDocument doc = new MiltonDocument(host, xmldbUri, brokerPool);
-                doc.setConfiguration(webDavOptions);
-                return doc;
+                return new MiltonDocument(host, xmldbUri, brokerPool);
 
             case COLLECTION:
                 return new MiltonCollection(host, xmldbUri, brokerPool);
@@ -165,12 +123,12 @@ public class ExistResourceFactory implements ResourceFactory {
 
             case NOT_EXISTING:
                 if (LOG.isDebugEnabled()) {
-                    LOG.debug(String.format("Resource does not exist: '%s'", xmldbUri));
+                    LOG.debug("Resource does not exist: '" + xmldbUri + "'");
                 }
                 return null;
 
             default:
-                LOG.error(String.format("Unkown resource type for %s", xmldbUri));
+                LOG.error("Unkown resource type for " + xmldbUri);
                 return null;
         }
     }
@@ -184,23 +142,10 @@ public class ExistResourceFactory implements ResourceFactory {
         Collection collection = null;
         DocumentImpl document = null;
         ResourceType type = ResourceType.NOT_EXISTING;
-        
-        // MacOsX finder specific files
-        String documentSeqment = xmldbUri.lastSegment().toString();
-        if(documentSeqment.startsWith("._") || documentSeqment.equals(".DS_Store")){
-            //LOG.debug(String.format("Ignoring MacOSX file '%s'", xmldbUri.lastSegment().toString()));
-            //return ResourceType.IGNORABLE;
-        }
-        
-        // Documents that start with a dot 
-        if(documentSeqment.startsWith(".")){
-            //LOG.debug(String.format("Ignoring '.' file '%s'", xmldbUri.lastSegment().toString()));
-            //return ResourceType.IGNORABLE;
-        }
 
         try {
             if(LOG.isDebugEnabled()) {
-                LOG.debug(String.format("Path: %s", xmldbUri.toString()));
+                LOG.debug("Path: " + xmldbUri.toString());
             }
             
             // Try to read as system user. Note that the actual user is not know
@@ -234,7 +179,7 @@ public class ExistResourceFactory implements ResourceFactory {
            
 
         } catch (Exception ex) {
-            LOG.error(String.format("Error determining nature of resource %s", xmldbUri.toString()), ex);
+            LOG.error("Error determining nature of resource " + xmldbUri.toString(), ex);
             type = ResourceType.NOT_EXISTING;
 
         } finally {
@@ -256,7 +201,7 @@ public class ExistResourceFactory implements ResourceFactory {
         }
 
         if(LOG.isDebugEnabled()) {
-            LOG.debug(String.format("Resource type=%s", type.toString()));
+            LOG.debug("Resource type=" + type.toString());
         }
         
         return type;

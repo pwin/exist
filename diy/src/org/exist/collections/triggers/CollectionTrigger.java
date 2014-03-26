@@ -1,6 +1,6 @@
 /*
  *  eXist Open Source Native XML Database
- *  Copyright (C) 2001-2014 The eXist Project
+ *  Copyright (C) 2001-2012 The eXist Project
  *  http://exist-db.org
  *
  *  This program is free software; you can redistribute it and/or
@@ -16,6 +16,8 @@
  *  You should have received a copy of the GNU Lesser General Public
  *  License along with this library; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ *  $Id$
  */
 package org.exist.collections.triggers;
 
@@ -35,21 +37,35 @@ public interface CollectionTrigger extends Trigger {
      * This method is called once before the database will actually create, remove or rename a collection. You may 
      * take any action here, using the supplied broker instance.
      * 
-     * @param broker
-     * @param txn
-     * @param uri
-     * @throws TriggerException
+     * @param event the type of event that triggered this call (see the constants defined in this interface).
+     * @param broker the database instance used to process the current action.
+     * @param collection the {@link Collection} which fired this event.
+     * @param newCollection optional: if event is a {@link Trigger#RENAME_COLLECTION_EVENT},
+     *  this parameter contains the new name of the collection. It is null otherwise.
+     * @throws TriggerException throwing a TriggerException will abort the current action.
      */
-    public void beforeCreateCollection(DBBroker broker, Txn txn, XmldbURI uri) throws TriggerException;
+    @Deprecated
+    public void prepare(
+        int event,
+        DBBroker broker,
+        Txn txn,
+        Collection collection,
+        Collection newCollection)
+        throws TriggerException;
     
     /**
      * This method is called after the operation has completed.
-     * 
-     * @param broker
-     * @param txn
-     * @param collection
-     * @throws TriggerException
-     */
+     *   
+     **/
+    @Deprecated
+    public void finish(
+        int event,
+        DBBroker broker,
+        Txn txn,
+        Collection collection,
+        Collection newCollection);
+    
+    public void beforeCreateCollection(DBBroker broker, Txn txn, XmldbURI uri) throws TriggerException;
     public void afterCreateCollection(DBBroker broker, Txn txn, Collection collection) throws TriggerException;
 
     public void beforeCopyCollection(DBBroker broker, Txn txn, Collection collection, XmldbURI newUri) throws TriggerException;

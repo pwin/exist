@@ -82,6 +82,11 @@ public class HistoryTrigger extends FilteringTrigger implements DocumentTrigger 
         }
     }
 
+    public void prepare(int event, DBBroker broker, Txn txn,
+            XmldbURI documentName, DocumentImpl doc) throws TriggerException {
+        makeCopy(broker, txn, doc);
+    }
+
     public void makeCopy(DBBroker broker, Txn txn, DocumentImpl doc)
             throws TriggerException {
         if (doc == null)
@@ -111,6 +116,11 @@ public class HistoryTrigger extends FilteringTrigger implements DocumentTrigger 
         } catch (final EXistException exception) {
             throw new TriggerException(exception);
         }
+    }
+
+    public void finish(int event, DBBroker broker, Txn txn,
+            XmldbURI documentPath, DocumentImpl document) {
+        //Nothing to do
     }
 
     @Override

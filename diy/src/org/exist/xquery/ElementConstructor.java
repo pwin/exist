@@ -70,10 +70,6 @@ public class ElementConstructor extends NodeConstructor {
     public PathExpr getContent() {
         return content;
     }
-
-    public AttributeConstructor[] getAttributes() {
-        return attributes;
-    }
     
     public void setNameExpr(Expression expr) {
 		//Deferred atomization (we could have a QNameValue)
@@ -388,6 +384,8 @@ public class ElementConstructor extends NodeConstructor {
 	 * @see org.exist.xquery.AbstractExpression#setPrimaryAxis(int)
 	 */
 	public void setPrimaryAxis(int axis) {
+		if(content != null)
+			{content.setPrimaryAxis(axis);}
 	}
 
     public int getPrimaryAxis() {

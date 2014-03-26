@@ -56,12 +56,9 @@ public class Optimizer extends DefaultExpressionVisitor {
     private int predicates = 0;
 
     private boolean hasOptimized = false;
-
-    private List<QueryRewriter> rewriters = new ArrayList<QueryRewriter>(5);
-
+    
     public Optimizer(XQueryContext context) {
         this.context = context;
-        this.rewriters = context.getBroker().getIndexController().getQueryRewriters(context);
     }
 
     public boolean hasOptimized() {
@@ -70,21 +67,6 @@ public class Optimizer extends DefaultExpressionVisitor {
 
     public void visitLocationStep(LocationStep locationStep) {
         super.visitLocationStep(locationStep);
-        // check query rewriters if they want to rewrite the location step
-        Pragma optimizePragma = null;
-        for (QueryRewriter rewriter : rewriters) {
-            try {
-                optimizePragma = rewriter.rewriteLocationStep(locationStep);
-                if (optimizePragma != null) {
-                    // expression was rewritten: return
-                    hasOptimized = true;
-                    break;
-                }
-            } catch (XPathException e) {
-                LOG.warn("Exception called while rewriting location step: " + e.getMessage(), e);
-            }
-        }
-
         boolean optimize = false;
         // only location steps with predicates can be optimized:
         if (locationStep.hasPredicates()) {
@@ -102,12 +84,10 @@ public class Optimizer extends DefaultExpressionVisitor {
                 }
             }
         }
-
-        final Expression parent = locationStep.getParentExpression();
-
         if (optimize) {
             // we found at least one Optimizable. Rewrite the whole expression and
             // enclose it in an (#exist:optimize#) pragma.
+            final Expression parent = locationStep.getParentExpression();
             if (!(parent instanceof RewritableExpression)) {
             	if (LOG.isTraceEnabled())
             		{LOG.trace("Parent expression of step is not a PathExpr: " + parent);}
@@ -118,9 +98,6 @@ public class Optimizer extends DefaultExpressionVisitor {
             try {
                 // Create the pragma
                 final ExtensionExpression extension = new ExtensionExpression(context);
-                if (optimizePragma != null) {
-                    extension.addPragma(optimizePragma);
-                }
                 extension.addPragma(new Optimize(context, Optimize.OPTIMIZE_PRAGMA, null, false));
                 extension.setExpression(locationStep);
                 
@@ -169,14 +146,6 @@ public class Optimizer extends DefaultExpressionVisitor {
             } catch (final XPathException e) {
                 LOG.warn("Failed to optimize expression: " + locationStep + ": " + e.getMessage(), e);
             }
-        } else if (optimizePragma != null) {
-            final ExtensionExpression extension = new ExtensionExpression(context);
-            extension.addPragma(optimizePragma);
-            extension.setExpression(locationStep);
-
-            // Replace the old expression with the pragma
-            final RewritableExpression path = (RewritableExpression) parent;
-            path.replace(locationStep, extension);
         }
     }
 
@@ -283,8 +252,6 @@ public class Optimizer extends DefaultExpressionVisitor {
 //                pathExpr.remove(last);
 //            }
 //        }
-        comparison.getLeft().accept(this);
-        comparison.getRight().accept(this);
     }
 
     public void visitPredicate(Predicate predicate) {
@@ -321,7 +288,7 @@ public class Optimizer extends DefaultExpressionVisitor {
     /**
      * Try to find an expression object implementing interface Optimizable.
      */
-    public static class FindOptimizable extends BasicExpressionVisitor {
+    private class FindOptimizable extends BasicExpressionVisitor {
 
         List<Optimizable> optimizables = new ArrayList<Optimizable>();
 

@@ -580,7 +580,7 @@ public class Deployment {
         Collection collection = null;
         try {
             collection = broker.getOrCreateCollection(txn, target);
-            setPermissions(true, null, collection.getPermissionsNoLock());
+            setPermissions(true, null, collection.getPermissions());
             broker.saveCollection(txn, collection);
             mgr.commit(txn);
         } catch (final Exception e) {
@@ -763,16 +763,15 @@ public class Deployment {
         @Override
         public void startElement(QName qname, AttrList attribs) {
             stack.push(qname.getLocalName());
-            if (!("deployed".equals(qname.getLocalName()) || "permissions".equals(qname.getLocalName()))) {
-                super.startElement(qname, attribs);
-            }
+            if (!"deployed".equals(qname.getLocalName()))
+                {super.startElement(qname, attribs);}
         }
 
         @Override
         public void startElement(String namespaceURI, String localName,
                                  String qName, Attributes attrs) throws SAXException {
             stack.push(localName);
-            if (!("deployed".equals(localName) || "permissions".equals(localName)))
+            if (!"deployed".equals(localName))
                 {super.startElement(namespaceURI, localName, qName, attrs);}
         }
 
@@ -782,9 +781,8 @@ public class Deployment {
             if ("meta".equals(qname.getLocalName())) {
                 addDeployTime();
             }
-            if (!("deployed".equals(qname.getLocalName()) || "permissions".equals(qname.getLocalName()))) {
-                super.endElement(qname);
-            }
+            if (!"deployed".equals(qname.getLocalName()))
+                {super.endElement(qname);}
         }
 
         @Override
@@ -794,17 +792,8 @@ public class Deployment {
             if ("meta".equals(localName)) {
                 addDeployTime();
             }
-            if (!("deployed".equals(localName) || "permissions".equals(localName))) {
-                super.endElement(uri, localName, qName);
-            }
-        }
-
-        @Override
-        public void attribute(QName qname, String value) throws SAXException {
-            final String current = stack.peek();
-            if (!"permissions".equals(current)) {
-                super.attribute(qname, value);
-            }
+            if (!"deployed".equals(localName))
+                {super.endElement(uri, localName, qName);}
         }
 
         @Override

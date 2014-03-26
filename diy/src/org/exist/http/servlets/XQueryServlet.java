@@ -45,7 +45,6 @@ import org.exist.security.Permission;
 import org.exist.security.PermissionDeniedException;
 import org.exist.security.Subject;
 import org.exist.security.internal.AccountImpl;
-import org.exist.security.internal.web.HttpAccount;
 import org.exist.security.xacml.AccessContext;
 import org.exist.source.FileSource;
 import org.exist.source.Source;
@@ -318,7 +317,7 @@ public class XQueryServlet extends AbstractExistHttpServlet {
         }
         
         if (user == getDefaultUser()) {
-        	Subject requestUser = HttpAccount.getUserFromServletRequest(request);
+        	Subject requestUser = AccountImpl.getUserFromServletRequest(request);
         	if (requestUser != null) {
         		user = requestUser;
         	} else {
@@ -496,10 +495,9 @@ public class XQueryServlet extends AbstractExistHttpServlet {
             final String mediaType = outputProperties.getProperty(OutputKeys.MEDIA_TYPE);
             if (mediaType != null) {
                 if (!response.isCommitted())
-                	{if (MimeTable.getInstance().isTextContent(mediaType)) {
+                	{if (MimeTable.getInstance().isTextContent(mediaType))
                 		response.setContentType(mediaType + "; charset=" + getFormEncoding());
-                        response.setCharacterEncoding(getFormEncoding());
-                    } else
+                	else
                 		response.setContentType(mediaType);}
                 
             } else {

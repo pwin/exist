@@ -446,18 +446,13 @@ public class MemTreeBuilder
     public int namespaceNode( QName qn )
     {
         final int    lastNode   = doc.getLastNode();
-        boolean addNode = true;
-        if (doc.nodeName != null) {
-            final QName  elemQN     = doc.nodeName[lastNode];
-            if (elemQN != null) {
-                final String elemPrefix = ( elemQN.getPrefix() == null ) ? "" : elemQN.getPrefix();
+        final QName  elemQN     = doc.nodeName[lastNode];
+        final String elemPrefix = ( elemQN.getPrefix() == null ) ? "" : elemQN.getPrefix();
 
-                if( elemPrefix.equals( qn.getLocalName() ) && ( elemQN.getNamespaceURI() != null ) ) {
-                    addNode = false;
-                }
-            }
+        if( elemPrefix.equals( qn.getLocalName() ) && ( elemQN.getNamespaceURI() != null ) && !elemQN.getNamespaceURI().equals( qn.getNamespaceURI() ) ) {
+            return( -1 );
         }
-        return( addNode ? doc.addNamespace( lastNode, qn ) : -1 );
+        return( doc.addNamespace( lastNode, qn ) );
     }
 
 

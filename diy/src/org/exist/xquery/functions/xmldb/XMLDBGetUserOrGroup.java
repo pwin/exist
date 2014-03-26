@@ -29,7 +29,7 @@ import org.exist.xquery.Cardinality;
 import org.exist.xquery.FunctionSignature;
 import org.exist.xquery.XPathException;
 import org.exist.xquery.XQueryContext;
-import org.exist.xquery.functions.securitymanager.PermissionsFunction;
+import org.exist.xquery.functions.securitymanager.PermissionsFunctions;
 import org.exist.xquery.value.FunctionReturnSequenceType;
 import org.exist.xquery.value.FunctionParameterSequenceType;
 import org.exist.xquery.value.Sequence;
@@ -43,7 +43,6 @@ import org.xmldb.api.base.XMLDBException;
  * @author Wolfgang Meier (wolfgang@exist-db.org)
  *
  */
-@Deprecated
 public class XMLDBGetUserOrGroup extends XMLDBPermissions {
 	protected static final FunctionParameterSequenceType OWNER_COLLECTION_ARG = new FunctionParameterSequenceType("collection-uri", Type.ITEM, Cardinality.EXACTLY_ONE, "The collection URI");
 	protected static final FunctionParameterSequenceType GROUP_COLLECTION_ARG = new FunctionParameterSequenceType("collection-uri", Type.STRING, Cardinality.EXACTLY_ONE, "The collection URI");
@@ -60,7 +59,7 @@ public class XMLDBGetUserOrGroup extends XMLDBPermissions {
                 XMLDBModule.COLLECTION_URI,
 				new SequenceType[] { GROUP_COLLECTION_ARG },
 				GROUP_RETURN_TYPE,
-                PermissionsFunction.FNS_GET_PERMISSIONS
+                PermissionsFunctions.FNS_GET_PERMISSIONS
 			),
 			new FunctionSignature(
 				new QName("get-group", XMLDBModule.NAMESPACE_URI, XMLDBModule.PREFIX),
@@ -68,7 +67,7 @@ public class XMLDBGetUserOrGroup extends XMLDBPermissions {
                 XMLDBModule.COLLECTION_URI,
 				new SequenceType[] { GROUP_COLLECTION_ARG, RESOURCE_ARG },
 				GROUP_RETURN_TYPE,
-                PermissionsFunction.FNS_GET_PERMISSIONS
+                PermissionsFunctions.FNS_GET_PERMISSIONS
 			)
 		};
 	
@@ -79,7 +78,7 @@ public class XMLDBGetUserOrGroup extends XMLDBPermissions {
                 XMLDBModule.COLLECTION_URI,
 				new SequenceType[] { OWNER_COLLECTION_ARG },
 				OWNER_RETURN_TYPE,
-                PermissionsFunction.FNS_GET_PERMISSIONS
+                PermissionsFunctions.FNS_GET_PERMISSIONS
 			),
 			new FunctionSignature(
 				new QName("get-owner", XMLDBModule.NAMESPACE_URI, XMLDBModule.PREFIX),
@@ -87,7 +86,7 @@ public class XMLDBGetUserOrGroup extends XMLDBPermissions {
                 XMLDBModule.COLLECTION_URI,
 				new SequenceType[] { OWNER_COLLECTION_ARG, RESOURCE_ARG },
 				OWNER_RETURN_TYPE,
-                PermissionsFunction.FNS_GET_PERMISSIONS
+                PermissionsFunctions.FNS_GET_PERMISSIONS
 			)
 		};
 	

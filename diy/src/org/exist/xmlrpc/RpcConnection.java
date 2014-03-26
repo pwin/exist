@@ -1,6 +1,6 @@
 /*
  *  eXist Open Source Native XML Database
- *  Copyright (C) 2013 The eXist Project
+ *  Copyright (C) 2001-07 The eXist Project
  *  http://exist-db.org
  *
  *  This program is free software; you can redistribute it and/or
@@ -42,6 +42,7 @@ import org.exist.memtree.NodeImpl;
 import org.exist.numbering.NodeId;
 import org.exist.protocolhandler.embedded.EmbeddedInputStream;
 import org.exist.protocolhandler.xmldb.XmldbURL;
+import org.exist.repo.RepoBackup;
 import org.exist.security.ACLPermission;
 import org.exist.security.AXSchemaType;
 import org.exist.security.Account;
@@ -58,7 +59,6 @@ import org.exist.security.internal.aider.ACEAider;
 import org.exist.security.internal.aider.GroupAider;
 import org.exist.security.internal.aider.UserAider;
 import org.exist.security.xacml.AccessContext;
-import org.exist.source.DBSource;
 import org.exist.source.Source;
 import org.exist.source.StringSource;
 import org.exist.storage.BrokerPool;
@@ -83,6 +83,7 @@ import org.exist.xquery.util.HTTPUtils;
 import org.exist.xquery.value.*;
 import org.exist.xupdate.Modification;
 import org.exist.xupdate.XUpdateProcessor;
+import org.expath.pkg.repo.PackageException;
 import org.w3c.dom.DocumentType;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -622,7 +623,7 @@ public class RpcConnection implements RpcAPI {
             final HashMap<String, Object> desc = new HashMap<String, Object>();
             final Vector<Map<String, Object>> docs = new Vector<Map<String, Object>>();
             final Vector<String> collections = new Vector<String>();
-            if (collection.getPermissionsNoLock().validate(user, Permission.READ)) {
+            if (collection.getPermissions().validate(user, Permission.READ)) {
                 for(final Iterator<DocumentImpl> i = collection.iterator(broker); i.hasNext(); ) {
                     final DocumentImpl doc = i.next();
                     final Permission perms = doc.getPermissions();
@@ -640,7 +641,7 @@ public class RpcConnection implements RpcAPI {
                 }
             }
             
-            final Permission perms = collection.getPermissionsNoLock();
+            final Permission perms = collection.getPermissions();
             desc.put("collections", collections);
             desc.put("documents", docs);
             desc.put("name", collection.getURI().toString());
@@ -775,12 +776,12 @@ public class RpcConnection implements RpcAPI {
             }
             final HashMap<String, Object> desc = new HashMap<String, Object>();
             final List<String> collections = new ArrayList<String>();
-            if (collection.getPermissionsNoLock().validate(user, Permission.READ)) {
+            if (collection.getPermissions().validate(user, Permission.READ)) {
                 for (final Iterator<XmldbURI> i = collection.collectionIterator(broker); i.hasNext(); ) {
                     collections.add(i.next().toString());
                 }
             }
-            final Permission perms = collection.getPermissionsNoLock();
+            final Permission perms = collection.getPermissions();
             desc.put("collections", collections);
             desc.put("name", collection.getURI().toString());
             desc.put("created", Long.toString(collection.getCreationTime()));
@@ -885,7 +886,7 @@ public class RpcConnection implements RpcAPI {
                 LOG.debug("collection " + docUri.removeLastSegment() + " not found!");
                 return null;
             }
-            if(!collection.getPermissionsNoLock().validate(user, Permission.READ)) {
+            if(!collection.getPermissions().validate(user, Permission.READ)) {
                 throw new PermissionDeniedException("Insufficient privileges to read resource");
             }
             doc = collection.getDocumentWithLock(broker, docUri.lastSegment(), Lock.READ_LOCK);
@@ -1627,7 +1628,7 @@ public class RpcConnection implements RpcAPI {
                     }
                 }
             } else {
-                perm = collection.getPermissionsNoLock();
+                perm = collection.getPermissions();
             }
 
             final HashMap<String, Object> result = new HashMap<String, Object>();
@@ -1776,7 +1777,7 @@ public class RpcConnection implements RpcAPI {
             collection = broker.openCollection(collUri, Lock.READ_LOCK);
             if (collection == null)
                 {throw new EXistException("Collection " + collUri + " not found");}
-            if (!collection.getPermissionsNoLock().validate(user, Permission.READ))
+            if (!collection.getPermissions().validate(user, Permission.READ))
                 {throw new PermissionDeniedException(
                         "not allowed to read collection " + collUri);}
             final HashMap<String, List<Object>> result = new HashMap<String, List<Object>>(collection.getDocumentCount(broker));
@@ -1835,14 +1836,14 @@ public class RpcConnection implements RpcAPI {
             collection = broker.openCollection(collUri, Lock.READ_LOCK);
             if (collection == null)
                 {throw new EXistException("Collection " + collUri + " not found");}
-            if (!collection.getPermissionsNoLock().validate(user, Permission.READ))
+            if (!collection.getPermissions().validate(user, Permission.READ))
                 {throw new PermissionDeniedException("not allowed to read collection " + collUri);}
             final HashMap<XmldbURI, List<Object>> result = new HashMap<XmldbURI, List<Object>>(collection.getChildCollectionCount(broker));
             for (final Iterator<XmldbURI> i = collection.collectionIterator(broker); i.hasNext(); ) {
             	final XmldbURI child = i.next();
             	final XmldbURI path = collUri.append(child);
                 final Collection childColl = broker.getCollection(path);
-                final Permission perm = childColl.getPermissionsNoLock();
+                final Permission perm = childColl.getPermissions();
                 final List<Object> tmp = new ArrayList<Object>(3);
                 tmp.add(perm.getOwner().getName());
                 tmp.add(perm.getGroup().getName());
@@ -2922,6 +2923,13 @@ public class RpcConnection implements RpcAPI {
     @Override
     public HashMap<String, Object> execute(final String pathToQuery, final HashMap<String, Object> parameters) throws EXistException, PermissionDeniedException {
         final long startTime = System.currentTimeMillis();
+        final byte[] doc = getBinaryResource(XmldbURI.createInternal(pathToQuery), Permission.READ | Permission.EXECUTE);
+        String xpath = null;
+        try {
+            xpath = new String(doc, DEFAULT_ENCODING);
+        } catch(final UnsupportedEncodingException e) {
+            throw new EXistException("Character encoding issue while reading stored XQuery: " + e.getMessage());
+        }
         
         final String sortBy = (String) parameters.get(RpcAPI.SORT_EXPR);
         
@@ -2931,27 +2939,11 @@ public class RpcConnection implements RpcAPI {
         QueryResult queryResult;
         Sequence resultSeq = null;
         DBBroker broker = null;
-        BinaryDocument xquery = null;
         Source source = null;
         CompiledXQuery compiled = null;
         try {
             broker = factory.getBrokerPool().get(user);
-            
-            xquery = (BinaryDocument)broker.getResource(XmldbURI.createInternal(pathToQuery), Lock.READ_LOCK);
-            
-            if(xquery == null) {
-                throw new EXistException("Resource " + pathToQuery + " not found");
-            }
-
-            if(xquery.getResourceType() != DocumentImpl.BINARY_FILE) {
-                throw new EXistException("Document " + pathToQuery + " is not a binary resource");
-            }
-
-            if(!xquery.getPermissions().validate(user, Permission.READ | Permission.EXECUTE)) {
-                throw new PermissionDeniedException("Insufficient privileges to access resource");
-            }
-            
-            source = new DBSource(broker, xquery, true);
+            source = new StringSource(xpath);
             compiled = compile(broker, source, parameters);
             queryResult = doQuery(broker, compiled, nodes, parameters);
             if(queryResult == null) {
@@ -3021,10 +3013,6 @@ public class RpcConnection implements RpcAPI {
                 broker.getXQueryService().getXQueryPool().returnCompiledXQuery(source, compiled);
             }
             factory.getBrokerPool().release(broker);
-            
-            if(xquery != null) {
-                xquery.getUpdateLock().release(Lock.READ_LOCK);
-            }
         }
         queryResult.result = resultSeq;
         queryResult.queryTime = (System.currentTimeMillis() - startTime);
@@ -3756,43 +3744,7 @@ public class RpcConnection implements RpcAPI {
     }
 
     @Override
-    public boolean chgrp(final String resource, final String ownerGroup) throws EXistException, PermissionDeniedException, URISyntaxException {
-        executeWithBroker(new BrokerOperation<Void>() {
-            @Override
-            public Void withBroker(final DBBroker broker) throws EXistException, URISyntaxException, PermissionDeniedException {
-                PermissionFactory.updatePermissions(broker, XmldbURI.xmldbUriFor(resource), new PermissionModifier(){
-                    @Override
-                    public void modify(Permission permission) throws PermissionDeniedException {
-                        permission.setGroup(ownerGroup);
-                    }
-                });
-                return null;
-            }
-        });
-
-        return true;
-    }
-
-    @Override
-    public boolean chown(final String resource, final String owner) throws EXistException, PermissionDeniedException, URISyntaxException {
-        executeWithBroker(new BrokerOperation<Void>() {
-            @Override
-            public Void withBroker(final DBBroker broker) throws EXistException, URISyntaxException, PermissionDeniedException {
-                PermissionFactory.updatePermissions(broker, XmldbURI.xmldbUriFor(resource), new PermissionModifier(){
-                    @Override
-                    public void modify(Permission permission) throws PermissionDeniedException {
-                        permission.setOwner(owner);
-                    }
-                });
-                return null;
-            }
-        });
-
-        return true;
-    }
-
-    @Override
-    public boolean chown(final String resource, final String owner, final String ownerGroup) throws EXistException, PermissionDeniedException, URISyntaxException {
+    public boolean setPermissions(final String resource, final String owner, final String ownerGroup) throws EXistException, PermissionDeniedException, URISyntaxException {
         executeWithBroker(new BrokerOperation<Void>() {
             @Override
             public Void withBroker(final DBBroker broker) throws EXistException, URISyntaxException, PermissionDeniedException {

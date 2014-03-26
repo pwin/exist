@@ -184,7 +184,6 @@ public class BFile extends BTree {
      * 
      * @return Lock
      */
-    @Override
     public Lock getLock() {
         return lock;
     }
@@ -576,10 +575,6 @@ public class BFile extends BTree {
     }
 
     private SinglePage getSinglePage(long pos) throws IOException {
-        return getSinglePage(pos, false);
-    }
-
-    private SinglePage getSinglePage(long pos, boolean initialize) throws IOException {
         final SinglePage wp = (SinglePage) dataCache.get(pos);
         if (wp == null) {
             final Page page = getPage(pos);
@@ -588,7 +583,7 @@ public class BFile extends BTree {
                 return null;
             }
             final byte[] data = page.read();
-            return new SinglePage(page, data, initialize);
+            return new SinglePage(page, data, false);
         }
         return wp;
     }
@@ -1042,7 +1037,7 @@ public class BFile extends BTree {
 
     protected void undoStoreValue(StoreValueLoggable loggable) {
         try {
-            final SinglePage page = (SinglePage) getDataPage(loggable.page, true);
+            final SinglePage page = (SinglePage) getDataPage(loggable.page);
             removeValueHelper(null, loggable.tid, page);
         } catch (final IOException e) {
             LOG.warn("An IOException occurred during redo: " + e.getMessage(), e);
@@ -1090,11 +1085,11 @@ public class BFile extends BTree {
 
     protected void undoRemoveValue(RemoveValueLoggable loggable) {
         try {
-            final SinglePage page = getSinglePage(loggable.page, true);
+            final SinglePage page = getSinglePage(loggable.page);
             final FixedByteArray data = new FixedByteArray(loggable.oldData);
             storeValueHelper(null, loggable.tid, data, page);
         } catch (final IOException e) {
-            LOG.warn("An IOException occurred during undo: " + e.getMessage(), e);
+            LOG.warn("An IOException occurred during redo: " + e.getMessage(), e);
         }
     }
     
@@ -2536,8 +2531,7 @@ public class BFile extends BTree {
             ph = (BFilePageHeader) page.getPageHeader();
             if(initialize) {
                 offsets = new short[ph.nextTID];
-                if (ph.getStatus() != MULTI_PAGE)
-                    readOffsets();
+                readOffsets();
             }
         }
 
@@ -2620,11 +2614,6 @@ public class BFile extends BTree {
 
         @Override
         public void setOffset(short tid, int offset) {
-            if (offsets == null) {
-                LOG.warn("page: " + page.getPageNum() + " file: " + getFile().getName() + " status: " +
-                    getPageHeader().getStatus());
-                throw new RuntimeException("page offsets not initialized");
-            }
             offsets[tid] = (short)offset;
         }
         

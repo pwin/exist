@@ -1,6 +1,6 @@
 /*
  *  eXist Open Source Native XML Database
- *  Copyright (C) 2000-2014 The eXist Project
+ *  Copyright (C) 2000-2012 The eXist Project
  *  http://exist-db.org
  *
  *  This program is free software; you can redistribute it and/or
@@ -16,12 +16,14 @@
  *  You should have received a copy of the GNU Lesser General Public
  *  License along with this library; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ *  $Id$
  */
 package org.exist.collections;
 
 import org.exist.Indexer;
 import org.exist.Namespaces;
-import org.exist.collections.triggers.DocumentTriggers;
+import org.exist.collections.triggers.DocumentTriggersVisitor;
 import org.exist.dom.DocumentImpl;
 import org.exist.security.Permission;
 import org.exist.storage.DBBroker;
@@ -46,7 +48,7 @@ public class IndexInfo {
 
     private Indexer indexer;
     private DOMStreamer streamer;
-    private DocumentTriggers docTriggers;
+    private DocumentTriggersVisitor triggersVisitor;
     private boolean creating = false;
     private Permission oldDocPermissions = null;
     private CollectionConfiguration collectionConfig;
@@ -60,14 +62,12 @@ public class IndexInfo {
         return indexer;
     }
 
-    //XXX: make protected
-    public void setTriggers(DocumentTriggers triggersVisitor) {
-        this.docTriggers = triggersVisitor;
+    public void setTriggersVisitor(DocumentTriggersVisitor triggersVisitor) {
+        this.triggersVisitor = triggersVisitor;
     }
 
-    //XXX: make protected
-    public DocumentTriggers getTriggers() {
-        return docTriggers;
+    public DocumentTriggersVisitor getTriggersVisitor() {
+        return triggersVisitor;
     }
 
     public void setCreating(boolean creating) {
@@ -90,8 +90,10 @@ public class IndexInfo {
         if(entityResolver != null) {
             reader.setEntityResolver(entityResolver);
         }
-        final LexicalHandler lexicalHandler = docTriggers == null ? indexer : docTriggers;
-        final ContentHandler contentHandler = docTriggers == null ? indexer : docTriggers;
+        final LexicalHandler lexicalHandler = triggersVisitor == null ?
+            indexer : triggersVisitor.getLexicalInputHandler();
+        final ContentHandler contentHandler = triggersVisitor == null ?
+            indexer : triggersVisitor.getInputHandler();
         reader.setProperty(Namespaces.SAX_LEXICAL_HANDLER, lexicalHandler);
         reader.setContentHandler(contentHandler);
         reader.setErrorHandler(indexer);
@@ -99,12 +101,12 @@ public class IndexInfo {
 
     void setDOMStreamer(DOMStreamer streamer) {
         this.streamer = streamer;
-        if (docTriggers == null) {
+        if (triggersVisitor == null) {
             streamer.setContentHandler(indexer);
             streamer.setLexicalHandler(indexer);
         } else {
-            streamer.setContentHandler(docTriggers);
-            streamer.setLexicalHandler(docTriggers);
+            streamer.setContentHandler(triggersVisitor.getInputHandler());
+            streamer.setLexicalHandler(triggersVisitor.getLexicalInputHandler());
         }
     }
 

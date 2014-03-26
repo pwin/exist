@@ -26,9 +26,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.apache.log4j.Logger;
+
 import org.exist.protocolhandler.xmldb.XmldbURL;
-import org.exist.security.Subject;
 import org.exist.storage.BrokerPool;
+import org.exist.storage.io.BlockingOutputStream;
 
 /**
  *  Wrap EmbeddedDownload class into a thread for EmbeddedInputStream.
@@ -41,8 +42,6 @@ public class EmbeddedDownloadThread extends Thread {
     
     private XmldbURL xmldbURL;
     private OutputStream bos;
-    
-    private Subject subject = null;
     private BrokerPool brokerPool;
     
     /**
@@ -54,13 +53,6 @@ public class EmbeddedDownloadThread extends Thread {
     public EmbeddedDownloadThread(XmldbURL url, OutputStream bos) {
         xmldbURL = url;
         this.bos = bos;
-        
-        try {
-            BrokerPool pool = BrokerPool.getInstance(url.getInstanceName());
-            subject = pool.getSubject();
-        } catch (Throwable e) {
-            //e.printStackTrace();
-        }
     }
 
     /**
@@ -73,15 +65,6 @@ public class EmbeddedDownloadThread extends Thread {
         xmldbURL = url;
         this.bos = bos;
         this.brokerPool=brokerPool;
-        
-        try {
-            if (brokerPool == null)
-                brokerPool = BrokerPool.getInstance(url.getInstanceName());
-            
-            subject = brokerPool.getSubject();
-        } catch (Throwable e) {
-            //e.printStackTrace();
-        }
     }
     
     /**
@@ -93,7 +76,7 @@ public class EmbeddedDownloadThread extends Thread {
         try {
             final EmbeddedDownload ed = new EmbeddedDownload();
             ed.setBrokerPool(brokerPool);
-            ed.stream(xmldbURL, bos, subject);
+            ed.stream(xmldbURL, bos);
             
         } catch (IOException ex) {
             logger.error(ex);

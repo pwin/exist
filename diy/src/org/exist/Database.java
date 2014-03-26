@@ -1,6 +1,6 @@
 /*
  *  eXist Open Source Native XML Database
- *  Copyright (C) 2001-2014 The eXist Project
+ *  Copyright (C) 2010 The eXist Project
  *  http://exist-db.org
  *  
  *  This program is free software; you can redistribute it and/or
@@ -16,16 +16,18 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *  
+ *  $Id$
  */
 package org.exist;
 
 import java.io.File;
 import java.util.Collection;
+import java.util.Observer;
 
 import org.exist.collections.CollectionConfigurationManager;
 import org.exist.collections.triggers.CollectionTrigger;
 import org.exist.collections.triggers.DocumentTrigger;
-import org.exist.collections.triggers.TriggerProxy;
 import org.exist.debuggee.Debuggee;
 import org.exist.dom.SymbolTable;
 import org.exist.indexing.IndexManager;
@@ -37,7 +39,6 @@ import org.exist.security.SecurityManager;
 import org.exist.security.Subject;
 import org.exist.storage.CacheManager;
 import org.exist.storage.DBBroker;
-import org.exist.storage.MetaStorage;
 import org.exist.storage.NotificationService;
 import org.exist.storage.ProcessMonitor;
 import org.exist.storage.txn.TransactionManager;
@@ -48,139 +49,131 @@ import org.exist.xquery.PerformanceStats;
  * Database controller, all operation synchronized by this instance. (singleton)
  * 
  * @author <a href="mailto:shabanovd@gmail.com">Dmitriy Shabanov</a>
- * 
+ *
  */
 public interface Database {
 
-    // TODO: javadocs
+	//TODO: javadocs
+	
+	public String getId(); 
 
-    public String getId();
+	public void addObserver(Observer o);
+	
+	/**
+	 * 
+	 * @return SecurityManager
+	 */
+	public SecurityManager getSecurityManager();
 
-    /**
-     * 
-     * @return SecurityManager
-     */
-    public SecurityManager getSecurityManager();
+	/**
+	 * 
+	 * @return IndexManager
+	 */
+	public IndexManager getIndexManager();
 
-    /**
-     * 
-     * @return IndexManager
-     */
-    public IndexManager getIndexManager();
+	/**
+	 * 
+	 * @return TransactionManager
+	 */
+	public TransactionManager getTransactionManager();
 
-    /**
-     * 
-     * @return TransactionManager
-     */
-    public TransactionManager getTransactionManager();
-
-    /**
-     * 
-     * @return CacheManager
-     */
-    public CacheManager getCacheManager();
-
-    /**
+	/**
+	 * 
+	 * @return CacheManager
+	 */
+	public CacheManager getCacheManager();
+	
+    /** 
      * 
      * @return Scheduler
      */
     public Scheduler getScheduler();
 
-    /**
+
+	/**
 	 * 
 	 */
-    public void shutdown();
+	public void shutdown();
 
-    /**
-     * 
-     * @return Subject
-     */
-    public Subject getSubject();
+	/**
+	 * 
+	 * @return Subject
+	 */
+	public Subject getSubject();
 
-    /**
-     * 
-     * @param subject
-     */
-    public boolean setSubject(Subject subject);
+	/**
+	 * 
+	 * @param subject
+	 */
+	public boolean setSubject(Subject subject);
 
-    // TODO: remove 'throws EXistException'?
-    public DBBroker getBroker() throws EXistException; 
+	public DBBroker getBroker() throws EXistException; //TODO: remove 'throws EXistException'?
+	
+	public DBBroker authenticate(String username, Object credentials) throws AuthenticationException;
+	
+	/*
+	 * @Deprecated ?
+	 * try {
+	 * 	broker = database.authenticate(account, credentials);
+	 * 
+	 * 	broker1 = database.get();
+	 * 	broker2 = database.get();
+	 * 	...
+	 * 	brokerN = database.get();
+	 * 
+	 * } finally {
+	 * 	database.release(broker);
+	 * }
+	 */
+	public DBBroker get(Subject subject) throws EXistException;   
+	public DBBroker getActiveBroker(); //throws EXistException;
+	public void release(DBBroker broker);
+	
+	/**
+	 *  Returns the number of brokers currently serving requests for the database instance. 
+	 *
+	 *	@return The brokers count
+	 */
+	public int countActiveBrokers();
+	
+	/**
+	 * 
+	 * @return Debuggee
+	 */
+	public Debuggee getDebuggee();
 
-    public DBBroker authenticate(String username, Object credentials) throws AuthenticationException;
+	public PerformanceStats getPerformanceStats();
 
-    /*
-     * @Deprecated ? 
-     * 
-     * try { 
-     *     broker = database.authenticate(account, credentials);
-     * 
-     *     broker1 = database.get(); 
-     *     broker2 = database.get(); 
-     *     ... 
-     *     brokerN = database.get();
-     * 
-     * } finally { 
-     *     database.release(broker);
-     * }
-     */
-    public DBBroker get(Subject subject) throws EXistException;
+	//old configuration
+	public Configuration getConfiguration();
 
-    public DBBroker getActiveBroker(); // throws EXistException;
+	public NodeIdFactory getNodeFactory();
 
-    public void release(DBBroker broker);
+	public File getStoragePlace();
 
-    /**
-     * Returns the number of brokers currently serving requests for the database
-     * instance.
-     * 
-     * @return The brokers count
-     */
-    public int countActiveBrokers();
+	public CollectionConfigurationManager getConfigurationManager();
 
-    /**
-     * 
-     * @return Debuggee
-     */
-    public Debuggee getDebuggee();
+	/**
+	 * Master document triggers.
+	 */
+	public Collection<DocumentTrigger> getDocumentTriggers();
 
-    public PerformanceStats getPerformanceStats();
+	public DocumentTrigger getDocumentTrigger();
 
-    // old configuration
-    public Configuration getConfiguration();
+	/**
+	 * Master Collection triggers.
+	 */
+	public Collection<CollectionTrigger> getCollectionTriggers();
 
-    public NodeIdFactory getNodeFactory();
+	public CollectionTrigger getCollectionTrigger();
 
-    public File getStoragePlace();
+	public ProcessMonitor getProcessMonitor();
 
-    public CollectionConfigurationManager getConfigurationManager();
+	public boolean isReadOnly();
 
-    /**
-     * Master document triggers.
-     */
-    public Collection<TriggerProxy<? extends DocumentTrigger>> getDocumentTriggers();
+	public NotificationService getNotificationService();
+	
+	public PluginsManager getPluginsManager();
 
-    // public DocumentTrigger getDocumentTrigger();
-
-    /**
-     * Master Collection triggers.
-     */
-    public Collection<TriggerProxy<? extends CollectionTrigger>> getCollectionTriggers();
-
-    // public CollectionTrigger getCollectionTrigger();
-
-    public void registerDocumentTrigger(Class<? extends DocumentTrigger> clazz);
-
-    public void registerCollectionTrigger(Class<? extends CollectionTrigger> clazz);
-
-    public ProcessMonitor getProcessMonitor();
-
-    public boolean isReadOnly();
-
-    public NotificationService getNotificationService();
-
-    public PluginsManager getPluginsManager();
-
-    public SymbolTable getSymbols();
-
-    public MetaStorage getMetaStorage();
+	public SymbolTable getSymbols();
 }

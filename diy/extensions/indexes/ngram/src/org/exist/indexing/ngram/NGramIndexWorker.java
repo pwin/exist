@@ -76,7 +76,10 @@ import org.exist.storage.lock.Lock;
 import org.exist.storage.txn.Txn;
 import org.exist.util.*;
 import org.exist.util.serializer.AttrList;
-import org.exist.xquery.*;
+import org.exist.xquery.Constants;
+import org.exist.xquery.TerminatedException;
+import org.exist.xquery.XPathException;
+import org.exist.xquery.XQueryContext;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -343,7 +346,7 @@ public class NGramIndexWorker implements OrderedValuesIndex, QNamedKeysIndex {
     }
 
     @Override
-    public void removeCollection(Collection collection, DBBroker broker, boolean reindex) {
+    public void removeCollection(Collection collection, DBBroker broker) {
         if (LOG.isDebugEnabled())
             LOG.debug("Dropping NGram index for collection " + collection.getURI());
         final Lock lock = index.db.getLock();
@@ -512,7 +515,7 @@ public class NGramIndexWorker implements OrderedValuesIndex, QNamedKeysIndex {
     }
 
     @Override
-    public StoredNode getReindexRoot(StoredNode node, NodePath path, boolean insert, boolean includeSelf) {
+    public StoredNode getReindexRoot(StoredNode node, NodePath path, boolean includeSelf) {
         if (node.getNodeType() == Node.ATTRIBUTE_NODE)
             return null;
         IndexSpec indexConf = node.getDocument().getCollection().getIndexConfiguration(broker);
@@ -635,11 +638,6 @@ public class NGramIndexWorker implements OrderedValuesIndex, QNamedKeysIndex {
         if (indexConf != null)
             config = (Map<QName, ?>) indexConf.getCustomIndexSpec(org.exist.indexing.ngram.NGramIndex.ID);
         mode = newMode;
-    }
-
-    @Override
-    public QueryRewriter getQueryRewriter(XQueryContext context) {
-        return null;
     }
 
     private class NGramStreamListener extends AbstractStreamListener {

@@ -98,7 +98,6 @@ public class FunctionTrace extends BasicFunction {
             
         } else {
         	logger.info("Entering the " + SystemModule.PREFIX + ":trace XQuery function");
-            context.getProfiler().reset();
             final MemTreeBuilder builder = context.getDocumentBuilder();
 
             builder.startDocument();

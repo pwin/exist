@@ -201,11 +201,12 @@ public class HttpRequestWrapper implements RequestWrapper {
 
         try {
 
-            final List<FileItem> items = upload.parseRequest(servletRequest);
+            final List items = upload.parseRequest(servletRequest);
 
             // Iterate over all mult-part formdata items and
             // add all data (field and files) to parmeters
-            for (final FileItem item : items) {
+            for (final Object i : items) {
+                final FileItem item = (FileItem) i;
                 addParameter(params, item.getFieldName(), item);
             }
 

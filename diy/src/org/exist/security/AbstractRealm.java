@@ -430,12 +430,7 @@ public abstract class AbstractRealm implements Realm, Configurable {
             }
         }
 
-        final String passwd = account.getPassword();
-        if (passwd != null) {
-            // if password is empty, ignore it to keep the old one
-            // assumes that empty passwords should never be allowed
-            updatingAccount.setPassword(account.getPassword());
-        }
+        updatingAccount.setPassword(account.getPassword());
         updatingAccount.setUserMask(account.getUserMask());
         
         //update the metadata
