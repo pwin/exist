@@ -2,14 +2,15 @@
 <!-- ======================================================================= -->
 <!-- eXist build file : Build installer                                      -->
 <!-- ======================================================================= -->
-<!-- $Id$ -->
+
 <project basedir="../.." default="installer" name="Build installer">
   
     <description>Build installer</description>
 
 	<!-- import common targets -->
 	<import file="../../build.xml"/>
-	
+	<import file="../../build/scripts/macosx.xml"/>
+    
     <taskdef resource="net/sf/antcontrib/antcontrib.properties">
         <classpath>
             <pathelement location="tools/ant/lib/ant-contrib-1.0b3.jar"/>
@@ -17,13 +18,34 @@
     </taskdef>
     
 	<property name="apps.dir" value="installer/apps"/>
+    <property name="installer.scripts" value="installer/scripts"/>
+    <property name="installer.mac.icon" value="${installer.scripts}/icon.icns"/>
+        
     <property file="installer/apps.properties"/>
     
 	<target name="commandline-installer">
         <!--ant antfile="build.xml" dir="tools/izpack"/-->
     </target>
 
-    <target depends="all,samples,xars,copy_scripts" name="prepare-installer">
+    <target name="macosx" depends="install-appbundler">
+        <taskdef 
+            name="bundleapp" 
+            classname="com.oracle.appbundler.AppBundlerTask" 
+            classpath="${appbundler.jar}" />
+        <bundleapp
+            outputdirectory="${installer.scripts}"
+            name="eXist-db"
+            displayname="eXist-db"
+            identifier="org.exist.start.Main"
+            mainclassname="org.exist.start.Main"
+            shortversion="${project.version.numeric}"
+            icon="${installer.mac.icon}">
+            <classpath file="start.jar"/>
+            <option value="-Dexist.home=$APP_ROOT/.."/>
+        </bundleapp>
+    </target>
+    
+    <target depends="all,samples,xars,copy_scripts,macosx" name="prepare-installer">
 	    <path id="izpackdeps">
 	        <fileset dir="${izpack.dir}/lib/">
 	            <include name="*.jar"/>
@@ -38,15 +60,6 @@
         <delete dir="${jetty.dir}/work/Jetty__8080__exist"/>
         <touch file="webapp/WEB-INF/logs/exist.log"/>
         <touch file="webapp/WEB-INF/logs/xmldb.log"/>
-
-        <copy file="installer/scripts/eXist-db.mac/Contents/Info.plist.tmpl"
-              tofile="installer/scripts/eXist-db.mac/Contents/Info.plist" filtering="true"
-                overwrite="true">
-            <filterset>
-                <filter token="vmoptions" value=""/>
-                <filter token="classpath" value="$APP_PACKAGE/.."/>
-            </filterset>
-        </copy>
     </target>
 
     <target name="clean-installer-xars-dir" description="Remove installer apps.dir directory">
@@ -128,10 +141,12 @@
     
     <target depends="prepare-installer,launcher-exe,commandline-installer" name="installer" description="Create installer">
         <echo message="Calling IzPack to create installer ..."/>
-        <property name="inst-jar" value="installer/${project.name}-setup-${project.version}-rev${svn.revision}.jar"/>
+        <property name="inst-jar" value="installer/${project.name}-setup-${project.version}-rev${git.commit}.jar"/>
         <izpack input="installer/install.xml"
             output="${inst-jar}"
             basedir="." izPackDir="${izpack.dir}"
+            compression="bzip2"
+            compressionlevel="9"
             installerType="standard"/>
         
         <!--mkdir dir="installer/temp"/>
@@ -158,23 +173,23 @@
             classname="net.sf.launch4j.ant.Launch4jTask"
             classpath="${launch4j.dir}/launch4j.jar:${launch4j.dir}/lib/xstream.jar" />
 
-        <echo message="${svn.revision}"/>
-        <launch4j configFile="installer/launch4j-start.xml" fileVersion="${project.version.numeric}.${svn.revision}"
-            txtFileVersion="${project.version}-rev${svn.revision}"
-            productVersion="${project.version.numeric}.${svn.revision}"/-->
+        <echo message="${git.commit}"/>
+        <launch4j configFile="installer/launch4j-start.xml" fileVersion="${project.version.numeric}.${git.commit}"
+            txtFileVersion="${project.version}-rev${git.commit}"
+            productVersion="${project.version.numeric}.${git.commit}"/-->
     </target>
 
 	<target depends="installer" name="installer-exe" description="Create .exe from installer">
 		<taskdef name="launch4j"
 			classname="net.sf.launch4j.ant.Launch4jTask"
 			classpath="${launch4j.dir}/launch4j.jar:${launch4j.dir}/lib/xstream.jar" />
-		<property name="inst-jar" value="installer/${project.name}-setup-${project.version}-rev${svn.revision}.jar"/>
-		<property name="inst-exe" value="installer/${project.name}-setup-${project.version}-rev${svn.revision}.exe"/>
+		<property name="inst-jar" value="installer/${project.name}-setup-${project.version}-rev${git.commit}.jar"/>
+		<property name="inst-exe" value="installer/${project.name}-setup-${project.version}-rev${git.commit}.exe"/>
 
 		<launch4j configFile="installer/launch4j.xml" jar="${inst-jar}" 
-			outfile="${inst-exe}" fileVersion="${project.version.numeric}.${svn.revision}"
-			txtFileVersion="${project.version}-rev${svn.revision}"
-			productVersion="${project.version.numeric}.${svn.revision}"/>
+			outfile="${inst-exe}" fileVersion="${project.version.numeric}.${git.commit}"
+			txtFileVersion="${project.version}-rev${git.commit}"
+			productVersion="${project.version.numeric}.${git.commit}"/>
 	</target>
 
     <target name="copy_scripts">

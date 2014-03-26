@@ -92,7 +92,7 @@ import org.expath.pkg.repo.PackageException;
  */
 //TODO : in the future, separate the design between the Map of DBInstances and their non static implementation
 @ConfigurationClass("pool")
-public class BrokerPool extends Observable implements Database {
+public class BrokerPool implements Database {
 
     private final static Logger LOG = Logger.getLogger(BrokerPool.class);
 
@@ -617,9 +617,6 @@ public class BrokerPool extends Observable implements Database {
 		Boolean aBoolean;
 		final NumberFormat nf = NumberFormat.getNumberInstance();
 
-        if (statusObserver != null)
-            {addObserver(statusObserver);}
-
         this.classLoader = Thread.currentThread().getContextClassLoader();
 
 		//TODO : ensure that the instance name is unique ?
@@ -813,7 +810,11 @@ public class BrokerPool extends Observable implements Database {
         synchronized (this) {
         	try {
         		statusReporter = new StatusReporter(SIGNAL_STARTUP);
-        		statusReporter.start();
+                if (statusObserver != null) {
+                    statusReporter.addObserver(statusObserver);
+                }
+                Thread statusThread = new Thread(statusReporter);
+        		statusThread.start();
 
         		// statusReporter may have to be terminated or the thread can/will hang.
         		try {
@@ -954,6 +955,7 @@ public class BrokerPool extends Observable implements Database {
         					//XXX: don't do if READONLY mode
         					if(recovered) {
         						if(!exportOnly) {
+                                    reportStatus("Reindexing database files...");
         							try {
         								broker.repair();
         							} catch (final PermissionDeniedException e) {
@@ -1169,9 +1171,8 @@ public class BrokerPool extends Observable implements Database {
             final CollectionConfigurationManager manager = getConfigurationManager();
             final CollectionConfiguration collConf = manager.getOrCreateCollectionConfiguration(broker, collection);
             
-            final Class c = ConfigurationDocumentTrigger.class;
-            final DocumentTriggerProxy triggerProxy = new DocumentTriggerProxy((Class<DocumentTrigger>)c, collection.getURI());
-            collConf.getDocumentTriggerProxies().add(triggerProxy);  
+            final DocumentTriggerProxy triggerProxy = new DocumentTriggerProxy(ConfigurationDocumentTrigger.class); //, collection.getURI());
+            collConf.documentTriggers().add(triggerProxy);
         }
     }
 
@@ -1515,6 +1516,13 @@ public class BrokerPool extends Observable implements Database {
 		return securityManager.getGuestSubject();
     }
 
+    /**
+     *  Get active broker for current thread
+     * 
+     * @return Database broker
+     * @throws RuntimeException NO broker available for current thread.
+     * 
+     */
 	public DBBroker getActiveBroker() { //throws EXistException {
 		//synchronized(this) {
 			//Try to get an active broker
@@ -1539,6 +1547,7 @@ public class BrokerPool extends Observable implements Database {
 						}
 					}
 				});
+                LOG.debug(sb.toString());
 				throw new RuntimeException(sb.toString());
 			}
 			return broker;
@@ -1886,7 +1895,11 @@ public class BrokerPool extends Observable implements Database {
             	// these may be used and set by other threads for the same or some other purpose
             	// (unlikely). Take no chances.
                 statusReporter = new StatusReporter(SIGNAL_SHUTDOWN);
-                statusReporter.start();
+                if (statusObserver != null) {
+                    statusReporter.addObserver(statusObserver);
+                }
+                Thread statusThread = new Thread(statusReporter);
+                statusThread.start();
 
                 // release transaction log to allow remaining brokers to complete
                 // their job
@@ -2084,7 +2097,7 @@ public class BrokerPool extends Observable implements Database {
     	System.err.println(s);
     }
 
-    private class StatusReporter extends Thread {
+    private class StatusReporter extends Observable implements Runnable {
 
         private String status;
         private volatile boolean terminate = false;
@@ -2095,27 +2108,27 @@ public class BrokerPool extends Observable implements Database {
 
         public synchronized void setStatus(String status) {
             this.status = status;
-            BrokerPool.this.setChanged();
-            BrokerPool.this.notifyObservers(status);
+            this.setChanged();
+            this.notifyObservers(status);
         }
 
-        public void terminate() {
+        public synchronized void terminate() {
             this.terminate = true;
-            interrupt();
+            this.notifyAll();
         }
 
         public void run() {
             while (!terminate) {
                 synchronized (this) {
                     try {
-                        wait(300);
+                        wait(500);
                     } catch (final InterruptedException e) {
                         // nothing to do
                     }
                 }
+                this.setChanged();
+                this.notifyObservers(status);
             }
-            BrokerPool.this.setChanged();
-            BrokerPool.this.notifyObservers(status);
         }
     }
 
@@ -2124,57 +2137,36 @@ public class BrokerPool extends Observable implements Database {
 		return new File((String) conf.getProperty(BrokerPool.PROPERTY_DATA_DIR));
 	}
 
-	private final List<DocumentTrigger> documentTriggers = new ArrayList<DocumentTrigger>(); 
-	private final List<CollectionTrigger> collectionTriggers = new ArrayList<CollectionTrigger>(); 
+    private final List<TriggerProxy<? extends DocumentTrigger>> documentTriggers = new ArrayList<TriggerProxy<? extends DocumentTrigger>>();
+    private final List<TriggerProxy<? extends CollectionTrigger>> collectionTriggers = new ArrayList<TriggerProxy<? extends CollectionTrigger>>();
 
-	@Override
-	public List<DocumentTrigger> getDocumentTriggers() {
-		return documentTriggers;
-	}
+    @Override
+    public List<TriggerProxy<? extends DocumentTrigger>> getDocumentTriggers() {
+        return documentTriggers;
+    }
 
-	@Override
-	public List<CollectionTrigger> getCollectionTriggers() {
-		return collectionTriggers;
-	}
-	
-	private DocumentTriggersVisitor docsTriggersVisitor = new DocumentTriggersVisitor(null, new DocumentTriggers());
-	private CollectionTriggersVisitor colsTriggersVisitor = new CollectionTriggersVisitor(null, new CollectionTriggers());
+    @Override
+    public List<TriggerProxy<? extends CollectionTrigger>> getCollectionTriggers() {
+        return collectionTriggers;
+    }
 
-	@Override
-	public DocumentTrigger getDocumentTrigger() {
-		return docsTriggersVisitor;
-	}
+    @Override
+    public void registerDocumentTrigger(Class<? extends DocumentTrigger> clazz) {
+        documentTriggers.add(new DocumentTriggerProxy(clazz));
+    }
 
-	@Override
-	public CollectionTrigger getCollectionTrigger() {
-		return colsTriggersVisitor;
-	}
-	
-	class DocumentTriggers extends DocumentTriggerProxies {
-
-		@Override
-	    public DocumentTriggersVisitor instantiateVisitor(DBBroker broker) {
-	        return new DocumentTriggersVisitor(broker, this);
-	    }
-
-		protected List<DocumentTrigger> instantiateTriggers(DBBroker broker) throws TriggerException {
-	        return getDocumentTriggers();
-	    }
-	}
-
-	class CollectionTriggers extends CollectionTriggerProxies {
-
-		@Override
-	    public CollectionTriggersVisitor instantiateVisitor(DBBroker broker) {
-	        return new CollectionTriggersVisitor(broker, this);
-	    }
-
-		protected List<CollectionTrigger> instantiateTriggers(DBBroker broker) throws TriggerException {
-	        return getCollectionTriggers();
-	    }
-	}
-
+    @Override
+    public void registerCollectionTrigger(Class<? extends CollectionTrigger> clazz) {
+        collectionTriggers.add(new CollectionTriggerProxy(clazz));
+    }
+	    
 	public PluginsManager getPluginsManager() {
 		return pluginManager;
+	}
+	
+	protected MetaStorage metaStorage = null;
+	
+	public MetaStorage getMetaStorage() {
+	    return metaStorage;
 	}
 }

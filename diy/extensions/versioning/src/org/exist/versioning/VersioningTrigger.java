@@ -113,11 +113,8 @@ public class VersioningTrigger extends FilteringTrigger {
         LOG.debug("checkForConflicts: " + checkForConflicts);
     }
 
-    public void prepare(int event, DBBroker broker, Txn transaction, XmldbURI documentPath, DocumentImpl existingDocument)
-    throws TriggerException {
-
-    }
-
+    //XXX: is it safe to delete?
+    @Deprecated
     public void finish(int event, DBBroker broker, Txn transaction, XmldbURI documentPath, DocumentImpl document) {
 
     	if (documentPath == null || documentPath.startsWith(VERSIONS_COLLECTION))
@@ -295,7 +292,7 @@ public class VersioningTrigger extends FilteringTrigger {
                 vDoc = vCollection.getDocument(broker, binUri);
             } else {
                 vDoc = new DocumentImpl(broker.getBrokerPool(), vCollection, XmldbURI.createInternal(vFileName));
-                vDoc.copyOf(document);
+                vDoc.copyOf(document, true);
                 vDoc.copyChildren(document);
             }
             

@@ -24,12 +24,17 @@ package org.exist.indexing;
 import org.exist.collections.Collection;
 import org.exist.dom.*;
 import org.exist.storage.DBBroker;
+import org.exist.storage.MetaStorage;
+import org.exist.storage.MetaStreamListener;
 import org.exist.storage.NodePath;
 import org.exist.storage.txn.Txn;
 import org.exist.util.DatabaseConfigurationException;
+import org.exist.xquery.QueryRewriter;
+import org.exist.xquery.XQueryContext;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -191,10 +196,10 @@ public class IndexController {
      * @param collection the collection to remove
      * @param broker the broker that will perform the operation
      */
-    public void removeCollection(Collection collection, DBBroker broker)
+    public void removeCollection(Collection collection, DBBroker broker, boolean reindex)
             throws PermissionDeniedException {
         for (final IndexWorker indexWorker : indexWorkers.values()) {
-            indexWorker.removeCollection(collection, broker);
+            indexWorker.removeCollection(collection, broker, reindex);
         }
     }
 
@@ -219,36 +224,33 @@ public class IndexController {
     /**
      * When adding or removing nodes to or from the document tree, it might become
      * necessary to re-index some parts of the tree, in particular if indexes are defined
-     * on mixed content nodes. This method will call
-     * {@link IndexWorker#getReindexRoot(org.exist.dom.StoredNode, org.exist.storage.NodePath, boolean)}
-     * on each configured index. It will then return the top-most root.
+     * on mixed content nodes. This method will return the top-most root.
      *
      * @param node the node to be modified.
      * @param path the NodePath of the node
      * @return the top-most root node to be re-indexed
      */
-    public StoredNode getReindexRoot(StoredNode node, NodePath path) {
-        return getReindexRoot(node, path, false);
+    public StoredNode getReindexRoot(StoredNode node, NodePath path, boolean insert) {
+        return getReindexRoot(node, path, insert, false);
     }
 
     /**
      * When adding or removing nodes to or from the document tree, it might become
      * necessary to re-index some parts of the tree, in particular if indexes are defined
-     * on mixed content nodes. This method will call
-     * {@link IndexWorker#getReindexRoot(org.exist.dom.StoredNode, org.exist.storage.NodePath, boolean)}
-     * on each configured index. It will then return the top-most root.
+     * on mixed content nodes. This method will return the top-most root.
      *
      * @param node the node to be modified.
      * @param path path the NodePath of the node
      * @param includeSelf if set to true, the current node itself will be included in the check
      * @return the top-most root node to be re-indexed
      */
-    public StoredNode getReindexRoot(StoredNode node, NodePath path, boolean includeSelf) {
+    public StoredNode getReindexRoot(StoredNode node, NodePath path, boolean insert, boolean includeSelf) {
         StoredNode next, top = null;
         for (final IndexWorker indexWorker : indexWorkers.values()) {
-            next = indexWorker.getReindexRoot(node, path, includeSelf);
-            if (next != null && (top == null || top.getNodeId().isDescendantOf(next.getNodeId())))
-                {top = next;}
+            next = indexWorker.getReindexRoot(node, path, insert, includeSelf);
+            if (next != null && (top == null || top.getNodeId().isDescendantOf(next.getNodeId()))) {
+                top = next;
+            }
         }
         if (top != null && top.getNodeId().equals(node.getNodeId()))
             {top = node;}
@@ -391,5 +393,22 @@ public class IndexController {
             }
         }
         return first;
+    }
+
+    public List<QueryRewriter> getQueryRewriters(XQueryContext context) {
+        List<QueryRewriter> rewriters = new ArrayList<QueryRewriter>(5);
+        for (final IndexWorker indexWorker : indexWorkers.values()) {
+            QueryRewriter rewriter = indexWorker.getQueryRewriter(context);
+            if (rewriter != null) {
+                rewriters.add(rewriter);
+            }
+        }
+        return rewriters;
+    }
+    
+    public void streamMetas(MetaStreamListener listener) {
+        MetaStorage ms = broker.getDatabase().getMetaStorage();
+        if (ms != null)
+            ms.streamMetas(currentDoc, listener);
     }
 }

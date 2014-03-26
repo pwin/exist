@@ -24,6 +24,7 @@ import org.exist.storage.io.VariableByteInput;
 import org.exist.storage.txn.Txn;
 import org.exist.util.DatabaseConfigurationException;
 import org.exist.util.Occurrences;
+import org.exist.xquery.QueryRewriter;
 import org.exist.xquery.TerminatedException;
 import org.exist.xquery.XQueryContext;
 import org.w3c.dom.NodeList;
@@ -59,6 +60,11 @@ public class IndexStatisticsWorker implements IndexWorker {
         return index.getIndexName();
     }
 
+    @Override
+    public QueryRewriter getQueryRewriter(XQueryContext context) {
+        return null;
+    }
+
     public Object configure(IndexController controller, NodeList configNodes, Map<String, String> namespaces) throws DatabaseConfigurationException {
         return null;
     }
@@ -86,7 +92,7 @@ public class IndexStatisticsWorker implements IndexWorker {
         return mode;
     }
 
-    public StoredNode getReindexRoot(StoredNode node, NodePath path, boolean includeSelf) {
+    public StoredNode getReindexRoot(StoredNode node, NodePath path, boolean insert, boolean includeSelf) {
         return null;
     }
 
@@ -153,7 +159,7 @@ public class IndexStatisticsWorker implements IndexWorker {
         }
     }
 
-    public void removeCollection(Collection collection, DBBroker broker) {
+    public void removeCollection(Collection collection, DBBroker broker, boolean reindex) {
     }
 
     public boolean checkIndex(DBBroker broker) {

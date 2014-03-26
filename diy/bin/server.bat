@@ -22,11 +22,11 @@ rem @WINDOWS_INSTALLER_1@
 
 echo WARNING: JAVA_HOME not found in your environment.
 echo.
-echo Please, set the JAVA_HOME variable in your enviroment to match the
+echo Please, set the JAVA_HOME variable in your environment to match the
 echo location of the Java Virtual Machine you want to use in case of run fail.
 echo.
 
-rem :gotJavaHome
+:gotJavaHome
 rem @WINDOWS_INSTALLER_2@
 
 if not "%EXIST_HOME%" == "" goto gotExistHome
@@ -47,7 +47,7 @@ goto :eof
 set MX=1024
 rem @WINDOWS_INSTALLER_3@
 
-set JAVA_ENDORSED_DIRS="%EXIST_HOME%"\lib\endorsed
+set JAVA_ENDORSED_DIRS="%EXIST_HOME%\lib\endorsed"
 set JAVA_OPTS="-Xms128m -Xmx%MX%m -Dfile.encoding=UTF-8 -Djava.endorsed.dirs=%JAVA_ENDORSED_DIRS%"
 
 set BATCH.D="%EXIST_HOME%\bin\batch.d"
