@@ -50,3 +50,97 @@
 2014-03-26 09:32:18,223 [Thread-4] INFO  (JettyStart.java [lifeCycleStopping]:419) - Jetty server stopping... 
 2014-03-26 09:32:18,356 [Shutdown] INFO  (JettyStart.java [shutdown]:367) - Database shutdown: stopping server in 1sec ... 
 2014-03-26 09:32:19,420 [Thread-4] INFO  (JettyStart.java [lifeCycleStopped]:425) - Jetty server stopped 
+2014-03-26 20:13:09,781 [main] INFO  (JettyStart.java [run]:117) - Configuring eXist from D:\work_on_OpenShift\exist3\exist\diy\conf.xml 
+2014-03-26 20:13:09,801 [main] INFO  (JettyStart.java [run]:119) - Running with Java 1.7.0_51 [Oracle Corporation (Java HotSpot(TM) Client VM) in C:\Program Files (x86)\Java\jre7] 
+2014-03-26 20:13:09,802 [main] INFO  (JettyStart.java [run]:125) - Running as user 'swainston' 
+2014-03-26 20:13:09,804 [main] INFO  (JettyStart.java [run]:128) - [eXist Version : 2.1] 
+2014-03-26 20:13:09,804 [main] INFO  (JettyStart.java [run]:130) - [eXist Build : 20140326] 
+2014-03-26 20:13:09,805 [main] INFO  (JettyStart.java [run]:132) - [eXist Home : unknown] 
+2014-03-26 20:13:09,805 [main] INFO  (JettyStart.java [run]:134) - [SVN Revision : 0000] 
+2014-03-26 20:13:09,806 [main] INFO  (JettyStart.java [run]:137) - [Operating System : Windows 7 6.1 x86] 
+2014-03-26 20:13:09,806 [main] INFO  (JettyStart.java [run]:142) - [jetty.home : D:\work_on_OpenShift\exist3\exist\diy\tools\jetty] 
+2014-03-26 20:13:09,807 [main] INFO  (JettyStart.java [run]:144) - [log4j.configuration : file:/D:/work_on_OpenShift/exist3/exist/diy/log4j.xml] 
+2014-03-26 20:13:15,924 [main] DEBUG (LocalCollection.java [storeResource]:761) - storing document collection.xconf 
+2014-03-26 20:13:19,912 [main] DEBUG (LocalCollection.java [storeResource]:761) - storing document collection.xconf 
+2014-03-26 20:13:22,973 [main] INFO  (JettyStart.java [lifeCycleStarting]:404) - Jetty server starting... 
+2014-03-26 20:13:28,238 [main] INFO  (JettyStart.java [lifeCycleStarted]:410) - Jetty server started. 
+2014-03-26 20:13:28,241 [main] INFO  (JettyStart.java [run]:224) - ----------------------------------------------------- 
+2014-03-26 20:13:28,242 [main] INFO  (JettyStart.java [run]:225) - Server has started on port 8080. Configured contexts: 
+2014-03-26 20:13:28,243 [main] INFO  (JettyStart.java [run]:234) - '/exist' 
+2014-03-26 20:13:28,244 [main] INFO  (JettyStart.java [run]:266) - '/exist/oauth' 
+2014-03-26 20:13:28,244 [main] INFO  (JettyStart.java [run]:272) - ----------------------------------------------------- 
+2014-03-26 20:19:41,838 [main] INFO  (JettyStart.java [run]:117) - Configuring eXist from D:\work_on_OpenShift\exist3\exist\diy\conf.xml 
+2014-03-26 20:19:41,840 [main] INFO  (JettyStart.java [run]:119) - Running with Java 1.7.0_51 [Oracle Corporation (Java HotSpot(TM) Client VM) in C:\Program Files (x86)\Java\jre7] 
+2014-03-26 20:19:41,841 [main] INFO  (JettyStart.java [run]:125) - Running as user 'swainston' 
+2014-03-26 20:19:41,844 [main] INFO  (JettyStart.java [run]:128) - [eXist Version : 2.1] 
+2014-03-26 20:19:41,845 [main] INFO  (JettyStart.java [run]:130) - [eXist Build : 20140326] 
+2014-03-26 20:19:41,845 [main] INFO  (JettyStart.java [run]:132) - [eXist Home : unknown] 
+2014-03-26 20:19:41,846 [main] INFO  (JettyStart.java [run]:134) - [SVN Revision : 0000] 
+2014-03-26 20:19:41,847 [main] INFO  (JettyStart.java [run]:137) - [Operating System : Windows 7 6.1 x86] 
+2014-03-26 20:19:41,847 [main] INFO  (JettyStart.java [run]:142) - [jetty.home : D:\work_on_OpenShift\exist3\exist\diy\tools\jetty] 
+2014-03-26 20:19:41,848 [main] INFO  (JettyStart.java [run]:144) - [log4j.configuration : file:/D:/work_on_OpenShift/exist3/exist/diy/log4j.xml] 
+2014-03-26 20:19:46,823 [main] DEBUG (LocalCollection.java [storeResource]:761) - storing document collection.xconf 
+2014-03-26 20:19:50,364 [main] DEBUG (LocalCollection.java [storeResource]:761) - storing document collection.xconf 
+2014-03-26 20:19:55,039 [main] INFO  (JettyStart.java [lifeCycleStarting]:404) - Jetty server starting... 
+2014-03-26 20:19:59,872 [main] INFO  (JettyStart.java [lifeCycleStarted]:410) - Jetty server started. 
+2014-03-26 20:19:59,875 [main] INFO  (JettyStart.java [run]:224) - ----------------------------------------------------- 
+2014-03-26 20:19:59,876 [main] INFO  (JettyStart.java [run]:225) - Server has started on port 8080. Configured contexts: 
+2014-03-26 20:19:59,877 [main] INFO  (JettyStart.java [run]:234) - '/exist' 
+2014-03-26 20:19:59,878 [main] INFO  (JettyStart.java [run]:266) - '/exist/oauth' 
+2014-03-26 20:19:59,878 [main] INFO  (JettyStart.java [run]:272) - ----------------------------------------------------- 
+2014-03-26 20:38:01,493 [main] INFO  (JettyStart.java [run]:117) - Configuring eXist from D:\work_on_OpenShift\exist3\exist\diy\conf.xml 
+2014-03-26 20:38:01,494 [main] INFO  (JettyStart.java [run]:119) - Running with Java 1.7.0_51 [Oracle Corporation (Java HotSpot(TM) Client VM) in C:\Program Files (x86)\Java\jre7] 
+2014-03-26 20:38:01,495 [main] INFO  (JettyStart.java [run]:125) - Running as user 'swainston' 
+2014-03-26 20:38:01,606 [main] INFO  (JettyStart.java [run]:128) - [eXist Version : 2.1] 
+2014-03-26 20:38:01,607 [main] INFO  (JettyStart.java [run]:130) - [eXist Build : 20140326] 
+2014-03-26 20:38:01,608 [main] INFO  (JettyStart.java [run]:132) - [eXist Home : unknown] 
+2014-03-26 20:38:01,608 [main] INFO  (JettyStart.java [run]:134) - [SVN Revision : 0000] 
+2014-03-26 20:38:01,612 [main] INFO  (JettyStart.java [run]:137) - [Operating System : Windows 7 6.1 x86] 
+2014-03-26 20:38:01,619 [main] INFO  (JettyStart.java [run]:142) - [jetty.home : D:\work_on_OpenShift\exist3\exist\diy\tools\jetty] 
+2014-03-26 20:38:01,619 [main] INFO  (JettyStart.java [run]:144) - [log4j.configuration : file:/D:/work_on_OpenShift/exist3/exist/diy/log4j.xml] 
+2014-03-26 20:38:31,155 [main] INFO  (JettyStart.java [lifeCycleStarting]:404) - Jetty server starting... 
+2014-03-26 20:38:35,618 [main] INFO  (JettyStart.java [lifeCycleStarted]:410) - Jetty server started. 
+2014-03-26 20:38:35,622 [main] INFO  (JettyStart.java [run]:224) - ----------------------------------------------------- 
+2014-03-26 20:38:35,622 [main] INFO  (JettyStart.java [run]:225) - Server has started on port 8080. Configured contexts: 
+2014-03-26 20:38:35,623 [main] INFO  (JettyStart.java [run]:234) - '/exist' 
+2014-03-26 20:38:35,625 [main] INFO  (JettyStart.java [run]:266) - '/exist/oauth' 
+2014-03-26 20:38:35,625 [main] INFO  (JettyStart.java [run]:272) - ----------------------------------------------------- 
+2014-03-26 21:34:19,856 [main] INFO  (JettyStart.java [run]:117) - Configuring eXist from D:\work_on_OpenShift\exist3\exist\diy\conf.xml 
+2014-03-26 21:34:19,859 [main] INFO  (JettyStart.java [run]:119) - Running with Java 1.7.0_51 [Oracle Corporation (Java HotSpot(TM) Client VM) in C:\Program Files (x86)\Java\jre7] 
+2014-03-26 21:34:19,861 [main] INFO  (JettyStart.java [run]:125) - Running as user 'swainston' 
+2014-03-26 21:34:19,999 [main] INFO  (JettyStart.java [run]:128) - [eXist Version : 2.1] 
+2014-03-26 21:34:20,001 [main] INFO  (JettyStart.java [run]:130) - [eXist Build : 20140326] 
+2014-03-26 21:34:20,003 [main] INFO  (JettyStart.java [run]:132) - [eXist Home : unknown] 
+2014-03-26 21:34:20,005 [main] INFO  (JettyStart.java [run]:134) - [SVN Revision : 0000] 
+2014-03-26 21:34:20,007 [main] INFO  (JettyStart.java [run]:137) - [Operating System : Windows 7 6.1 x86] 
+2014-03-26 21:34:20,010 [main] INFO  (JettyStart.java [run]:142) - [jetty.home : D:\work_on_OpenShift\exist3\exist\diy\tools\jetty] 
+2014-03-26 21:34:20,013 [main] INFO  (JettyStart.java [run]:144) - [log4j.configuration : file:/D:/work_on_OpenShift/exist3/exist/diy/log4j.xml] 
+2014-03-26 21:34:29,665 [main] DEBUG (LocalCollection.java [storeResource]:761) - storing document collection.xconf 
+2014-03-26 21:34:37,388 [main] DEBUG (LocalCollection.java [storeResource]:761) - storing document collection.xconf 
+2014-03-26 21:34:41,620 [main] INFO  (JettyStart.java [lifeCycleStarting]:404) - Jetty server starting... 
+2014-03-26 21:34:50,119 [main] INFO  (JettyStart.java [lifeCycleStarted]:410) - Jetty server started. 
+2014-03-26 21:34:50,123 [main] INFO  (JettyStart.java [run]:224) - ----------------------------------------------------- 
+2014-03-26 21:34:50,124 [main] INFO  (JettyStart.java [run]:225) - Server has started on port 8080. Configured contexts: 
+2014-03-26 21:34:50,126 [main] INFO  (JettyStart.java [run]:234) - '/exist' 
+2014-03-26 21:34:50,130 [main] INFO  (JettyStart.java [run]:266) - '/exist/oauth' 
+2014-03-26 21:34:50,131 [main] INFO  (JettyStart.java [run]:272) - ----------------------------------------------------- 
+2014-03-26 21:38:05,548 [main] INFO  (JettyStart.java [run]:117) - Configuring eXist from D:\work_on_OpenShift\exist3\exist\diy\conf.xml 
+2014-03-26 21:38:05,550 [main] INFO  (JettyStart.java [run]:119) - Running with Java 1.7.0_51 [Oracle Corporation (Java HotSpot(TM) Client VM) in C:\Program Files (x86)\Java\jre7] 
+2014-03-26 21:38:05,553 [main] INFO  (JettyStart.java [run]:125) - Running as user 'swainston' 
+2014-03-26 21:38:05,691 [main] INFO  (JettyStart.java [run]:128) - [eXist Version : 2.1] 
+2014-03-26 21:38:05,692 [main] INFO  (JettyStart.java [run]:130) - [eXist Build : 20140326] 
+2014-03-26 21:38:05,694 [main] INFO  (JettyStart.java [run]:132) - [eXist Home : unknown] 
+2014-03-26 21:38:05,696 [main] INFO  (JettyStart.java [run]:134) - [SVN Revision : 0000] 
+2014-03-26 21:38:05,697 [main] INFO  (JettyStart.java [run]:137) - [Operating System : Windows 7 6.1 x86] 
+2014-03-26 21:38:05,701 [main] INFO  (JettyStart.java [run]:142) - [jetty.home : D:\work_on_OpenShift\exist3\exist\diy\tools\jetty] 
+2014-03-26 21:38:05,705 [main] INFO  (JettyStart.java [run]:144) - [log4j.configuration : file:/D:/work_on_OpenShift/exist3/exist/diy/log4j.xml] 
+2014-03-26 21:38:40,779 [main] INFO  (JettyStart.java [lifeCycleStarting]:404) - Jetty server starting... 
+2014-03-26 21:38:46,850 [main] INFO  (JettyStart.java [lifeCycleStarted]:410) - Jetty server started. 
+2014-03-26 21:38:46,856 [main] INFO  (JettyStart.java [run]:224) - ----------------------------------------------------- 
+2014-03-26 21:38:46,857 [main] INFO  (JettyStart.java [run]:225) - Server has started on port 8080. Configured contexts: 
+2014-03-26 21:38:46,859 [main] INFO  (JettyStart.java [run]:234) - '/exist' 
+2014-03-26 21:38:46,862 [main] INFO  (JettyStart.java [run]:266) - '/exist/oauth' 
+2014-03-26 21:38:46,863 [main] INFO  (JettyStart.java [run]:272) - ----------------------------------------------------- 
+2014-03-26 21:39:26,705 [Timer-0] INFO  (JettyStart.java [shutdown]:367) - Database shutdown: stopping server in 1sec ... 
+2014-03-26 21:39:27,707 [jetty shutdown schedule] INFO  (JettyStart.java [lifeCycleStopping]:419) - Jetty server stopping... 
+2014-03-26 21:39:28,874 [jetty shutdown schedule] INFO  (JettyStart.java [lifeCycleStopped]:425) - Jetty server stopped 
