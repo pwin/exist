@@ -104,7 +104,8 @@ public class OAuthServlet extends HttpServlet {
 	        req.addBodyParameter(OAuthConstants.CLIENT_SECRET, config.getApiSecret());
 	        req.addBodyParameter(OAuthConstants.CODE, verification);
 		// jetty.port.jetty
-        	req.addBodyParameter(OAuthConstants.REDIRECT_URI, "http://localhost:" + System.getProperty("jetty.port") + "/oauth/cook2gl");
+        //	req.addBodyParameter(OAuthConstants.REDIRECT_URI, "http://localhost:" + System.getProperty("jetty.port") + "/oauth/cook2gl");
+                req.addBodyParameter(OAuthConstants.REDIRECT_URI, "http://exist-winstanley.rhcloud.com/exist/oauth/cook2gl");
 	        req.addBodyParameter("grant_type", "authorization_code");
 	        accessToken = api.getAccessTokenExtractor().extract(req.send().getBody());
         } else

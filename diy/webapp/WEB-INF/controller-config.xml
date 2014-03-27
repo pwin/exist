@@ -31,9 +31,9 @@
   <forward pattern="/restxq/" servlet="RestXqServlet"/>
   
   <!-- OAuth servlet -->
-  <!-- 
-  <forward pattern="/oauth" servlet="OAuthServlet"/>
-  -->
+  <!--   -->
+  <forward pattern="/exist/oauth" servlet="OAuthServlet"/>
+
   
   <!-- Apache SOAP interface -->
   <forward pattern="/axis-servlet/AxisServlet" servlet="AxisServlet"/>
